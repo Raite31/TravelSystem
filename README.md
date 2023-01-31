@@ -3,7 +3,8 @@
 ## 技术栈：
 1. vue3.2.45 + pinia2.0.28 + vue-router4.1.6
 2. element-plus
-3. Node
+3. Node Express4.16.1 + nodemon
+4. MongoDB
 
 This template should help get you started developing with Vue 3 in Vite.
 
