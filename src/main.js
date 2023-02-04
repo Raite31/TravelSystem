@@ -1,14 +1,26 @@
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import Vue from "vue";
+import App from "./App.vue";
+import "./registerServiceWorker";
+import router from "./router";
+import stores from "./stores";
+import { postRequest } from "./utils/api";
+import ElementUI from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
+import hevueImgPreview from "hevue-img-preview";
+import editor from "@blog1997/vue-umeditor";
+import * as echarts from "echarts";
 
-import App from './App.vue'
-import router from './router'
+Vue.prototype.$echarts = echarts;
+Vue.use(editor);
+Vue.use(hevueImgPreview);
+Vue.use(ElementUI);
 
-import './assets/main.css'
+// 配置全局属性
+Vue.prototype.postRequest = postRequest;
 
-const app = createApp(App)
-
-app.use(createPinia())
-app.use(router)
-
-app.mount('#app')
+Vue.config.productionTip = false;
+new Vue({
+  router,
+  stores,
+  render: (h) => h(App)
+}).$mount("#app");
