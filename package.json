@@ -10,7 +10,7 @@
     "@blog1997/vue-umeditor": "^0.1.10",
     "axios": "^0.27.2",
     "core-js": "^3.8.3",
-    "echarts": "4.9",
+    "echarts": "5.4",
     "element-ui": "^2.15.9",
     "hevue-img-preview": "^6.0.0",
     "register-service-worker": "^1.7.2",
