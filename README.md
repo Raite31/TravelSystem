@@ -1,19 +1,62 @@
-# lvyou_web
+# TravelSystem
 
-## Project setup
-```
+### 技术栈：
+
+1. vue3.2.45 + pinia2.0.28 + vue-router4.1.6
+2. element-plus
+3. Node Express4.16.1 + nodemon
+4. MongoDB
+
+### 项目安装依赖并启动（测试案例）
+
+#### 前端：
+
+打开终端在 TravelSystem 中
+
+```sh
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
+然后
+
+```sh
+npm run dev
 ```
 
-### Compiles and minifies for production
-```
-npm run build
+#### 后端：
+
+打开终端在 TravelSystem/server 中
+
+```sh
+npm install
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+然后在 TravelSystem/server/src 中
+
+```sh
+nodemon serve.js
+```
+
+### 项目结构
+views
+    --travel
+        ----download
+        ----home
+        ----list
+        ------detail
+    --blog
+        ----home
+        ----list
+        ------detail
+
+### Compile and Hot-Reload for Development
+
+````sh
+
+### Lint with [ESLint](https://eslint.org/)
+
+项目代码检查
+
+```sh
+npm run lint
+````
