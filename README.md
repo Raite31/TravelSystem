@@ -2,7 +2,7 @@
 
 ### 技术栈：
 
-1. vue3.2.45 + pinia2.0.28 + vue-router4.1.6
+1. vue2.6.14 + pinia2.0.28 + vue-router4.1.6
 2. element-plus
 3. Node Express4.16.1 + nodemon
 4. MongoDB
@@ -48,6 +48,9 @@ views
         ----home
         ----list
         ------detail
+
+### 组件库
+
 
 ### Compile and Hot-Reload for Development
 

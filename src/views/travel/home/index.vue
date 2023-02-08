@@ -1,16 +1,20 @@
 <template lang="">
-    <div>
-        <Head></Head>
-        <div id="home">
-          <!-- 轮播图 -->
-          <el-carousel class ="el-carousel"  height="60vh">
-            <el-carousel-item class="el-carousel-item" v-for="item in images" :key="item">
-              <el-image :src="item" fit="fill"></el-image>
-            </el-carousel-item>
-          </el-carousel>
-          <!-- 轮播END -->
+  <div>
+    <Head></Head>
+    <div id="home">
+      <!-- 轮播图 -->
+      <el-carousel class="el-carousel" height="60vh">
+        <el-carousel-item
+          class="el-carousel-item"
+          v-for="item in images"
+          :key="item"
+        >
+          <el-image :src="item" fit="fill"></el-image>
+        </el-carousel-item>
+      </el-carousel>
+      <!-- 轮播END -->
 
-            <div class="sales-entrys-container">
+      <div class="sales-entrys-container">
         <div class="sales-entrys-div">
           <div class="sales-entrys-title">自由行</div>
           <div>旅游就要freestyle</div>
@@ -35,17 +39,17 @@
           <div class="sales-entrys-title">邮轮</div>
           <div>移动的海上城堡</div>
         </div>
-</div>
+      </div>
       <div class="sales-entrys-input">
         <div class="child"></div>
         <div class="child chang_input">发布游记</div>
         <div class="child">发布攻略</div>
         <div class="child">
-           <el-button @click="add" class="add" type="warning">发布</el-button>
-      	</div>
-     </div>
+          <el-button @click="add" class="add" type="warning">发布</el-button>
         </div>
+      </div>
     </div>
+  </div>
 </template>
 <script>
 import Head from "@/components/Head.vue";
