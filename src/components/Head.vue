@@ -69,7 +69,7 @@
   :on-success="uploadSuccess"
   :on-error="uploadError"
   :data="this.user"
-  action="http://localhost:8081/uploadUserImg" >
+  action="http://localhost:8080/uploadUserImg" >
     <el-image
       :src="user.headImg"
       fit="fit"></el-image>

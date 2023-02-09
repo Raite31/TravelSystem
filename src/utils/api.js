@@ -2,7 +2,7 @@ import axios from "axios";
 import { Message } from "element-ui";
 import routers from "../router/index";
 
-let base = "http://localhost:8081";
+let base = "http://localhost:8080";
 export const postRequest = (url, params) => {
   return axios({
     url: `${base}${url}`,

@@ -36,12 +36,12 @@
         username: 'zhangsan',
         password: '123',
         code: '',
-        codeImg: 'http://localhost:8081/codeImg?date' + new Date(),
+        codeImg: 'http://localhost:8080/codeImg?date' + new Date(),
       };
     },
     methods: {
       codeClick() {
-        this.codeImg = 'http://localhost:8081/codeImg?date' + new Date();
+        this.codeImg = 'http://localhost:8080/codeImg?date' + new Date();
       },
       login_click() {
         // this.postRequest('/login', {

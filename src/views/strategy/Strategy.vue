@@ -84,7 +84,7 @@ export default {
         {
           id: 1,
           abs: "第一篇旅游攻略",
-          cover: "http://localhost:8081/image/home/1.jpg",
+          cover: "http://localhost:8080/image/home/1.jpg",
           place: "佛山",
           watch: 100,
           price: 1000,
@@ -93,7 +93,7 @@ export default {
         {
           id: 2,
           abs: "第二篇旅游攻略",
-          cover: "http://localhost:8081/image/home/2.jpg",
+          cover: "http://localhost:8080/image/home/2.jpg",
           place: "佛山",
           watch: 100,
           price: 1000,
@@ -102,7 +102,7 @@ export default {
         {
           id: 3,
           abs: "第三篇旅游攻略",
-          cover: "http://localhost:8081/image/home/3.jpg",
+          cover: "http://localhost:8080/image/home/3.jpg",
           place: "佛山",
           watch: 100,
           price: 1000,
@@ -114,19 +114,19 @@ export default {
           id: 1,
           title: "热卖信息1",
           price: 1000,
-          img: "http://localhost:8081/image/home/1.jpg",
+          img: "http://localhost:8080/image/home/1.jpg",
         },
         {
           id: 2,
           title: "热卖信息2",
           price: 1000,
-          img: "http://localhost:8081/image/home/2.jpg",
+          img: "http://localhost:8080/image/home/2.jpg",
         },
         {
           id: 3,
           title: "热卖信息3",
           price: 1000,
-          img: "http://localhost:8081/image/home/3.jpg",
+          img: "http://localhost:8080/image/home/3.jpg",
         },
       ],
     };
