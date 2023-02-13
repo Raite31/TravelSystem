@@ -7,10 +7,21 @@
           <el-input v-model="searchKeyword"></el-input>
         </div>
       </div>
-      <div class="recommend">
-        <div class="title">热门推荐</div>
+      <div class="hot">
+        <div class="title">热门旅游</div>
         <div class="items">
-          <div class="item" v-for="item in items">
+          <div class="item" v-for="item in hots">
+            <div class="cov"></div>
+            <div class="item-title">{{ item.title }}</div>
+            <div class="item-contain">{{ item.contain }}</div>
+            <el-button></el-button>
+          </div>
+        </div>
+      </div>
+      <div class="recommend">
+        <div class="title">我们推荐</div>
+        <div class="items">
+          <div class="item" v-for="item in recommends">
             <div class="cov"></div>
             <div class="item-title">{{ item.title }}</div>
             <div class="item-tag">{{ item.tag }}</div>
@@ -19,6 +30,11 @@
             <el-button></el-button>
           </div>
         </div>
+      </div>
+      <div class="lowPrice">
+        <div class="title">最低价格</div>
+        <div class="left"></div>
+        <div class="right"></div>
       </div>
     </div>
   </div>
@@ -34,77 +50,85 @@ export default {
   data() {
     return {
       searchKeyword: null,
-      items: {
+      hots: {
         0: {
+          cov: "@/assets/imgs/item_photo.png",
           title: "颐和园",
-          tag: ["北京", "古建筑", "建筑"],
-          date: "2008-12-30",
           contain: "你可真牛",
         },
         1: {
+          cov: "@/assets/imgs/item_photo.png",
           title: "故宫",
-          tag: ["北京", "古建筑", "建筑"],
-          date: "2008-12-30",
           contain: "你可真牛",
         },
         2: {
+          cov: "@/assets/imgs/item_photo.png",
           title: "亚特兰蒂斯",
-          tag: ["北京", "古建筑", "建筑"],
-          date: "2008-12-30",
           contain: "你可真牛",
         },
         3: {
+          cov: "@/assets/imgs/item_photo.png",
           title: "颐和园",
-          tag: ["北京", "古建筑", "建筑"],
-          date: "2008-12-30",
           contain: "你可真牛",
         },
         4: {
+          cov: "@/assets/imgs/item_photo.png",
           title: "故宫",
-          tag: ["北京", "古建筑", "建筑"],
-          date: "2008-12-30",
           contain: "你可真牛",
         },
         5: {
+          cov: "@/assets/imgs/item_photo.png",
           title: "亚特兰蒂斯",
-          tag: ["北京", "古建筑", "建筑"],
-          date: "2008-12-30",
           contain: "你可真牛",
         },
         6: {
+          cov: "@/assets/imgs/item_photo.png",
           title: "颐和园",
-          tag: ["北京", "古建筑", "建筑"],
-          date: "2008-12-30",
           contain: "你可真牛",
         },
         7: {
+          cov: "@/assets/imgs/item_photo.png",
           title: "故宫",
-          tag: ["北京", "古建筑", "建筑"],
-          date: "2008-12-30",
           contain: "你可真牛",
         },
         8: {
+          cov: "@/assets/imgs/item_photo.png",
           title: "亚特兰蒂斯",
-          tag: ["北京", "古建筑", "建筑"],
-          date: "2008-12-30",
           contain: "你可真牛",
         },
         9: {
+          cov: "@/assets/imgs/item_photo.png",
           title: "颐和园",
-          tag: ["北京", "古建筑", "建筑"],
-          date: "2008-12-30",
           contain: "你可真牛",
         },
         10: {
+          cov: "@/assets/imgs/item_photo.png",
           title: "故宫",
-          tag: ["北京", "古建筑", "建筑"],
-          date: "2008-12-30",
           contain: "你可真牛",
         },
         11: {
+          cov: "@/assets/imgs/item_photo.png",
+          title: "亚特兰蒂斯",
+          contain: "你可真牛",
+        },
+      },
+      recommends: {
+        9: {
+          cov: "@/assets/imgs/item_photo.png",
+          title: "颐和园",
+          tag: ["北京", "古建筑", "建筑"],
+          contain: "你可真牛",
+        },
+        10: {
+          cov: "@/assets/imgs/item_photo.png",
+          title: "故宫",
+          tag: ["北京", "古建筑", "建筑"],
+          contain: "你可真牛",
+        },
+        11: {
+          cov: "@/assets/imgs/item_photo.png",
           title: "亚特兰蒂斯",
           tag: ["北京", "古建筑", "建筑"],
-          date: "2008-12-30",
           contain: "你可真牛",
         },
       },
@@ -155,7 +179,7 @@ body {
       }
     }
   }
-  .recommend {
+  .hot {
     .title {
       width: 260px;
       font-size: 35px;
@@ -165,10 +189,10 @@ body {
       margin: 20px auto;
     }
     .items {
-      // display: flex;
-      // flex-wrap: wrap;
-      // justify-content: center;
-      // align-content: flex-start;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-content: flex-start;
       width: 1440px;
       margin: 0 auto;
       .item {
@@ -208,6 +232,81 @@ body {
           line-height: 21px;
         }
       }
+    }
+  }
+  .recommend {
+    .title {
+      width: 260px;
+      font-size: 35px;
+      font-weight: 600;
+      color: #0437ac;
+      line-height: 53px;
+      margin: 20px auto;
+    }
+    .items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-content: flex-start;
+      width: 1440px;
+      margin: 0 auto;
+      .item {
+        float: left;
+        width: 380px;
+        height: 452px;
+        box-sizing: border-box;
+        margin: 30px 30px;
+        padding: 26px;
+        background: #ffffff;
+        box-shadow: 0px 7px 19px 0px rgba(0, 0, 0, 0.25);
+        border-radius: 10px 10px 10px 10px;
+        opacity: 1;
+        transition: all 0.5s;
+        &:hover {
+          transform: scale(1.2);
+
+          // 想做的往右拉伸的效果，没实现完美的
+          // width: 813px;
+          // background: #ffffff;
+          // // box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+          // border-radius: 15px 15px 15px 15px;
+          // opacity: 1;
+        }
+        .item-title {
+          width: 211px;
+          font-size: 15px;
+          font-weight: 600;
+          color: #000000;
+          line-height: 23px;
+        }
+        .item-contain {
+          width: 293px;
+          font-size: 14px;
+          font-weight: 500;
+          color: #2e2e2e;
+          line-height: 21px;
+        }
+      }
+    }
+  }
+  .lowPrice {
+    .title {
+      width: 260px;
+      font-size: 35px;
+      font-weight: 600;
+      color: #0437ac;
+      line-height: 53px;
+      margin: 20px auto;
+    }
+    .left {
+      width: 344px;
+      height: 435px;
+      background: #0437ac;
+      border-radius: 15px 0px 15px 0px;
+      opacity: 1;
+    }
+    .right {
+      width: 1096px;
     }
   }
 }
