@@ -8,13 +8,16 @@
         </div>
       </div>
       <div class="recommend">
-        <div class="item" v-for="item in items">
-          <div class="cov"></div>
-          <div class="item-title">{{ item.title }}</div>
-          <div class="item-tag">{{ item.tag }}</div>
-          <div class="item-date">{{ item.date }}</div>
-          <div class="item-contain">{{ item.contain }}</div>
-          <el-button></el-button>
+        <div class="title">热门推荐</div>
+        <div class="items">
+          <div class="item" v-for="item in items">
+            <div class="cov"></div>
+            <div class="item-title">{{ item.title }}</div>
+            <div class="item-tag">{{ item.tag }}</div>
+            <div class="item-date">{{ item.date }}</div>
+            <div class="item-contain">{{ item.contain }}</div>
+            <el-button></el-button>
+          </div>
         </div>
       </div>
     </div>
@@ -45,6 +48,60 @@ export default {
           contain: "你可真牛",
         },
         2: {
+          title: "亚特兰蒂斯",
+          tag: ["北京", "古建筑", "建筑"],
+          date: "2008-12-30",
+          contain: "你可真牛",
+        },
+        3: {
+          title: "颐和园",
+          tag: ["北京", "古建筑", "建筑"],
+          date: "2008-12-30",
+          contain: "你可真牛",
+        },
+        4: {
+          title: "故宫",
+          tag: ["北京", "古建筑", "建筑"],
+          date: "2008-12-30",
+          contain: "你可真牛",
+        },
+        5: {
+          title: "亚特兰蒂斯",
+          tag: ["北京", "古建筑", "建筑"],
+          date: "2008-12-30",
+          contain: "你可真牛",
+        },
+        6: {
+          title: "颐和园",
+          tag: ["北京", "古建筑", "建筑"],
+          date: "2008-12-30",
+          contain: "你可真牛",
+        },
+        7: {
+          title: "故宫",
+          tag: ["北京", "古建筑", "建筑"],
+          date: "2008-12-30",
+          contain: "你可真牛",
+        },
+        8: {
+          title: "亚特兰蒂斯",
+          tag: ["北京", "古建筑", "建筑"],
+          date: "2008-12-30",
+          contain: "你可真牛",
+        },
+        9: {
+          title: "颐和园",
+          tag: ["北京", "古建筑", "建筑"],
+          date: "2008-12-30",
+          contain: "你可真牛",
+        },
+        10: {
+          title: "故宫",
+          tag: ["北京", "古建筑", "建筑"],
+          date: "2008-12-30",
+          contain: "你可真牛",
+        },
+        11: {
           title: "亚特兰蒂斯",
           tag: ["北京", "古建筑", "建筑"],
           date: "2008-12-30",
@@ -97,8 +154,60 @@ body {
         opacity: 0.3;
       }
     }
-    .recommend {
-      display: flex;
+  }
+  .recommend {
+    .title {
+      width: 260px;
+      font-size: 35px;
+      font-weight: 600;
+      color: #0437ac;
+      line-height: 53px;
+      margin: 20px auto;
+    }
+    .items {
+      // display: flex;
+      // flex-wrap: wrap;
+      // justify-content: center;
+      // align-content: flex-start;
+      width: 1440px;
+      margin: 0 auto;
+      .item {
+        float: left;
+        width: 380px;
+        height: 452px;
+        box-sizing: border-box;
+        margin: 30px 30px;
+        padding: 26px;
+        background: #ffffff;
+        box-shadow: 0px 7px 19px 0px rgba(0, 0, 0, 0.25);
+        border-radius: 10px 10px 10px 10px;
+        opacity: 1;
+        transition: all 0.5s;
+        &:hover {
+          transform: scale(1.2);
+
+          // 想做的往右拉伸的效果，没实现完美的
+          // width: 813px;
+          // background: #ffffff;
+          // // box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+          // border-radius: 15px 15px 15px 15px;
+          // opacity: 1;
+        }
+        .item-title {
+          width: 211px;
+          font-size: 15px;
+          font-weight: 600;
+          color: #000000;
+          line-height: 23px;
+        }
+        .item-contain {
+          width: 293px;
+          font-size: 14px;
+          font-weight: 500;
+          color: #2e2e2e;
+          line-height: 21px;
+        }
+      }
     }
   }
 }
