@@ -23,7 +23,7 @@ const routes = [
   {
     path: "/strategy",
     name: "strategy",
-    component: () => import("@/views/strategy/Strategy.vue"),
+    component: () => import("@/views/blog/strategy/Strategy.vue"),
   },
   {
     path: "/diary",
@@ -33,7 +33,7 @@ const routes = [
   {
     path: "/destination",
     name: "destination",
-    component: () => import("@/views/destination/Destination.vue"),
+    component: () => import("@/views/travel/destination/Destination.vue"),
   },
   {
     path: "/diaryContent",

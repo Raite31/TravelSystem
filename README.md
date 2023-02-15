@@ -20,7 +20,7 @@ npm install
 然后
 
 ```sh
-npm run dev
+npm run serve
 ```
 
 #### 后端：
