@@ -11,7 +11,7 @@
       <div class="hot">
         <div class="title">热门旅游</div>
         <div class="items">
-          <div class="item" v-for="item in hots">
+          <div class="item" v-for="item in hots" :key="item.title">
             <div class="cov"></div>
             <div class="item-title">{{ item.title }}</div>
             <div class="item-contain">{{ item.contain }}</div>
@@ -22,7 +22,7 @@
       <div class="recommend">
         <div class="title">我们推荐</div>
         <div class="items">
-          <div class="item" v-for="item in recommends">
+          <div class="item" v-for="item in recommends" :key="item.title">
             <img :src="item.cov" alt="" />
             <div class="item-title">{{ item.title }}</div>
             <div class="item-tag">{{ item.tag }}</div>
@@ -38,7 +38,7 @@
           <div class="left"></div>
           <div class="right">
             <ul class="list">
-              <li v-for="item in lists">
+              <li v-for="item in lists" :key="item.place">
                 <img :src="item.pic" />
                 <div>
                   <div>{{ item.place }}</div>
