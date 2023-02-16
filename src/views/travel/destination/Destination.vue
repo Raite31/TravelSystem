@@ -125,6 +125,7 @@ body {
     display: flex;
     align-items: center;
     padding-left: 320px;
+    margin-bottom: 30px;
     .el-input {
       width: 550px;
       margin-right: 60px;
@@ -137,6 +138,12 @@ body {
       width: 205px;
       height: 45px;
       border-radius: 30px;
+      background-color: #004f32;
+      color: white;
+      font-weight: 600;
+      &:hover {
+        background-color: #00aa6c;
+      }
     }
   }
   .list {
