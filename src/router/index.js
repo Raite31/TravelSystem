@@ -28,7 +28,7 @@ const routes = [
   {
     path: "/diary",
     name: "diary",
-    component: () => import("@/views/diary/Diary.vue"),
+    component: () => import("@/views/blog/diary/Diary.vue"),
   },
   {
     path: "/destination",
@@ -38,12 +38,12 @@ const routes = [
   {
     path: "/diaryContent",
     name: "diaryContent",
-    component: () => import("@/views/diary/DiaryContent.vue"),
+    component: () => import("@/views/blog/diary/DiaryContent.vue"),
   },
   {
     path: "/pushDiary",
     name: "pushDiary",
-    component: () => import("@/views/diary/PushDiary.vue"),
+    component: () => import("@/views/blog/diary/PushDiary.vue"),
   },
   {
     path: "/statistics",

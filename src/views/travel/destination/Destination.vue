@@ -13,8 +13,7 @@
             <div class="right">
               <div class="title">{{ item.title }}</div>
               <div class="views-and-commits">
-                <span class="views">{{ item.views }}</span>
-                <span class="commits">{{ item.commits }}</span>
+                {{ item.views }} and {{ item.commits }}
               </div>
               <div class="introduction">{{ item.introduction }}</div>
             </div>
@@ -124,7 +123,7 @@ body {
         display: flex;
         margin-bottom: 10px;
         background-color: white;
-        padding: 20px 50px 20px 30px;
+        padding: 20px 100px 20px 30px;
         box-sizing: border-box;
         text-align: left;
         img {
