@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Head></Head>
+    <Head />
     <div class="contains">
       <div class="search">
         <el-input></el-input>
@@ -23,15 +23,18 @@
           </li>
         </ul>
       </div>
+      <Footer />
     </div>
   </div>
 </template>
 
 <script>
 import Head from "@/components/Head.vue";
+import Footer from "@/components/Footer.vue";
 export default {
   components: {
     Head,
+    Footer,
   },
   data() {
     return {
@@ -115,10 +118,22 @@ export default {
 </script>
 
 <style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
 body {
   background-color: #f1f1f1;
 }
 .contains {
+  width: 100%;
+  margin: 0 auto;
   .search {
     height: 130px;
     background-color: white;
