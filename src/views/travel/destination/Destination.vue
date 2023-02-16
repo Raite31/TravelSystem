@@ -12,8 +12,11 @@
             <img :src="item.cov" />
             <div class="right">
               <div class="title">{{ item.title }}</div>
-              <div class="views-and-commits">
-                {{ item.views }} and {{ item.commits }}
+              <div class="views">
+                {{ item.views }}
+              </div>
+              <div class="commits">
+                {{ item.commits }}
               </div>
               <div class="introduction">{{ item.introduction }}</div>
             </div>
@@ -116,11 +119,35 @@ body {
   background-color: #f1f1f1;
 }
 .contains {
+  .search {
+    height: 130px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 320px;
+    .el-input {
+      width: 550px;
+      margin-right: 60px;
+      border: none;
+      .el-input__inner {
+        border: none;
+      }
+    }
+    .el-button {
+      width: 205px;
+      height: 45px;
+      border-radius: 30px;
+    }
+  }
   .list {
     ul {
       list-style: none;
+      display: flex;
+      flex-direction: column;
+      margin-left: 280px;
       li {
         display: flex;
+        width: 918px;
         margin-bottom: 10px;
         background-color: white;
         padding: 20px 100px 20px 30px;
@@ -132,6 +159,7 @@ body {
           margin-right: 16px;
         }
         .right {
+          width: 600px;
           .title {
             font-size: 20px;
             font-weight: 600;
