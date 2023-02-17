@@ -1,5 +1,5 @@
 <template lang="">
-     <div id="navbar">
+  <div id="navbar">
     <div class="lww_header">
       <div class="header_wrap">
         <!--logo start-->
@@ -8,26 +8,47 @@
         </div>
         <!--logo end-->
         <ul class="header_nav">
-          <li @click="click_nav(1)" @mouseenter="select_nav(1)" :class="nav_select==1?'header_nav_hover':''">
+          <li
+            @click="click_nav(1)"
+            @mouseenter="select_nav(1)"
+            :class="nav_select == 1 ? 'header_nav_hover' : ''"
+          >
             <router-link to="/home">首页</router-link>
           </li>
-          <li @click="click_nav(2)" @mouseenter="select_nav(2)" :class="nav_select==2?'header_nav_hover':''">
-            <router-link to="/strategy">旅游攻略</router-link> 
+          <li
+            @click="click_nav(2)"
+            @mouseenter="select_nav(2)"
+            :class="nav_select == 2 ? 'header_nav_hover' : ''"
+          >
+            <router-link to="/strategy">旅游攻略</router-link>
           </li>
-          <li @click="click_nav(3)" @mouseenter="select_nav(3)" :class="nav_select==3?'header_nav_hover':''">
-            <router-link to="/destination">目的地</router-link> 
-            
+          <li
+            @click="click_nav(3)"
+            @mouseenter="select_nav(3)"
+            :class="nav_select == 3 ? 'header_nav_hover' : ''"
+          >
+            <router-link to="/destination">目的地</router-link>
           </li>
-          <li @click="click_nav(4)" @mouseenter="select_nav(4)" :class="nav_select==4?'header_nav_hover':''">
-            <router-link to="/diary">旅游日记</router-link> 
+          <li
+            @click="click_nav(4)"
+            @mouseenter="select_nav(4)"
+            :class="nav_select == 4 ? 'header_nav_hover' : ''"
+          >
+            <router-link to="/diary">旅游日记</router-link>
           </li>
-          <li @click="click_nav(5)" @mouseenter="select_nav(5)" :class="nav_select==5?'header_nav_hover':''">
-            <router-link to="/statistics">出游查询</router-link> 
+          <li
+            @click="click_nav(5)"
+            @mouseenter="select_nav(5)"
+            :class="nav_select == 5 ? 'header_nav_hover' : ''"
+          >
+            <router-link to="/statistics">出游查询</router-link>
           </li>
-          <li @click="click_nav(6)" @mouseenter="select_nav(6)" :class="nav_select==6 ?'header_nav_hover':''">
-              <a :class="index == 6 ? 'onclickClass' : ''"
-              >社区</a
-            >
+          <li
+            @click="click_nav(6)"
+            @mouseenter="select_nav(6)"
+            :class="nav_select == 6 ? 'header_nav_hover' : ''"
+          >
+            <router-link to="/blogList">博客</router-link>
           </li>
         </ul>
         <div class="header_search">
@@ -46,11 +67,7 @@
           <a href="javascript:;" @click="dialogVisible = true">
             <img :src="user.headImg" id="login_user_headUrl" />
           </a>
-          <a
-            href="javascript:;"
-            title="退出登录"
-            rel="nofollow"
-            id="logoutbtn"
+          <a href="javascript:;" title="退出登录" rel="nofollow" id="logoutbtn"
             >退出登录</a
           >
         </div>
@@ -58,31 +75,35 @@
     </div>
 
     <el-dialog
-  title="修改用户信息"
-  :visible.sync="dialogVisible"
-  width="30%"
-  :before-close="handleClose">
-  <!-- action是发送请求 -->
-  <el-upload 
-  :show-file-list="false"
-  :before-upload="beforeAvatarUpload" 
-  :on-success="uploadSuccess"
-  :on-error="uploadError"
-  :data="this.user"
-  action="http://localhost:8080/uploadUserImg" >
-    <el-image
-      :src="user.headImg"
-      fit="fit"></el-image>
-  </el-upload>
-  
-  <el-input class="update_username" v-model="user.username" placeholder="请输入用户名"></el-input>
-  <el-input v-model="user.password" placeholder="请输入更新密码"></el-input>
+      title="修改用户信息"
+      :visible.sync="dialogVisible"
+      width="30%"
+      :before-close="handleClose"
+    >
+      <!-- action是发送请求 -->
+      <el-upload
+        :show-file-list="false"
+        :before-upload="beforeAvatarUpload"
+        :on-success="uploadSuccess"
+        :on-error="uploadError"
+        :data="this.user"
+        action="http://localhost:8080/uploadUserImg"
+      >
+        <el-image :src="user.headImg" fit="fit"></el-image>
+      </el-upload>
 
-  <span slot="footer" class="dialog-footer">
-    <el-button @click="dialogVisible = false">取 消</el-button>
-    <el-button type="primary" @click="update_click">修 改</el-button>
-  </span>
-</el-dialog>
+      <el-input
+        class="update_username"
+        v-model="user.username"
+        placeholder="请输入用户名"
+      ></el-input>
+      <el-input v-model="user.password" placeholder="请输入更新密码"></el-input>
+
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="update_click">修 改</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 <script>
