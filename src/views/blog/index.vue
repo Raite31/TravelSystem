@@ -9,11 +9,20 @@
       <div class="title">博客分享集合地</div>
       <div class="list">
         <ul>
-          <li></li>
+          <li v-for="(item, index) in blogs" :key="index">
+            <div class="left">
+              <img :src="item.cov" alt="" />
+            </div>
+            <div class="right">
+              <div class="title">{{ item.title }}</div>
+              <div class="tag">{{ item.tags }}</div>
+              <div class="contain">{{ item.contain }}</div>
+            </div>
+          </li>
         </ul>
       </div>
+      <Footer />
     </div>
-    <Footer />
   </div>
 </template>
 
@@ -23,7 +32,68 @@ import Footer from "@/components/Footer.vue";
 
 export default {
   data() {
-    return {};
+    return {
+      blogs: {
+        0: {
+          cov: "@/assets/imgs/item_photo.png",
+          title: "你好",
+          tags: ["11111111", "222222222", "3333333"],
+          contain:
+            "Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.",
+        },
+        1: {
+          cov: "@/assets/imgs/item_photo.png",
+          title: "你好",
+          tags: ["11111111", "222222222", "3333333"],
+          contain:
+            "Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.",
+        },
+        2: {
+          cov: "@/assets/imgs/item_photo.png",
+          title: "你好",
+          tags: ["11111111", "222222222", "3333333"],
+          contain:
+            "Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.",
+        },
+        3: {
+          cov: "@/assets/imgs/item_photo.png",
+          title: "你好",
+          tags: ["11111111", "222222222", "3333333"],
+          contain:
+            "Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.",
+        },
+        4: {
+          cov: "@/assets/imgs/item_photo.png",
+          title: "你好",
+          tags: ["11111111", "222222222", "3333333"],
+          contain: "dfasssssssssssguhdijvfbcdhnsjiygreuhdisjkvcbdhxsnj",
+        },
+        5: {
+          cov: "@/assets/imgs/item_photo.png",
+          title: "你好",
+          tags: ["11111111", "222222222", "3333333"],
+          contain: "dfasssssssssssguhdijvfbcdhnsjiygreuhdisjkvcbdhxsnj",
+        },
+        6: {
+          cov: "@/assets/imgs/item_photo.png",
+          title: "你好",
+          tags: ["11111111", "222222222", "3333333"],
+          contain: "dfasssssssssssguhdijvfbcdhnsjiygreuhdisjkvcbdhxsnj",
+        },
+        7: {
+          cov: "@/assets/imgs/item_photo.png",
+          title: "你好",
+          tags: ["11111111", "222222222", "3333333"],
+          contain: "dfasssssssssssguhdijvfbcdhnsjiygreuhdisjkvcbdhxsnj",
+        },
+        8: {
+          cov: "@/assets/imgs/item_photo.png",
+          title: "你好",
+          tags: ["11111111", "222222222", "3333333"],
+          contain: "dfasssssssssssguhdijvfbcdhnsjiygreuhdisjkvcbdhxsnj",
+        },
+      },
+    };
   },
   components: {
     Head,
@@ -44,12 +114,58 @@ body {
 }
 .contain {
   width: 100%;
-  height: calc(100vh - 70px);
   margin: 0 auto;
   .cover {
+    margin-bottom: 50px;
     img {
       width: 1500px;
       height: 592px;
+    }
+  }
+  .title {
+    margin-bottom: 70px;
+    font-size: 42px;
+    font-weight: 700;
+    color: #1c1c1c;
+    line-height: 57px;
+  }
+  ul {
+    width: 900px;
+    margin: 0 auto;
+    li {
+      display: flex;
+      margin-bottom: 50px;
+      .left {
+        margin-right: 55px;
+        img {
+          width: 371px;
+          height: 298px;
+        }
+      }
+      .right {
+        text-align: left;
+        .title {
+          font-size: 33px;
+          font-weight: 400;
+          color: #000000;
+          line-height: 40px;
+          margin-bottom: 12px;
+        }
+        .tag {
+          font-size: 16px;
+          font-weight: 400;
+          color: rgba(28, 28, 28, 0.5);
+          line-height: 22px;
+          margin-bottom: 12px;
+        }
+        .contan {
+          width: 430px;
+          font-size: 16px;
+          font-weight: 400;
+          color: #000000;
+          line-height: 22px;
+        }
+      }
     }
   }
 }
