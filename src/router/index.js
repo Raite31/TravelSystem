@@ -13,6 +13,15 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "@/views/login/index.vue"),
   },
+  // 个人主页的路由
+  {
+    path: "/personal",
+    name: "personal",
+    component: () => import("@/views/personal/index.vue"),
+    children: [
+      // 个人信息页
+    ],
+  },
 
   // 旅游的路由
   // ----主页
@@ -29,7 +38,13 @@ const routes = [
   },
 
   // 博客的路由
-  // 博客首页（列表)
+  // 作者主页
+  {
+    path: "/blog/author",
+    name: "blogAuthor",
+    component: () => import("@/views/blog/author/index.vue"),
+  },
+  // ----博客首页（列表)
   {
     path: "/blogList",
     name: "blogList",
@@ -59,7 +74,7 @@ const routes = [
     name: "pushDiary",
     component: () => import("@/views/blog/diary/PushDiary.vue"),
   },
-  // 出游查询
+  // ----出游查询
   {
     path: "/statistics",
     name: "statistics",
