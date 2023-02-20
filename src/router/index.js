@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 const routes = [
+  // ==================登录页
   {
     path: "/",
     name: "",
@@ -13,101 +14,59 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "@/views/login/index.vue"),
   },
-  // 个人主页的路由
+  // =================个人主页
   {
     path: "/personal",
     name: "personal",
     component: () => import("@/views/personal/index.vue"),
-    children: [
-      // 个人信息页
-    ],
   },
 
-  // 旅游的路由
-  // ----主页
+  // =========================================travel的路由
+  // ====================主页
   {
     path: "/home",
     name: "home",
     component: () => import("@/views/travel/home/index.vue"),
   },
-  // ----目的地
+  // ====================目的地
   {
     path: "/destination",
     name: "destination",
     component: () => import("@/views/travel/destination/Destination.vue"),
   },
-
-  // 博客的路由
-  // 作者主页
+  // ====================旅行故事
+  // 主页
   {
-    path: "/blog/author",
-    name: "blogAuthor",
-    component: () => import("@/views/blog/author/index.vue"),
+    path: "/story",
+    name: "story",
+    component: () => import("@/views/travel/story/story.vue"),
   },
-  // ----博客首页（列表)
+  // 主页内容
+  {
+    path: "/storyContent",
+    name: "storyContent",
+    component: () => import("@/views/travel/story/storyContent.vue"),
+  },
+
+  // ==========================================blog的路由
+  // ===============博客首页（列表)
   {
     path: "/blogList",
     name: "blogList",
     component: () => import("@/views/blog/index.vue"),
   },
-  // ----旅游攻略
+  // =================作者主页
   {
-    path: "/strategy",
-    name: "strategy",
-    component: () => import("@/views/blog/strategy/Strategy.vue"),
+    path: "/blog/author",
+    name: "blogAuthor",
+    component: () => import("@/views/blog/author/index.vue"),
   },
-  // ----日记
+
+  // ==================写博客
   {
-    path: "/diary",
-    name: "diary",
-    component: () => import("@/views/blog/diary/Diary.vue"),
-  },
-  // ----日记内容
-  {
-    path: "/diaryContent",
-    name: "diaryContent",
-    component: () => import("@/views/blog/diary/DiaryContent.vue"),
-  },
-  // ----写日记
-  {
-    path: "/pushDiary",
-    name: "pushDiary",
-    component: () => import("@/views/blog/diary/PushDiary.vue"),
-  },
-  // ----出游查询
-  {
-    path: "/statistics",
-    name: "statistics",
-    redirect: "/diary_statistics",
-    component: () => import("@/views/statistics/Index.vue"),
-    // 二级路由
-    children: [
-      // 社区页
-      {
-        path: "/diary_statistics",
-        name: "diary_statistics",
-        component: () => import("../views/statistics/Diary_Statistics.vue"),
-      },
-      // 疫情页
-      {
-        path: "/epidemic",
-        name: "epidemic",
-        component: () => import("../views/statistics/epidemic/Epidemic.vue"),
-      },
-      // 选择城市页
-      {
-        path: "/select_city",
-        name: "select_city",
-        component: () => import("../views/statistics/epidemic/Select_City.vue"),
-      },
-      // 不知道什么页
-      {
-        path: "/city_epidemic",
-        name: "city_epidemic",
-        component: () =>
-          import("../views/statistics/epidemic/City_Epidemic.vue"),
-      },
-    ],
+    path: "/pushBlog",
+    name: "pushBlog",
+    component: () => import("@/views/blog/author/pushBlog.vue"),
   },
 ];
 
