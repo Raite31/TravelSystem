@@ -7,69 +7,70 @@
       </a>
     </div>
     <!--logo end-->
-    <ul class="header_nav">
-      <li
-        @click="click_nav(1)"
-        @mouseenter="select_nav(1)"
-        :class="nav_select == 1 ? 'header_nav_hover' : ''"
-      >
-        <router-link to="/home">首页</router-link>
-      </li>
-      <li
-        @click="click_nav(2)"
-        @mouseenter="select_nav(2)"
-        :class="nav_select == 2 ? 'header_nav_hover' : ''"
-      >
-        <router-link to="/strategy">旅游攻略</router-link>
-      </li>
-      <li
-        @click="click_nav(3)"
-        @mouseenter="select_nav(3)"
-        :class="nav_select == 3 ? 'header_nav_hover' : ''"
-      >
-        <router-link to="/destination">目的地</router-link>
-      </li>
-      <li
-        @click="click_nav(4)"
-        @mouseenter="select_nav(4)"
-        :class="nav_select == 4 ? 'header_nav_hover' : ''"
-      >
-        <router-link to="/diary">旅游日记</router-link>
-      </li>
-      <li
-        @click="click_nav(5)"
-        @mouseenter="select_nav(5)"
-        :class="nav_select == 5 ? 'header_nav_hover' : ''"
-      >
-        <router-link to="/statistics">出游查询</router-link>
-      </li>
-      <li
-        @click="click_nav(6)"
-        @mouseenter="select_nav(6)"
-        :class="nav_select == 6 ? 'header_nav_hover' : ''"
-      >
-        <router-link to="/blogList">博客</router-link>
-      </li>
-    </ul>
-    <!-- <div class="header_search">
+    <div class="logo_end">
+      <ul class="header_nav">
+        <li
+          @click="click_nav(1)"
+          @mouseenter="select_nav(1)"
+          :class="nav_select == 1 ? 'header_nav_hover' : ''"
+        >
+          <router-link to="/home">首页</router-link>
+        </li>
+        <li
+          @click="click_nav(2)"
+          @mouseenter="select_nav(2)"
+          :class="nav_select == 2 ? 'header_nav_hover' : ''"
+        >
+          <router-link to="/strategy">旅游攻略</router-link>
+        </li>
+        <li
+          @click="click_nav(3)"
+          @mouseenter="select_nav(3)"
+          :class="nav_select == 3 ? 'header_nav_hover' : ''"
+        >
+          <router-link to="/destination">目的地</router-link>
+        </li>
+        <li
+          @click="click_nav(4)"
+          @mouseenter="select_nav(4)"
+          :class="nav_select == 4 ? 'header_nav_hover' : ''"
+        >
+          <router-link to="/diary">旅游日记</router-link>
+        </li>
+        <li
+          @click="click_nav(5)"
+          @mouseenter="select_nav(5)"
+          :class="nav_select == 5 ? 'header_nav_hover' : ''"
+        >
+          <router-link to="/statistics">出游查询</router-link>
+        </li>
+        <li
+          @click="click_nav(6)"
+          @mouseenter="select_nav(6)"
+          :class="nav_select == 6 ? 'header_nav_hover' : ''"
+        >
+          <router-link to="/blogList">博客</router-link>
+        </li>
+      </ul>
+      <!-- <div class="header_search">
       <input type="text" />
       <a></a>
     </div> -->
-    <!--登录的显示start-->
-    <div class="login_info">
-      <div class="header_daka">
-        <a href="javascript:;">打卡</a>
+      <!--登录的显示start-->
+      <div class="login_info">
+        <div class="header_daka">
+          <a href="javascript:;">打卡</a>
+        </div>
+        <div class="header_msg">
+          消息
+          <i></i>
+        </div>
+        <div class="download">
+          <a href="javascript:;" title="退出登录" rel="nofollow" id="logoutbtn"
+            >退出登录
+          </a>
+        </div>
       </div>
-      <div class="header_msg">
-        消息
-        <i></i>
-      </div>
-      <a href="javascript:;" @click="dialogVisible = true">
-        <img :src="user.headImg" id="login_user_headUrl" />
-      </a>
-      <a href="javascript:;" title="退出登录" rel="nofollow" id="logoutbtn"
-        >退出登录</a
-      >
     </div>
 
     <el-dialog
@@ -183,42 +184,73 @@ export default {
 </script>
 <style lang="scss">
 .contain_all {
-  width: 1200px;
+  width: 1400px;
+  height: 80px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   .header_logo {
   }
-  .header_nav {
-    width: 600px;
-    list-style: none;
+  .logo_end {
+    width: 800px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    .header_nav {
+      width: 500px;
+      list-style: none;
+      display: flex;
+      justify-content: space-around;
 
-    li {
-      a {
-        list-style: none;
-        font-size: 16px;
-        cursor: pointer;
-        text-decoration: none;
-        color: #282828;
-        font-weight: 600;
+      li {
+        padding: 10px;
+        border-radius: 30px;
+        text-align: center;
+        margin-right: 10px;
+        a {
+          list-style: none;
+          font-size: 16px;
+          cursor: pointer;
+          text-decoration: none;
+          color: #282828;
+          font-weight: 600;
+        }
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.07);
+        }
       }
     }
-  }
-  .login_info {
-    display: flex;
-    width: 300px;
-    justify-content: space-around;
-    div,
-    a {
-      list-style: none;
-      font-size: 16px;
-      cursor: pointer;
-      text-decoration: none;
-      color: #282828;
-      font-weight: 600;
+    .login_info {
+      width: 220px;
+      display: flex;
+      justify-content: right;
+      div {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 30px;
+        text-align: center;
+        cursor: pointer;
+        a {
+          list-style: none;
+
+          text-decoration: none;
+          color: #282828;
+        }
+        font-weight: 600;
+        margin-right: 10px;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.07);
+        }
+      }
+      .download {
+        background: #282828;
+        a {
+          color: white;
+        }
+        &:hover {
+          background: #282828;
+        }
+      }
     }
   }
 }
