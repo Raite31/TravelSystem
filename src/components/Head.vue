@@ -21,13 +21,6 @@
           @mouseenter="select_nav(2)"
           :class="nav_select == 2 ? 'header_nav_hover' : ''"
         >
-          <router-link to="/strategy">旅游攻略</router-link>
-        </li>
-        <li
-          @click="click_nav(3)"
-          @mouseenter="select_nav(3)"
-          :class="nav_select == 3 ? 'header_nav_hover' : ''"
-        >
           <router-link to="/destination">目的地</router-link>
         </li>
         <li
@@ -35,14 +28,7 @@
           @mouseenter="select_nav(4)"
           :class="nav_select == 4 ? 'header_nav_hover' : ''"
         >
-          <router-link to="/diary">旅游日记</router-link>
-        </li>
-        <li
-          @click="click_nav(5)"
-          @mouseenter="select_nav(5)"
-          :class="nav_select == 5 ? 'header_nav_hover' : ''"
-        >
-          <router-link to="/statistics">出游查询</router-link>
+          <router-link to="/diary">旅行故事</router-link>
         </li>
         <li
           @click="click_nav(6)"
@@ -52,19 +38,8 @@
           <router-link to="/blogList">博客</router-link>
         </li>
       </ul>
-      <!-- <div class="header_search">
-      <input type="text" />
-      <a></a>
-    </div> -->
       <!--登录的显示start-->
       <div class="login_info">
-        <div class="header_daka">
-          <a href="javascript:;">打卡</a>
-        </div>
-        <div class="header_msg">
-          消息
-          <i></i>
-        </div>
         <div class="download">
           <a href="javascript:;" title="退出登录" rel="nofollow" id="logoutbtn"
             >退出登录
@@ -193,11 +168,11 @@ export default {
   .header_logo {
   }
   .logo_end {
-    width: 800px;
+    width: 450px;
     display: flex;
     justify-content: space-between;
     .header_nav {
-      width: 500px;
+      width: 300px;
       list-style: none;
       display: flex;
       justify-content: space-around;
@@ -221,7 +196,7 @@ export default {
       }
     }
     .login_info {
-      width: 220px;
+      width: 100px;
       display: flex;
       justify-content: right;
       div {
