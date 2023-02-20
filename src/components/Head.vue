@@ -1,77 +1,75 @@
 <template lang="">
-  <div id="navbar">
-    <div class="lww_header">
-      <div class="header_wrap">
-        <!--logo start-->
-        <div class="header_logo">
-          <a href="javascript:;" class="lww_logo"></a>
-        </div>
-        <!--logo end-->
-        <ul class="header_nav">
-          <li
-            @click="click_nav(1)"
-            @mouseenter="select_nav(1)"
-            :class="nav_select == 1 ? 'header_nav_hover' : ''"
-          >
-            <router-link to="/home">首页</router-link>
-          </li>
-          <li
-            @click="click_nav(2)"
-            @mouseenter="select_nav(2)"
-            :class="nav_select == 2 ? 'header_nav_hover' : ''"
-          >
-            <router-link to="/strategy">旅游攻略</router-link>
-          </li>
-          <li
-            @click="click_nav(3)"
-            @mouseenter="select_nav(3)"
-            :class="nav_select == 3 ? 'header_nav_hover' : ''"
-          >
-            <router-link to="/destination">目的地</router-link>
-          </li>
-          <li
-            @click="click_nav(4)"
-            @mouseenter="select_nav(4)"
-            :class="nav_select == 4 ? 'header_nav_hover' : ''"
-          >
-            <router-link to="/diary">旅游日记</router-link>
-          </li>
-          <li
-            @click="click_nav(5)"
-            @mouseenter="select_nav(5)"
-            :class="nav_select == 5 ? 'header_nav_hover' : ''"
-          >
-            <router-link to="/statistics">出游查询</router-link>
-          </li>
-          <li
-            @click="click_nav(6)"
-            @mouseenter="select_nav(6)"
-            :class="nav_select == 6 ? 'header_nav_hover' : ''"
-          >
-            <router-link to="/blogList">博客</router-link>
-          </li>
-        </ul>
-        <div class="header_search">
-          <input type="text" />
-          <a></a>
-        </div>
-        <!--登录的显示start-->
-        <div class="login_info">
-          <div class="header_daka">
-            <a href="javascript:;">打卡</a>
-          </div>
-          <div class="header_msg">
-            消息
-            <i></i>
-          </div>
-          <a href="javascript:;" @click="dialogVisible = true">
-            <img :src="user.headImg" id="login_user_headUrl" />
-          </a>
-          <a href="javascript:;" title="退出登录" rel="nofollow" id="logoutbtn"
-            >退出登录</a
-          >
-        </div>
+  <div class="contain_all">
+    <!--logo start-->
+    <div class="header_logo">
+      <a href="javascript:;" class="lww_logo">
+        <img src="@/assets/header-small-sprites3.png" alt="" />
+      </a>
+    </div>
+    <!--logo end-->
+    <ul class="header_nav">
+      <li
+        @click="click_nav(1)"
+        @mouseenter="select_nav(1)"
+        :class="nav_select == 1 ? 'header_nav_hover' : ''"
+      >
+        <router-link to="/home">首页</router-link>
+      </li>
+      <li
+        @click="click_nav(2)"
+        @mouseenter="select_nav(2)"
+        :class="nav_select == 2 ? 'header_nav_hover' : ''"
+      >
+        <router-link to="/strategy">旅游攻略</router-link>
+      </li>
+      <li
+        @click="click_nav(3)"
+        @mouseenter="select_nav(3)"
+        :class="nav_select == 3 ? 'header_nav_hover' : ''"
+      >
+        <router-link to="/destination">目的地</router-link>
+      </li>
+      <li
+        @click="click_nav(4)"
+        @mouseenter="select_nav(4)"
+        :class="nav_select == 4 ? 'header_nav_hover' : ''"
+      >
+        <router-link to="/diary">旅游日记</router-link>
+      </li>
+      <li
+        @click="click_nav(5)"
+        @mouseenter="select_nav(5)"
+        :class="nav_select == 5 ? 'header_nav_hover' : ''"
+      >
+        <router-link to="/statistics">出游查询</router-link>
+      </li>
+      <li
+        @click="click_nav(6)"
+        @mouseenter="select_nav(6)"
+        :class="nav_select == 6 ? 'header_nav_hover' : ''"
+      >
+        <router-link to="/blogList">博客</router-link>
+      </li>
+    </ul>
+    <!-- <div class="header_search">
+      <input type="text" />
+      <a></a>
+    </div> -->
+    <!--登录的显示start-->
+    <div class="login_info">
+      <div class="header_daka">
+        <a href="javascript:;">打卡</a>
       </div>
+      <div class="header_msg">
+        消息
+        <i></i>
+      </div>
+      <a href="javascript:;" @click="dialogVisible = true">
+        <img :src="user.headImg" id="login_user_headUrl" />
+      </a>
+      <a href="javascript:;" title="退出登录" rel="nofollow" id="logoutbtn"
+        >退出登录</a
+      >
     </div>
 
     <el-dialog
@@ -184,206 +182,44 @@ export default {
 };
 </script>
 <style lang="scss">
-#navbar {
-  .router-link-exact-active {
-    background-color: #ffa500;
-    color: #fff !important;
-  }
-  .update_username {
-    margin-top: 20px;
-    margin-bottom: 30px;
-  }
-  .lww_header {
-    width: 100%;
-    background-color: white;
-    height: 60px;
-    /*阴影:左，下，左右*/
-    box-shadow: 0px 3px 0px #d0d0d0;
-    /*定位*/
-    display: flex;
-    display: -webkit-flex;
-    justify-content: center;
-    align-items: center;
-    user-select: none;
-  }
-
-  .header_wrap {
-    min-width: 80vw;
-    width: auto !important;
-    height: 65px;
-    display: flex;
-  }
-
+.contain_all {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   .header_logo {
-    width: 130px;
-    height: 65px;
-    background-image: url("@/assets/header-small-sprites3.png");
-    background-size: 120px 38px;
-    /*居中图片*/
-    background-position: center;
-    background-repeat: no-repeat;
   }
-
   .header_nav {
-    margin: 0px;
-    padding-left: 40px;
-    display: block;
-    width: 450px;
-    height: 65px;
-    line-height: 65px;
-    display: flex;
-    display: -webkit-flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+    width: 600px;
     list-style: none;
-  }
-
-  .header_nav > li > a {
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-  }
-
-  .header_nav > li,
-  .header_nav > li > a {
-    list-style: none;
-    flex: 1;
-    font-size: 14px;
-    cursor: pointer;
-    text-decoration: none;
-    color: #282828;
-  }
-
-  .header_nav_hover {
-    border-bottom: 3px solid #ffa500;
-  }
-
-  .header_search {
-    width: 130px;
-    height: 30px;
-    background-color: #efefef;
     display: flex;
-    display: -webkit-flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15px;
-    border-radius: 0.525rem;
-    margin-left: 10px;
-  }
+    justify-content: space-around;
 
-  .header_search > input {
-    width: 100%;
-    height: 100%;
-    border: 0px;
-    font-size: 18px;
-    background-color: #efefef;
-    /*取消边框点击出现样式*/
-    outline-style: none;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding-bottom: 0px;
-    padding-left: 10px;
-    border-radius: 0.525rem;
-    color: #c0c0c0;
+    li {
+      a {
+        list-style: none;
+        font-size: 16px;
+        cursor: pointer;
+        text-decoration: none;
+        color: #282828;
+        font-weight: 600;
+      }
+    }
   }
-
-  .header_search > a {
-    font-size: 22px;
-    font-weight: 800;
-    padding-right: 5px;
-    padding-left: 5px;
-    cursor: pointer;
-  }
-
-  /*未登录显示*/
-  .login-out {
-    width: 290px;
-    height: 65px;
-    color: orange;
-    display: flex;
-    display: -webkit-flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-
-  .login-out > a:nth-child(1),
-  .login-out > a:nth-child(2),
-  .login-out > a:nth-child(3) {
-    font-size: 30px;
-  }
-
-  .login-out > a {
-    color: orange;
-    text-decoration: none;
-    margin-left: 5px;
-    margin-right: 5px;
-    font-size: 14px;
-  }
-
-  .login-out > span {
-    color: #efefef;
-  }
-
-  /*登录显示*/
   .login_info {
-    width: 290px;
-    height: 65px;
     display: flex;
-    display: -webkit-flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-
-  .login_info > a {
-    font-size: 12px;
-    color: #666;
-    text-decoration: none;
-    margin-left: 5px;
-    margin-right: 5px;
-  }
-
-  .header_daka {
-    width: 60px;
-    height: 20px;
-    background-color: #1493e3;
-    display: flex;
-    display: -webkit-flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 10px;
-    font-size: 12px;
-    border-radius: 0.3rem;
-  }
-
-  .header_daka > a {
-    color: white;
-    text-decoration: none;
-  }
-
-  .header_msg {
-    width: 50px;
-    color: #666;
-    font-size: 12px;
-    padding: 0px;
-    cursor: pointer;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-
-  .header_msg > i {
-    font-size: 15px;
-    padding: 0px;
-  }
-
-  .login_info > a:nth-child(3) > img {
-    width: 33px;
-    height: 33px;
-    border-radius: 50%;
-  }
-  .onclickClass {
-    background-color: orange;
-    color: white !important;
+    width: 300px;
+    justify-content: space-around;
+    div,
+    a {
+      list-style: none;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      color: #282828;
+      font-weight: 600;
+    }
   }
 }
 </style>
