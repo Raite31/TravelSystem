@@ -1,7 +1,7 @@
 <template>
   <div>
     <Head />
-    <div class="contain">
+    <div class="contain_all">
       <div class="self">
         <div class="left">
           <img :src="authors.avatar" alt="" />
@@ -9,7 +9,7 @@
         <div class="right">
           <div class="title">{{ authors.name }}</div>
           <div class="tag">{{ authors.tags }}</div>
-          <div class="contain">{{ authors.introduce }}</div>
+          <div class="introduce">{{ authors.introduce }}</div>
         </div>
       </div>
       <div class="banner"></div>
@@ -35,6 +35,10 @@ import Head from "@/components/Head.vue";
 import Footer from "@/components/Footer.vue";
 
 export default {
+  components: {
+    Head,
+    Footer,
+  },
   data() {
     return {
       authors: {
@@ -108,11 +112,94 @@ export default {
   },
 };
 </script>
-<style lang="scss">
-.contain {
+<style lang="scss" scoped>
+.contain_all {
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  .self {
+    width: 600px;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 80px;
+    text-align: left;
+    .left {
+      margin-right: 75px;
+      img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50px;
+      }
+    }
+    .right {
+      .title {
+        font-size: 42px;
+        font-family: Inter-Regular, Inter;
+        font-weight: 400;
+        color: #1c1c1c;
+        line-height: 51px;
+      }
+      .tag {
+        font-size: 16px;
+        font-family: Open Sans-Regular, Open Sans;
+        font-weight: 400;
+        color: rgba(28, 28, 28, 0.5);
+        line-height: 22px;
+        margin-bottom: 8px;
+      }
+      .introduce {
+        font-size: 16px;
+        font-family: Open Sans-Regular, Open Sans;
+        font-weight: 400;
+        color: rgba(28, 28, 28, 0.5);
+        line-height: 22px;
+      }
+    }
+  }
   .list {
     ul {
+      width: 900px;
       list-style: none;
+      margin: 0 auto;
+      li {
+        display: flex;
+        margin-bottom: 65px;
+        text-align: left;
+        .left {
+          margin-right: 37px;
+          img {
+            width: 237px;
+            height: 177px;
+          }
+        }
+        .right {
+          .title {
+            font-size: 33px;
+            font-family: Inter-Regular, Inter;
+            font-weight: 400;
+            color: #000000;
+            line-height: 40px;
+            margin-bottom: 3px;
+          }
+          .tag {
+            font-size: 16px;
+            font-family: Open Sans-Regular, Open Sans;
+            font-weight: 400;
+            color: rgba(28, 28, 28, 0.5);
+            line-height: 22px;
+            margin-bottom: 10px;
+          }
+          .contain {
+            font-size: 16px;
+            font-family: Open Sans-Regular, Open Sans;
+            font-weight: 400;
+            color: #000000;
+            line-height: 22px;
+          }
+        }
+      }
     }
   }
 }
