@@ -35,17 +35,10 @@ const routes = [
     component: () => import("@/views/travel/destination/Destination.vue"),
   },
   // ====================旅行故事
-  // 主页
   {
     path: "/story",
     name: "story",
     component: () => import("@/views/travel/story/story.vue"),
-  },
-  // 主页内容
-  {
-    path: "/storyContent",
-    name: "storyContent",
-    component: () => import("@/views/travel/story/storyContent.vue"),
   },
 
   // ==========================================blog的路由

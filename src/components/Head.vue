@@ -28,7 +28,7 @@
           @mouseenter="select_nav(4)"
           :class="nav_select == 4 ? 'header_nav_hover' : ''"
         >
-          <router-link to="/diary">旅行故事</router-link>
+          <router-link to="/story">旅行故事</router-link>
         </li>
         <li
           @click="click_nav(6)"
