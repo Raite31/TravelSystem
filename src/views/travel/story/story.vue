@@ -42,6 +42,7 @@
           </div>
         </div>
       </div>
+      <hr />
       <div class="red_revolution">
         <div class="title">4个必去的红色旅游景点</div>
         <div class="items">
@@ -53,14 +54,85 @@
           </div>
         </div>
       </div>
+      <hr />
       <div class="theme_Q">
-        <div class="city_escapes"></div>
-        <div class="destination_experiences"></div>
-        <div class="eat_drink"></div>
-        <div class="stay"></div>
-        <div class="culture_history"></div>
-        <div class="travel_style"></div>
-        <div class="related"></div>
+        <div class="city_escapes">
+          <div class="title">City_escapes</div>
+          <div class="items">
+            <div class="item" v-for="item in 3" :key="item.index">
+              <img src="@/assets/imgs/home_travel.png" alt="" />
+              <div class="describe">
+                Exploring Utah's National Parks with my non-outdoorsy tweens
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="destination_experiences">
+          <div class="title">Destination_experiences</div>
+          <div class="items">
+            <div class="item" v-for="item in 3" :key="item.index">
+              <img src="@/assets/imgs/home_travel.png" alt="" />
+              <div class="describe">
+                Exploring Utah's National Parks with my non-outdoorsy tweens
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="eat_drink">
+          <div class="title">Eat_drink</div>
+          <div class="items">
+            <div class="item" v-for="item in 3" :key="item.index">
+              <img src="@/assets/imgs/home_travel.png" alt="" />
+              <div class="describe">
+                Exploring Utah's National Parks with my non-outdoorsy tweens
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stay">
+          <div class="title">Stay</div>
+          <div class="items">
+            <div class="item" v-for="item in 3" :key="item.index">
+              <img src="@/assets/imgs/home_travel.png" alt="" />
+              <div class="describe">
+                Exploring Utah's National Parks with my non-outdoorsy tweens
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="culture_history">
+          <div class="title">Culture_history</div>
+          <div class="items">
+            <div class="item" v-for="item in 3" :key="item.index">
+              <img src="@/assets/imgs/home_travel.png" alt="" />
+              <div class="describe">
+                Exploring Utah's National Parks with my non-outdoorsy tweens
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="travel_style">
+          <div class="title">Travel_style</div>
+          <div class="items">
+            <div class="item" v-for="item in 3" :key="item.index">
+              <img src="@/assets/imgs/home_travel.png" alt="" />
+              <div class="describe">
+                Exploring Utah's National Parks with my non-outdoorsy tweens
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="related">
+          <div class="title">Related</div>
+          <div class="items">
+            <div class="item" v-for="item in 3" :key="item.index">
+              <img src="@/assets/imgs/home_travel.png" alt="" />
+              <div class="describe">
+                Exploring Utah's National Parks with my non-outdoorsy tweens
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -83,12 +155,12 @@ export default {
 .contains_all {
   width: 1200px;
   margin: 100px auto;
+  hr {
+    width: 65%;
+    margin: 48px auto;
+    border: 0.1px solid #e4e3e3;
+  }
   .guide {
-    hr {
-      width: 65%;
-      margin: 48px auto;
-      border: 0.1px solid #e4e3e3;
-    }
     margin: 0 auto;
     .part-one {
       .title {
@@ -160,6 +232,7 @@ export default {
     }
   }
   .red_revolution {
+    margin-bottom: 100px;
     .title {
       font-size: 45px;
       font-weight: 900;
@@ -187,6 +260,40 @@ export default {
     }
   }
   .theme_Q {
+    .city_escapes,
+    .destination_experiences,
+    .eat_drink,
+    .stay,
+    .culture_history,
+    .travel_style,
+    .related {
+      margin-bottom: 100px;
+      .title {
+        font-size: 45px;
+        font-weight: 900;
+        margin: 65px 0;
+        text-align: left;
+        margin-left: 20px;
+      }
+      .items {
+        display: flex;
+        .item {
+          img {
+            width: 365px;
+            height: 230px;
+            margin-bottom: 24px;
+          }
+          .describe {
+            width: 85%;
+            margin: 0 auto;
+            font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+              "Lucida Sans", Arial, sans-serif;
+            font-size: 18px;
+            font-weight: 900;
+          }
+        }
+      }
+    }
   }
 }
 </style>
