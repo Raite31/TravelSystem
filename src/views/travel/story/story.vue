@@ -31,8 +31,28 @@
         </div>
         <hr />
       </div>
-      <div class="traveler_stories"></div>
-      <div class="red_revolution"></div>
+      <div class="traveler_stories">
+        <div class="title">旅行故事</div>
+        <div class="items">
+          <div class="item" v-for="item in 3" :key="item.index">
+            <img src="@/assets/imgs/home_travel.png" alt="" />
+            <div class="describe">
+              Exploring Utah's National Parks with my non-outdoorsy tweens
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="red_revolution">
+        <div class="title">4个必去的红色旅游景点</div>
+        <div class="items">
+          <div class="item" v-for="item in 4" :key="item.index">
+            <img src="@/assets/imgs/home_travel.png" alt="" />
+            <div class="describe">
+              Exploring Utah's National Parks with my non-outdoorsy tweens
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="theme_Q">
         <div class="city_escapes"></div>
         <div class="destination_experiences"></div>
@@ -111,6 +131,62 @@ export default {
         font-weight: 900;
       }
     }
+  }
+  .traveler_stories {
+    .title {
+      font-size: 45px;
+      font-weight: 900;
+      margin: 90px 0;
+      text-align: left;
+      margin-left: 20px;
+    }
+    .items {
+      display: flex;
+      .item {
+        img {
+          width: 365px;
+          height: 230px;
+          margin-bottom: 24px;
+        }
+        .describe {
+          width: 85%;
+          margin: 0 auto;
+          font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+            "Lucida Sans", Arial, sans-serif;
+          font-size: 18px;
+          font-weight: 900;
+        }
+      }
+    }
+  }
+  .red_revolution {
+    .title {
+      font-size: 45px;
+      font-weight: 900;
+      margin: 90px 0;
+      text-align: left;
+      margin-left: 20px;
+    }
+    .items {
+      display: flex;
+      .item {
+        img {
+          width: 365px;
+          height: 230px;
+          margin-bottom: 24px;
+        }
+        .describe {
+          width: 85%;
+          margin: 0 auto;
+          font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+            "Lucida Sans", Arial, sans-serif;
+          font-size: 18px;
+          font-weight: 900;
+        }
+      }
+    }
+  }
+  .theme_Q {
   }
 }
 </style>
