@@ -32,7 +32,7 @@ const routes = [
   {
     path: "/destination",
     name: "destination",
-    component: () => import("@/views/travel/destination/Destination.vue"),
+    component: () => import("@/views/travel/destination/index.vue"),
   },
   // ====================旅行故事
   {
