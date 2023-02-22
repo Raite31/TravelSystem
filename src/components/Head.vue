@@ -41,7 +41,7 @@
       <!--登录的显示start-->
       <div class="login_info">
         <div class="download">
-          <a href="javascript:;" title="退出登录" rel="nofollow" id="logoutbtn"
+          <a href="javascript:;" title="退出登录" 
             >退出登录
           </a>
         </div>
@@ -199,6 +199,7 @@ export default {
       width: 100px;
       display: flex;
       justify-content: right;
+      align-items: center;
       div {
         padding: 10px;
         font-size: 16px;
