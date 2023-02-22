@@ -34,6 +34,12 @@ const routes = [
     name: "destination",
     component: () => import("@/views/travel/destination/index.vue"),
   },
+  // ====================目的地详情页
+  {
+    path: "/destination/detail",
+    name: "detail",
+    component: () => import("@/views/travel/destination/detail.vue"),
+  },
   // ====================旅行故事
   {
     path: "/story",

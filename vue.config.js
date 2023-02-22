@@ -1,19 +1,19 @@
-const { defineConfig } = require("@vue/cli-service");
+const { defineConfig } = require('@vue/cli-service')
+ 
+const path = require('path')
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
+ 
 module.exports = defineConfig({
   transpileDependencies: true,
-});
-
-// 前端跨域
-// module.exports = {
-//   devServer: {
-//     host: "localhost",
-//     port: 8080,
-//     proxy: {
-//       "/": {
-//         ws: false,
-//         target: "http://localhost:8081",
-//         changeOrigin: true,
-//       },
-//     },
-//   },
-// };
+  lintOnSave:false,// 关闭Eslint语法检查
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@': resolve('src'),
+      },
+    },
+  },
+  
+})

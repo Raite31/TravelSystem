@@ -169,13 +169,12 @@ export default {
     width: 450px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     .header_nav {
       width: 300px;
       list-style: none;
       display: flex;
       justify-content: space-around;
-      align-items: center;
-
       li {
         a {
           list-style: none;
