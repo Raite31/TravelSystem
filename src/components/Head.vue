@@ -41,9 +41,7 @@
       <!--登录的显示start-->
       <div class="login_info">
         <div class="download">
-          <a href="javascript:;" title="退出登录" 
-            >退出登录
-          </a>
+          <a href="javascript:;" title="退出登录">退出登录 </a>
         </div>
       </div>
     </div>
@@ -176,55 +174,36 @@ export default {
       list-style: none;
       display: flex;
       justify-content: space-around;
+      align-items: center;
 
       li {
-        padding: 10px;
-        border-radius: 30px;
-        text-align: center;
-        margin-right: 10px;
         a {
           list-style: none;
-          font-size: 16px;
-          cursor: pointer;
           text-decoration: none;
+          cursor: pointer;
           color: #282828;
+          font-size: 16px;
+          padding: 10px;
+          border-radius: 30px;
           font-weight: 600;
-        }
-        &:hover {
-          background-color: rgba(0, 0, 0, 0.07);
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.07);
+          }
         }
       }
     }
     .login_info {
-      width: 100px;
-      display: flex;
-      justify-content: right;
-      align-items: center;
-      div {
-        padding: 10px;
-        font-size: 16px;
-        border-radius: 30px;
-        text-align: center;
-        cursor: pointer;
+      .download {
         a {
           list-style: none;
-
           text-decoration: none;
-          color: #282828;
-        }
-        font-weight: 600;
-        margin-right: 10px;
-        &:hover {
-          background-color: rgba(0, 0, 0, 0.07);
-        }
-      }
-      .download {
-        background: #282828;
-        a {
+          cursor: pointer;
+          background-color: #282828;
+          font-size: 16px;
+          padding: 10px;
+          border-radius: 30px;
+          font-weight: 600;
           color: white;
-        }
-        &:hover {
-          background: #282828;
         }
       }
     }
