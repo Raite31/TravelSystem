@@ -7,8 +7,18 @@
           <div class="photo">
             <img src="@/assets/imgs/item_photo.png" alt="" />
           </div>
-          <div class="describe">{{ describe }}</div>
-          <div class="information">{{ information }}</div>
+          <div class="information">
+            <div class="title">{{ title }}</div>
+            <div class="mechanism">{{ mechanism }}</div>
+            <div class="recommend">{{ recommend }}</div>
+            <div class="introduce">{{ introduce }}</div>
+          </div>
+          <hr />
+          <div class="precautions">
+            <ul v-for="item in precautions" :key="item.index">
+              <li>{{ item.text }}</li>
+            </ul>
+          </div>
         </div>
         <div class="right">
           <div class="photo">
@@ -17,7 +27,9 @@
           <div class="photo" style="margin-bottom: 20px">
             <img src="@/assets/imgs/item_photo.png" alt="" />
           </div>
-          <div class="sell"></div>
+          <div class="sell">
+            <div class="title"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -36,10 +48,17 @@ export default {
   data() {
     return {
       photo: ["@/assets/imgs/item_photo.png"],
-      describe:
-        "The occupational traffic permit is one things in the company How do you a commercial traffic permit for freight transport to your business? The occupational traffic permit is one things in the company How do you a commercial traffic permit for freight transport to your business? The occupational traffic permit is one things in the company How do you a commercial traffic permit for freight transport to your business? The occupational traffic permit is one things in the company How do you a commercial traffic permit for freight transport to your business? things in the company How do you a commercial traffic permit for freight transport to your business? ",
-      information:
+      title: "The occupational traffic permit is one things in the company  ",
+      mechanism: "By La Calypso Dive Center",
+      recommend: "By La Calypso Dive Center",
+      introduce:
         "What's included Private Transport from and back to your Hotel in Marrakech by air-conditioned vehicle Guide Camel ride Lunch Tea What's not included Food and drinks, unless specified Highlights All taxes, fuel surcharges and service fees included A la carte lunch included All entrance fees included",
+      precautions: {
+        0: { text: "Ages 15-65, max of 4 per group" },
+        1: { text: "Ages 15-65, max of 4 per group" },
+        2: { text: "Ages 15-65, max of 4 per group" },
+        3: { text: "Ages 15-65, max of 4 per group" },
+      },
     };
   },
 };
@@ -49,25 +68,52 @@ export default {
 .contain-all {
   width: 1200px;
   margin: 0 auto;
+  hr {
+    width: 100%;
+    margin: 48px auto;
+    border: 0.1px solid #e4e3e3;
+  }
   .grid {
     display: grid;
     grid-template-columns: 60% 5fr;
     grid-template-rows: auto auto;
     column-gap: 2px;
     .left {
+      text-align: left;
       .photo {
         margin-bottom: 20px;
         img {
-          width: 660px;
+          width: 720px;
           height: 406px;
           background-size: cover;
+        }
+      }
+      .information {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 24px;
+        .title {
+          font-size: 28px;
+          font-weight: bold;
+          margin: 8px 0;
+        }
+        .mechanism {
+          margin-bottom: 24px;
+        }
+        .recommend {
+          margin-bottom: 24px;
+        }
+      }
+      .precautions {
+        ul {
+          list-style: none;
         }
       }
     }
     .right {
       .photo {
         img {
-          width: 471px;
+          width: 472px;
           height: 201px;
           background-size: cover;
         }
@@ -82,24 +128,6 @@ export default {
         padding: 24px;
       }
     }
-    //   .photo {
-    //     margin-bottom: 30px;
-    //     img {
-    //       width: 100%;
-    //       height: 410px;
-    //     }
-    //   }
-    //   .bottom {
-    //     display: flex;
-    //     justify-content: space-between;
-    //     .left {
-    //       width: 60%;
-    //     }
-    //     .right {
-    //       width: 37%;
-    //
-    //     }
-    //   }
   }
 }
 </style>
