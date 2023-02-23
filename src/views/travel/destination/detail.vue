@@ -105,6 +105,39 @@
           </div>
         </div>
       </div>
+      <div class="bottom">
+        <div class="operator">
+          <div class="title">关于运营商</div>
+          <hr />
+          <div class="list">
+            <ul>
+              <li></li>
+            </ul>
+          </div>
+        </div>
+        <div class="recommend">
+          <div class="title"></div>
+          <ul>
+            <li></li>
+          </ul>
+        </div>
+        <div class="commit">
+          <title></title>
+          <div class="grid">
+            <div class="left"></div>
+            <div class="right">
+              <ul>
+                <li>
+                  <div class="myself"></div>
+                  <div class="title"></div>
+                  <div class="contain"></div>
+                  <div class="date"></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <Footer />
   </div>
@@ -305,6 +338,9 @@ body {
         }
       }
     }
+  }
+  .bottom {
+    text-align: left;
   }
 }
 </style>
