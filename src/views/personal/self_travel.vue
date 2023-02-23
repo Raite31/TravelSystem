@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    hellohello
+  </div>
 </template>
 <script>
 export default {

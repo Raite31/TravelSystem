@@ -1,8 +1,11 @@
 <template>
   <div>
+    lalalal1
     <div class="list">
       <ul>
-        <li v-for="item in articles" :key="item.index"></li>
+        <li v-for="item in 10" :key="item.index">
+          <div>{{ item }}</div>
+        </li>
       </ul>
     </div>
   </div>
@@ -10,7 +13,9 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      articles: [],
+    };
   },
 };
 </script>

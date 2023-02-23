@@ -6,12 +6,14 @@
         <div class="left">
           <ul class="tag">
             <li v-for="item in tags" :key="item.index">
-              <a href="">{{ item.name }}</a>
+              <a @click="change_tag_flag">{{ item.name }}</a>
             </li>
           </ul>
         </div>
         <div class="right">
-          <self_message></self_message>
+          <self_message v-if="tag_flag == '个人资料'" />
+          <self_travel v-else-if="tag_flag == '旅游去向'" />
+          <self_blog v-else />
         </div>
       </div>
     </div>
@@ -30,30 +32,29 @@ export default {
     Head,
     Footer,
     self_message,
+    self_travel,
+    self_blog,
   },
   data() {
     return {
+      tag_flag: "个人资料",
       tags: {
         0: {
           name: "个人资料",
         },
         1: {
-          name: "账号设置",
+          name: "旅游去向",
         },
         2: {
-          name: "隐私设置",
-        },
-        3: {
-          name: "信息认证",
-        },
-        4: {
-          name: "我的收藏",
-        },
-        5: {
-          name: "浏览历史",
+          name: "我的博客",
         },
       },
     };
+  },
+  methods: {
+    change_tag_flag(e) {
+      this.tag_flag = e.target.innerText;
+    },
   },
 };
 </script>
