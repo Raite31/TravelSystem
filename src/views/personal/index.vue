@@ -76,22 +76,23 @@ body {
   margin-bottom: 50px;
   .grid {
     display: grid;
-    grid-template-columns: 20% 5fr;
+    grid-template-columns: 15% 5fr;
     grid-template-rows: auto auto;
     column-gap: 2px;
     .left {
       .tag {
         list-style: none;
         padding: 10px 0;
+        background-color: #fff;
         li {
-          background-color: #fff;
           a {
+            text-align: center;
             list-style: none;
             text-decoration: none;
             color: #282828;
-            font-size: 16px;
+            font-size: 14px;
             display: block;
-            padding: 30px 10px;
+            padding: 20px 10px;
             margin-right: 0;
           }
         }
