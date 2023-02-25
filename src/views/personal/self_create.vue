@@ -2,11 +2,16 @@
   <div class="contain-all">
     <div></div>
     <div class="title">
-      <el-input placeholder="请输入你文章的标题"></el-input>
+      <el-input
+        placeholder="请输入你文章的标题"
+        maxlength="100"
+        show-word-limit="true"
+      ></el-input>
+      <el-button>保存草稿</el-button>
+      <el-button>发布文章</el-button>
     </div>
     <div class="contain">
       <Editor></Editor>
-      <el-button>提交</el-button>
     </div>
   </div>
 </template>
@@ -25,12 +30,20 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .contain-all {
   .title {
+    display: flex;
+    justify-content: space-around;
     margin-bottom: 10px;
+    .el-input {
+      width: 980px;
+    }
+    .el-button {
+      margin: 0;
+    }
   }
-  .ql-container {
+  :deep(.ql-container) {
     min-height: 400px;
   }
 }
