@@ -44,6 +44,15 @@
           <a href="javascript:;" title="退出登录">退出登录 </a>
         </div>
       </div>
+      <ul class="header_nav header_nav2">
+        <li
+          @click="click_nav(7)"
+          @mouseenter="select_nav(7)"
+          :class="nav_select == 6 ? 'header_nav_hover' : ''"
+        >
+          <router-link to="/cart">购物车</router-link>
+        </li>
+      </ul>
     </div>
 
     <el-dialog
@@ -166,7 +175,7 @@ export default {
   .header_logo {
   }
   .logo_end {
-    width: 450px;
+    // width: 450px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -205,6 +214,9 @@ export default {
           color: white;
         }
       }
+    }
+    .header_nav2 {
+      width: 80px;
     }
   }
 }

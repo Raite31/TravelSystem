@@ -40,7 +40,9 @@ export default {
   },
   data() {
     return {
-      tag_flag: "个人资料",
+      tag_flag: this.$route.query.tag_flag
+        ? this.$route.query.tag_flag
+        : "个人资料",
       tags: {
         0: {
           name: "个人资料",

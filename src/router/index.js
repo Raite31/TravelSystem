@@ -1,3 +1,4 @@
+import self_travelVue from "@/views/personal/self_travel.vue";
 import Vue from "vue";
 import VueRouter from "vue-router";
 
@@ -22,6 +23,12 @@ const routes = [
   },
 
   // =========================================travel的路由
+  // ====================购物车
+  {
+    path: "/cart",
+    name: "cart",
+    component: () => import("@/views/travel/cart/index.vue"),
+  },
   // ====================主页
   {
     path: "/home",
@@ -46,8 +53,6 @@ const routes = [
     name: "story",
     component: () => import("@/views/travel/story/story.vue"),
   },
-
-  // ==========================================blog的路由
   // ===============博客首页（列表)
   {
     path: "/blogList",
