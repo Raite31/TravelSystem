@@ -13,7 +13,8 @@
         <div class="right">
           <self_message v-if="tag_flag == '个人资料'" />
           <self_travel v-else-if="tag_flag == '旅游去向'" />
-          <self_blog v-else />
+          <self_blog v-else-if="tag_flag == '我的博客'" />
+          <self_create v-else />
         </div>
       </div>
     </div>
@@ -26,6 +27,7 @@ import Footer from "@/components/Footer.vue";
 import self_message from "./self_message.vue";
 import self_travel from "./self_travel.vue";
 import self_blog from "./self_blog.vue";
+import self_create from "./self_create.vue";
 
 export default {
   components: {
@@ -34,6 +36,7 @@ export default {
     self_message,
     self_travel,
     self_blog,
+    self_create,
   },
   data() {
     return {
@@ -47,6 +50,9 @@ export default {
         },
         2: {
           name: "我的博客",
+        },
+        3: {
+          name: "创作中心",
         },
       },
     };

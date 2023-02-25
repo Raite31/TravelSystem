@@ -9,11 +9,16 @@ import "element-ui/lib/theme-chalk/index.css";
 import hevueImgPreview from "hevue-img-preview";
 import editor from "@blog1997/vue-umeditor";
 import * as echarts from "echarts";
+import VueQuillEditor from "vue-quill-editor";
+import "quill/dist/quill.core.css";
+import "quill/dist/quill.snow.css";
+import "quill/dist/quill.bubble.css";
 
 Vue.prototype.$echarts = echarts;
 Vue.use(editor);
 Vue.use(hevueImgPreview);
 Vue.use(ElementUI);
+Vue.use(VueQuillEditor);
 
 // 配置全局属性
 Vue.prototype.postRequest = postRequest;
@@ -22,5 +27,5 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   stores,
-  render: (h) => h(App)
+  render: (h) => h(App),
 }).$mount("#app");
