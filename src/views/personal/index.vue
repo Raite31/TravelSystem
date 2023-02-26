@@ -12,7 +12,7 @@
         </div>
         <div class="right">
           <self_message v-if="tag_flag == '个人资料'" />
-          <self_travel v-else-if="tag_flag == '旅游去向'" />
+          <self_travel v-else-if="tag_flag == '全部订单'" />
           <self_blog v-else-if="tag_flag == '我的博客'" />
           <self_create v-else />
         </div>
@@ -48,7 +48,7 @@ export default {
           name: "个人资料",
         },
         1: {
-          name: "旅游去向",
+          name: "全部订单",
         },
         2: {
           name: "我的博客",

@@ -5,7 +5,7 @@
       <h1 class="title">购物车</h1>
       <div class="link">
         <router-link
-          :to="{ path: '/personal', query: { tag_flag: '旅游去向' } }"
+          :to="{ path: '/personal', query: { tag_flag: '全部订单' } }"
           >查看所有订单</router-link
         >
       </div>
@@ -279,7 +279,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 * {
   margin: 0;
   padding: 0;
