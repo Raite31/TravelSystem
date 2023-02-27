@@ -15,8 +15,8 @@
               <div class="views">
                 {{ item.views }}
               </div>
-              <div class="commits">
-                {{ item.commits }}
+              <div class="comment">
+                {{ item.comment }}
               </div>
               <div class="introduction">{{ item.introduction }}</div>
             </div>
@@ -43,7 +43,7 @@ export default {
           cov: "@/assets/imgs/item_photo.png",
           title: "China",
           views: "2222",
-          commits: "12123",
+          comment: "12123",
           introduction:
             "The grand story of China features a great wall, a forbidden city, and a few thousand Terracotta warriors. Settings include the sci-fi skyline of Shanghai, the jutting peaks of Zhangjiajie, and the tropical beaches of Hainan, but the tale of this ancient kingdom began long ago.",
         },
@@ -51,7 +51,7 @@ export default {
           cov: "@/assets/imgs/item_photo.png",
           title: "China",
           views: "2222",
-          commits: "12123",
+          comment: "12123",
           introduction:
             "The grand story of China features a great wall, a forbidden city, and a few thousand Terracotta warriors. Settings include the sci-fi skyline of Shanghai, the jutting peaks of Zhangjiajie, and the tropical beaches of Hainan, but the tale of this ancient kingdom began long ago.",
         },
@@ -59,7 +59,7 @@ export default {
           cov: "@/assets/imgs/item_photo.png",
           title: "China",
           views: "2222",
-          commits: "12123",
+          comment: "12123",
           introduction:
             "The grand story of China features a great wall, a forbidden city, and a few thousand Terracotta warriors. Settings include the sci-fi skyline of Shanghai, the jutting peaks of Zhangjiajie, and the tropical beaches of Hainan, but the tale of this ancient kingdom began long ago.",
         },
@@ -67,7 +67,7 @@ export default {
           cov: "@/assets/imgs/item_photo.png",
           title: "China",
           views: "2222",
-          commits: "12123",
+          comment: "12123",
           introduction:
             "The grand story of China features a great wall, a forbidden city, and a few thousand Terracotta warriors. Settings include the sci-fi skyline of Shanghai, the jutting peaks of Zhangjiajie, and the tropical beaches of Hainan, but the tale of this ancient kingdom began long ago.",
         },
@@ -75,7 +75,7 @@ export default {
           cov: "@/assets/imgs/item_photo.png",
           title: "China",
           views: "2222",
-          commits: "12123",
+          comment: "12123",
           introduction:
             "The grand story of China features a great wall, a forbidden city, and a few thousand Terracotta warriors. Settings include the sci-fi skyline of Shanghai, the jutting peaks of Zhangjiajie, and the tropical beaches of Hainan, but the tale of this ancient kingdom began long ago.",
         },
@@ -83,7 +83,7 @@ export default {
           cov: "@/assets/imgs/item_photo.png",
           title: "China",
           views: "2222",
-          commits: "12123",
+          comment: "12123",
           introduction:
             "The grand story of China features a great wall, a forbidden city, and a few thousand Terracotta warriors. Settings include the sci-fi skyline of Shanghai, the jutting peaks of Zhangjiajie, and the tropical beaches of Hainan, but the tale of this ancient kingdom began long ago.",
         },
@@ -91,7 +91,7 @@ export default {
           cov: "@/assets/imgs/item_photo.png",
           title: "China",
           views: "2222",
-          commits: "12123",
+          comment: "12123",
           introduction:
             "The grand story of China features a great wall, a forbidden city, and a few thousand Terracotta warriors. Settings include the sci-fi skyline of Shanghai, the jutting peaks of Zhangjiajie, and the tropical beaches of Hainan, but the tale of this ancient kingdom began long ago.",
         },
@@ -99,7 +99,7 @@ export default {
           cov: "@/assets/imgs/item_photo.png",
           title: "China",
           views: "2222",
-          commits: "12123",
+          comment: "12123",
           introduction:
             "The grand story of China features a great wall, a forbidden city, and a few thousand Terracotta warriors. Settings include the sci-fi skyline of Shanghai, the jutting peaks of Zhangjiajie, and the tropical beaches of Hainan, but the tale of this ancient kingdom began long ago.",
         },
@@ -107,7 +107,7 @@ export default {
           cov: "@/assets/imgs/item_photo.png",
           title: "China",
           views: "2222",
-          commits: "12123",
+          comment: "12123",
           introduction:
             "The grand story of China features a great wall, a forbidden city, and a few thousand Terracotta warriors. Settings include the sci-fi skyline of Shanghai, the jutting peaks of Zhangjiajie, and the tropical beaches of Hainan, but the tale of this ancient kingdom began long ago.",
         },
@@ -186,7 +186,7 @@ body {
             font-size: 20px;
             font-weight: 600;
           }
-          .views-and-commits {
+          .views-and-comment {
             margin-bottom: 50px;
           }
           .introduction {

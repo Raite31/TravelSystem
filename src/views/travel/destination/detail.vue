@@ -9,8 +9,10 @@
           </div>
           <div class="information">
             <div class="title">{{ title }}</div>
-            <div class="mechanism">{{ mechanism }}</div>
-            <div class="recommend">{{ recommend }}</div>
+            <div>
+              <span class="view">{{ view }}</span>
+              <span class="comment">{{ comment }}</span>
+            </div>
             <div class="introduce">{{ introduce }}</div>
           </div>
           <hr />
@@ -115,13 +117,13 @@
             </ul>
           </div>
         </div>
-        <div class="recommend">
+        <!-- <div class="comment">
           <div class="title"></div>
           <ul>
             <li></li>
           </ul>
         </div>
-        <div class="commit">
+        <div class="comment">
           <title></title>
           <div class="grid">
             <div class="left"></div>
@@ -136,7 +138,7 @@
               </ul>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <Footer />
@@ -156,8 +158,8 @@ export default {
     return {
       photo: ["@/assets/imgs/item_photo.png"],
       title: "The occupational traffic permit is one things in the company  ",
-      mechanism: "By La Calypso Dive Center",
-      recommend: "By La Calypso Dive Center",
+      view: 4,
+      comment: 7,
       introduce:
         "What's included Private Transport from and back to your Hotel in Marrakech by air-conditioned vehicle Guide Camel ride Lunch Tea What's not included Food and drinks, unless specified Highlights All taxes, fuel surcharges and service fees included A la carte lunch included All entrance fees included",
       precautions: {
@@ -218,10 +220,10 @@ body {
           font-weight: bold;
           margin: 8px 0;
         }
-        .mechanism {
+        .view {
           margin-bottom: 24px;
         }
-        .recommend {
+        .comment {
           margin-bottom: 24px;
         }
       }
