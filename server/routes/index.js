@@ -7,7 +7,7 @@ router.get("/", function (req, res, next) {
   res.render("index", { title: "Express" });
 });
 
-router.get("/check", function (req, res) {
+router.get("/front/api/check", function (req, res) {
   const sql = "SELECT * FROM user";
   conn.query(sql, function (err, result) {
     if (err) {

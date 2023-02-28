@@ -29,8 +29,13 @@
 <script>
 import Head from "@/components/Head.vue";
 import Footer from "@/components/Footer.vue";
+import { test } from "@/api/destination/index";
 
 export default {
+  components: {
+    Head,
+    Footer,
+  },
   data() {
     return {
       blogs: {
@@ -95,9 +100,12 @@ export default {
       },
     };
   },
-  components: {
-    Head,
-    Footer,
+  methods: {},
+
+  created() {
+    test().then((info) => {
+      console.log(info);
+    });
   },
 };
 </script>
