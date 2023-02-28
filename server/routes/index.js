@@ -1,5 +1,5 @@
 var express = require("express");
-const conn = require("../public/javascripts/conn_sql");
+const conn = require("../public/connectDB/conn_sql");
 var router = express.Router();
 
 /* GET home page. */
