@@ -12,7 +12,7 @@ export const postRequest = (url, params) => {
   });
 };
 
-// 响应拦截器
+// response拦截
 axios.interceptors.response.use(
   (res) => {
     console.log(res);
