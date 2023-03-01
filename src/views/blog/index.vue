@@ -98,14 +98,19 @@ export default {
           contain: "dfasssssssssssguhdijvfbcdhnsjiygreuhdisjkvcbdhxsnj",
         },
       },
+      res: null,
     };
   },
-  methods: {},
+  methods: {
+    getdata() {
+      test().then((res) => {
+        console.log("res: ", res.data);
+      });
+    },
+  },
 
   created() {
-    test().then((info) => {
-      console.log(info);
-    });
+    this.getdata();
   },
 };
 </script>

@@ -3,7 +3,6 @@ import App from "./App.vue";
 import "./registerServiceWorker";
 import router from "./router";
 import stores from "./stores";
-import { postRequest } from "./utils/api";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 import hevueImgPreview from "hevue-img-preview";
@@ -19,9 +18,6 @@ Vue.use(editor);
 Vue.use(hevueImgPreview);
 Vue.use(ElementUI);
 Vue.use(VueQuillEditor);
-
-// 配置全局属性
-Vue.prototype.postRequest = postRequest;
 
 Vue.config.productionTip = false;
 new Vue({
