@@ -66,6 +66,7 @@
 import ElementUI from "element-ui";
 import Head from "@/components/Head.vue";
 import Footer from "@/components/Footer.vue";
+import { getDestinationPage } from "@/api/destination/index";
 
 export default {
   components: {
@@ -75,68 +76,7 @@ export default {
   data() {
     return {
       searchKeyword: null,
-      hots: {
-        0: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "颐和园",
-          contain: "你可真牛",
-        },
-        1: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "故宫",
-          contain: "你可真牛",
-        },
-        2: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "亚特兰蒂斯",
-          contain: "你可真牛",
-        },
-        3: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "颐和园",
-          contain: "你可真牛",
-        },
-        4: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "故宫",
-          contain: "你可真牛",
-        },
-        5: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "亚特兰蒂斯",
-          contain: "你可真牛",
-        },
-        6: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "颐和园",
-          contain: "你可真牛",
-        },
-        7: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "故宫",
-          contain: "你可真牛",
-        },
-        8: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "亚特兰蒂斯",
-          contain: "你可真牛",
-        },
-        9: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "颐和园",
-          contain: "你可真牛",
-        },
-        10: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "故宫",
-          contain: "你可真牛",
-        },
-        11: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "亚特兰蒂斯",
-          contain: "你可真牛",
-        },
-      },
+      hots: null,
       recommends: {
         9: {
           cov: "@/assets/imgs/item_photo.png",
@@ -193,7 +133,16 @@ export default {
       },
     };
   },
-  methods: {},
+  methods: {
+    getdata() {
+      getDestinationPage().then((res) => {
+        this.hots = res.data.splice(1, 3);
+      });
+    },
+  },
+  created() {
+    this.getdata();
+  },
 };
 </script>
 <style lang="scss">

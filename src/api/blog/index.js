@@ -1,6 +1,6 @@
 import request from "@/utils/request";
 
-export function getBlog(data) {
+export function getBlogPage(data) {
   return request({
     url: "blog/getBlogPage",
     method: "POST",

@@ -16,7 +16,7 @@
             <div class="right">
               <div class="title">{{ item.title }}</div>
               <div class="tag">{{ item.tags }}</div>
-              <div class="contain">{{ item.contain }}</div>
+              <div class="list-contain">{{ item.contain }}</div>
             </div>
           </li>
         </ul>
@@ -29,7 +29,7 @@
 <script>
 import Head from "@/components/Head.vue";
 import Footer from "@/components/Footer.vue";
-import { getBlog } from "@/api/blog/index";
+import { getBlogPage } from "@/api/blog/index";
 
 export default {
   components: {
@@ -38,74 +38,14 @@ export default {
   },
   data() {
     return {
-      blogs: {
-        0: {
-          photo: "@/assets/imgs/item_photo.png",
-          title: "你好",
-          tags: ["11111111", "222222222", "3333333"],
-          contain:
-            "Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.",
-        },
-        1: {
-          photo: "@/assets/imgs/item_photo.png",
-          title: "你好",
-          tags: ["11111111", "222222222", "3333333"],
-          contain:
-            "Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.",
-        },
-        2: {
-          photo: "@/assets/imgs/item_photo.png",
-          title: "你好",
-          tags: ["11111111", "222222222", "3333333"],
-          contain:
-            "Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.",
-        },
-        3: {
-          photo: "@/assets/imgs/item_photo.png",
-          title: "你好",
-          tags: ["11111111", "222222222", "3333333"],
-          contain:
-            "Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.",
-        },
-        4: {
-          photo: "@/assets/imgs/item_photo.png",
-          title: "你好",
-          tags: ["11111111", "222222222", "3333333"],
-          contain: "dfasssssssssssguhdijvfbcdhnsjiygreuhdisjkvcbdhxsnj",
-        },
-        5: {
-          photo: "@/assets/imgs/item_photo.png",
-          title: "你好",
-          tags: ["11111111", "222222222", "3333333"],
-          contain: "dfasssssssssssguhdijvfbcdhnsjiygreuhdisjkvcbdhxsnj",
-        },
-        6: {
-          photo: "@/assets/imgs/item_photo.png",
-          title: "你好",
-          tags: ["11111111", "222222222", "3333333"],
-          contain: "dfasssssssssssguhdijvfbcdhnsjiygreuhdisjkvcbdhxsnj",
-        },
-        7: {
-          photo: "@/assets/imgs/item_photo.png",
-          title: "你好",
-          tags: ["11111111", "222222222", "3333333"],
-          contain: "dfasssssssssssguhdijvfbcdhnsjiygreuhdisjkvcbdhxsnj",
-        },
-        8: {
-          photo: "@/assets/imgs/item_photo.png",
-          title: "你好",
-          tags: ["11111111", "222222222", "3333333"],
-          contain: "dfasssssssssssguhdijvfbcdhnsjiygreuhdisjkvcbdhxsnj",
-        },
-      },
-      res: null,
+      blogs: null,
     };
   },
   methods: {
     getdata() {
-      getBlog().then((res) => {
-        this.res = res.data
-        console.log("res: ", res.data);
+      getBlogPage().then((res) => {
+        this.blogs = res.data;
+        console.log(this.blogs);
       });
     },
   },
@@ -149,6 +89,7 @@ body {
     li {
       display: flex;
       margin-bottom: 50px;
+
       .left {
         margin-right: 55px;
         img {
@@ -164,6 +105,11 @@ body {
           color: #000000;
           line-height: 40px;
           margin-bottom: 12px;
+
+          display: block;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
         .tag {
           font-size: 16px;
@@ -172,12 +118,25 @@ body {
           line-height: 22px;
           margin-bottom: 12px;
         }
-        .contan {
+        .list-contain {
           width: 430px;
           font-size: 16px;
           font-weight: 400;
           color: #000000;
           line-height: 22px;
+          height: 200px;
+
+          display: -webkit-box;
+          word-break: break-all;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 9;
+
+          // display: block;
+          // overflow: hidden;
+          // white-space: nowrap;
+          // text-overflow: ellipsis;
         }
       }
     }

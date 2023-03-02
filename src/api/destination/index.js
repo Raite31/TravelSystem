@@ -1,9 +1,9 @@
 import request from "@/utils/request";
 
-export function test(data) {
+export function getDestinationPage(data) {
   return request({
-    url: "check",
-    methods: "GET",
-    params: data,
+    url: "destination/getDestinationPage",
+    method: "POST",
+    data: data,
   });
 }
