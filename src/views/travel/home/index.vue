@@ -66,7 +66,11 @@
 import ElementUI from "element-ui";
 import Head from "@/components/Head.vue";
 import Footer from "@/components/Footer.vue";
-import { getDestinationPage } from "@/api/destination/index";
+import {
+  getDestinationHots,
+  getDestinationRecommend,
+  getDestinationLowPrice,
+} from "@/api/destination/index";
 
 export default {
   components: {
@@ -77,66 +81,22 @@ export default {
     return {
       searchKeyword: null,
       hots: null,
-      recommends: {
-        9: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "颐和园",
-          tag: ["北京", "古建筑", "建筑"],
-          contain: "你可真牛",
-        },
-        10: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "故宫",
-          tag: ["北京", "古建筑", "建筑"],
-          contain: "你可真牛",
-        },
-        11: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "亚特兰蒂斯",
-          tag: ["北京", "古建筑", "建筑"],
-          contain: "你可真牛",
-        },
-      },
-      lists: {
-        0: {
-          pic: "@/assets/imgs/item_photo.png",
-          place: "巴厘岛",
-          price: "2500",
-        },
-        1: {
-          pic: "@/assets/imgs/item_photo.png",
-          place: "巴厘岛",
-          price: "2500",
-        },
-        2: {
-          pic: "@/assets/imgs/item_photo.png",
-          place: "巴厘岛",
-          price: "2500",
-        },
-      },
-      lists2: {
-        0: {
-          pic: "@/assets/imgs/item_photo.png",
-          place: "巴厘岛",
-          price: "2500",
-        },
-        1: {
-          pic: "@/assets/imgs/item_photo.png",
-          place: "巴厘岛",
-          price: "2500",
-        },
-        2: {
-          pic: "@/assets/imgs/item_photo.png",
-          place: "巴厘岛",
-          price: "2500",
-        },
-      },
+      recommends: null,
+      lists: null,
+      lists2: null,
     };
   },
   methods: {
     getdata() {
-      getDestinationPage().then((res) => {
-        this.hots = res.data.splice(1, 3);
+      getDestinationHots().then((res) => {
+        this.hots = res.data.splice(1, 9);
+      });
+      getDestinationRecommend().then((res) => {
+        this.recommends = res.data.splice(1, 3);
+      });
+      getDestinationLowPrice().then((res) => {
+        this.lists = res.data.splice(1, 3);
+        this.lists2 = res.data.splice(4, 6);
       });
     },
   },
