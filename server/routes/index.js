@@ -11,7 +11,7 @@ router.get("/", function(req, res, next) {
 
 // ============================================== 博客api
 // =======================获取博客列表
-router.get("/front/api/blog/getBlogPage", function(req, res) {
+router.post("/front/api/blog/getBlogPage", function(req, res) {
   const sql = "SELECT * FROM blog";
   conn.query(sql, function(err, result) {
     if (err) {
