@@ -9,7 +9,7 @@ router.get("/", function(req, res, next) {
   res.render("index", { title: "Express" });
 });
 
-// ============================================== 景点api
+// =========================================================================================================== 景点api
 // 获取总的
 router.post("/front/api/destination/getDestinationPage", function(req, res) {
   const sql = "SELECT * FROM destination";
@@ -51,8 +51,8 @@ router.post("/front/api/destination/getDestinationLowPrice", function(req, res) 
   });
 });
 
-// ============================================== 博客api
-// 获取博客列表
+// =========================================================================================================== 博客api
+// 获取全部博客列表
 router.post("/front/api/blog/getBlogPage", function(req, res) {
   const sql = "SELECT * FROM blog";
   conn.query(sql, function(err, result) {
@@ -64,7 +64,7 @@ router.post("/front/api/blog/getBlogPage", function(req, res) {
 });
 
 
-// =============================================== 用户api
+// =========================================================================================================== 用户api
 router.get("/front/api/check", function(req, res) {
   const sql = "SELECT * FROM user";
   conn.query(sql, function(err, result) {

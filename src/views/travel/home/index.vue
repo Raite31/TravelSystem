@@ -11,7 +11,7 @@
       <div class="hot">
         <div class="title">热门旅游</div>
         <div class="items">
-          <div class="item" v-for="item in hots" :key="item.title">
+          <div class="item" v-for="item in hots" :key="item.index">
             <div class="cov"></div>
             <div class="item-title">{{ item.title }}</div>
             <div class="item-contain">{{ item.contain }}</div>
@@ -22,7 +22,7 @@
       <div class="recommend">
         <div class="title">我们推荐</div>
         <div class="items">
-          <div class="item" v-for="item in recommends" :key="item.title">
+          <div class="item" v-for="item in recommends" :key="item.index">
             <img :src="item.cov" alt="" />
             <div class="item-title">{{ item.title }}</div>
             <div class="item-tag">{{ item.tag }}</div>
@@ -38,7 +38,7 @@
           <div class="left"></div>
           <div class="right">
             <ul class="list">
-              <li v-for="item in lists" :key="item.place">
+              <li v-for="item in lists" :key="item.index">
                 <img :src="item.pic" />
                 <div>
                   <div>{{ item.place }}</div>
@@ -89,14 +89,14 @@ export default {
   methods: {
     getdata() {
       getDestinationHots().then((res) => {
-        this.hots = res.data.splice(1, 9);
+        this.hots = res.data.slice(0, 9);
       });
       getDestinationRecommend().then((res) => {
-        this.recommends = res.data.splice(1, 3);
+        this.recommends = res.data.slice(0, 3);
       });
       getDestinationLowPrice().then((res) => {
-        this.lists = res.data.splice(1, 3);
-        this.lists2 = res.data.splice(4, 6);
+        this.lists = res.data.slice(0, 3);
+        this.lists2 = res.data.slice(4, 7);
       });
     },
   },

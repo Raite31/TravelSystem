@@ -34,10 +34,10 @@
       <div class="traveler_stories">
         <div class="title">旅行故事</div>
         <div class="items">
-          <div class="item" v-for="item in 3" :key="item.index">
+          <div class="item" v-for="item of all.slice(0, 3)" :key="item.index">
             <img src="@/assets/imgs/home_travel.png" alt="" />
             <div class="describe">
-              Exploring Utah's National Parks with my non-outdoorsy tweens
+              {{ item.title }}
             </div>
           </div>
         </div>
@@ -46,10 +46,10 @@
       <div class="red_revolution">
         <div class="title">4个必去的红色旅游景点</div>
         <div class="items">
-          <div class="item" v-for="item in 4" :key="item.index">
+          <div class="item" v-for="item in reds.slice(0, 4)" :key="item.index">
             <img src="@/assets/imgs/home_travel.png" alt="" />
             <div class="describe">
-              Exploring Utah's National Parks with my non-outdoorsy tweens
+              {{ item.title }}
             </div>
           </div>
         </div>
@@ -59,10 +59,14 @@
         <div class="city_escapes">
           <div class="title">City_escapes</div>
           <div class="items">
-            <div class="item" v-for="item in 3" :key="item.index">
+            <div
+              class="item"
+              v-for="item in City_escapes.slice(0, 3)"
+              :key="item.index"
+            >
               <img src="@/assets/imgs/home_travel.png" alt="" />
               <div class="describe">
-                Exploring Utah's National Parks with my non-outdoorsy tweens
+                {{ item.title }}
               </div>
             </div>
           </div>
@@ -70,10 +74,14 @@
         <div class="destination_experiences">
           <div class="title">Destination_experiences</div>
           <div class="items">
-            <div class="item" v-for="item in 3" :key="item.index">
+            <div
+              class="item"
+              v-for="item in Destination_experiences.slice(0, 3)"
+              :key="item.index"
+            >
               <img src="@/assets/imgs/home_travel.png" alt="" />
               <div class="describe">
-                Exploring Utah's National Parks with my non-outdoorsy tweens
+                {{ item.title }}
               </div>
             </div>
           </div>
@@ -81,10 +89,14 @@
         <div class="eat_drink">
           <div class="title">Eat_drink</div>
           <div class="items">
-            <div class="item" v-for="item in 3" :key="item.index">
+            <div
+              class="item"
+              v-for="item in Eat_drink.slice(0, 3)"
+              :key="item.index"
+            >
               <img src="@/assets/imgs/home_travel.png" alt="" />
               <div class="describe">
-                Exploring Utah's National Parks with my non-outdoorsy tweens
+                {{ item.title }}
               </div>
             </div>
           </div>
@@ -92,7 +104,11 @@
         <div class="stay">
           <div class="title">Stay</div>
           <div class="items">
-            <div class="item" v-for="item in 3" :key="item.index">
+            <div
+              class="item"
+              v-for="item in Stay.slice(0, 3)"
+              :key="item.index"
+            >
               <img src="@/assets/imgs/home_travel.png" alt="" />
               <div class="describe">
                 Exploring Utah's National Parks with my non-outdoorsy tweens
@@ -103,7 +119,11 @@
         <div class="culture_history">
           <div class="title">Culture_history</div>
           <div class="items">
-            <div class="item" v-for="item in 3" :key="item.index">
+            <div
+              class="item"
+              v-for="item in Culture_history.slice(0, 3)"
+              :key="item.index"
+            >
               <img src="@/assets/imgs/home_travel.png" alt="" />
               <div class="describe">
                 Exploring Utah's National Parks with my non-outdoorsy tweens
@@ -114,7 +134,11 @@
         <div class="travel_style">
           <div class="title">Travel_style</div>
           <div class="items">
-            <div class="item" v-for="item in 3" :key="item.index">
+            <div
+              class="item"
+              v-for="item in Travel_style.slice(0, 3)"
+              :key="item.index"
+            >
               <img src="@/assets/imgs/home_travel.png" alt="" />
               <div class="describe">
                 Exploring Utah's National Parks with my non-outdoorsy tweens
@@ -125,10 +149,14 @@
         <div class="related">
           <div class="title">Related</div>
           <div class="items">
-            <div class="item" v-for="item in 3" :key="item.index">
+            <div
+              class="item"
+              v-for="item in Related.slice(0, 3)"
+              :key="item.index"
+            >
               <img src="@/assets/imgs/home_travel.png" alt="" />
               <div class="describe">
-                Exploring Utah's National Parks with my non-outdoorsy tweens
+                {{ item.title }}
               </div>
             </div>
           </div>
@@ -141,6 +169,7 @@
 <script>
 import Head from "@/components/Head.vue";
 import Footer from "@/components/Footer.vue";
+import { getBlogPage } from "@/api/blog/index";
 
 export default {
   components: {
@@ -148,7 +177,56 @@ export default {
     Footer,
   },
   data() {
-    return {};
+    return {
+      all: [],
+      reds: [],
+      City_escapes: [],
+      Destination_experiences: [],
+      Eat_drink: [],
+      Stay: [],
+      Culture_history: [],
+      Travel_style: [],
+      Related: [],
+    };
+  },
+  methods: {
+    getdata() {
+      getBlogPage().then((res) => {
+        for (let item of res.data) {
+          this.all.push(item);
+          // console.log(item);
+          switch (item.classify) {
+            case "red":
+              this.reds.push(item);
+              break;
+            case "City_escapes":
+              this.City_escapes.push(item);
+              break;
+            case "Destination_experiences":
+              this.Destination_experiences.push(item);
+              break;
+            case "Eat_drink":
+              this.Eat_drink.push(item);
+              break;
+            case "Stay":
+              this.Stay.push(item);
+              break;
+            case "Culture_history":
+              this.Culture_history.push(item);
+              break;
+            case "Travel_style":
+              this.Travel_style.push(item);
+              break;
+            case "Related":
+              this.Related.push(item);
+              break;
+          }
+        }
+      });
+    },
+  },
+  created() {
+    this.getdata();
   },
 };
 </script>
@@ -216,6 +294,7 @@ export default {
     .items {
       display: flex;
       .item {
+        margin: 15px;
         img {
           width: 365px;
           height: 230px;
@@ -244,6 +323,7 @@ export default {
     .items {
       display: flex;
       .item {
+        margin: 15px;
         img {
           width: 365px;
           height: 230px;
@@ -279,6 +359,7 @@ export default {
       .items {
         display: flex;
         .item {
+          margin: 15px;
           img {
             width: 365px;
             height: 230px;
