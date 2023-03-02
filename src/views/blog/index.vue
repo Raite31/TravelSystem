@@ -29,7 +29,7 @@
 <script>
 import Head from "@/components/Head.vue";
 import Footer from "@/components/Footer.vue";
-import { test } from "@/api/destination/index";
+import { getBlog } from "@/api/blog/index";
 
 export default {
   components: {
@@ -103,7 +103,8 @@ export default {
   },
   methods: {
     getdata() {
-      test().then((res) => {
+      getBlog().then((res) => {
+        this.res = res.data
         console.log("res: ", res.data);
       });
     },
