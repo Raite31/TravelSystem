@@ -12,10 +12,12 @@
         <div class="title">热门旅游</div>
         <div class="items">
           <div class="item" v-for="item in hots" :key="item.index">
-            <div class="cov"></div>
-            <div class="item-title">{{ item.title }}</div>
-            <div class="item-contain">{{ item.contain }}</div>
-            <el-button></el-button>
+            <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
+            <div class="bottom">
+              <div class="item-title">{{ item.title }}</div>
+              <div class="item-contain">{{ item.contain }}</div>
+              <el-button></el-button>
+            </div>
           </div>
         </div>
       </div>
@@ -23,12 +25,16 @@
         <div class="title">我们推荐</div>
         <div class="items">
           <div class="item" v-for="item in recommends" :key="item.index">
-            <img :src="item.cov" alt="" />
-            <div class="item-title">{{ item.title }}</div>
-            <div class="item-tag">{{ item.tag }}</div>
-            <div class="item-date">{{ item.date }}</div>
-            <div class="item-contain">{{ item.contain }}</div>
-            <el-button></el-button>
+            <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
+            <div class="bottom">
+              <div class="item-title">{{ item.title }}</div>
+              <div class="item-tag" v-for="item2 in item.tags.slice(0, 3)">
+                {{ item2 }}
+              </div>
+              <div class="item-date">{{ item.date_time }}</div>
+              <div class="item-contain">{{ item.contain }}</div>
+              <el-button></el-button>
+            </div>
           </div>
         </div>
       </div>
@@ -39,7 +45,7 @@
           <div class="right">
             <ul class="list">
               <li v-for="item in lists" :key="item.index">
-                <img :src="item.pic" />
+                <img :src="require('@/assets/imgs/' + item.photo)" />
                 <div>
                   <div>{{ item.place }}</div>
                   <div>￥{{ item.price }}</div>
@@ -48,7 +54,7 @@
             </ul>
             <ul class="list">
               <li v-for="item in lists2">
-                <img :src="item.pic" />
+                <img :src="require('@/assets/imgs/' + item.photo)" />
                 <div>
                   <div>{{ item.place }}</div>
                   <div>￥{{ item.price }}</div>
@@ -93,6 +99,7 @@ export default {
       });
       getDestinationRecommend().then((res) => {
         this.recommends = res.data.slice(0, 3);
+        console.log(this.recommends);
       });
       getDestinationLowPrice().then((res) => {
         this.lists = res.data.slice(0, 3);
@@ -145,7 +152,6 @@ body {
   }
   .hot {
     .title {
-      width: 260px;
       font-size: 35px;
       font-weight: 600;
       color: #0437ac;
@@ -165,7 +171,7 @@ body {
         height: 452px;
         box-sizing: border-box;
         margin: 30px 30px;
-        padding: 26px;
+
         background: #ffffff;
         box-shadow: 0px 7px 19px 0px rgba(0, 0, 0, 0.25);
         border-radius: 10px 10px 10px 10px;
@@ -181,19 +187,41 @@ body {
           // border-radius: 15px 15px 15px 15px;
           // opacity: 1;
         }
-        .item-title {
-          width: 211px;
-          font-size: 15px;
-          font-weight: 600;
-          color: #000000;
-          line-height: 23px;
+        img {
+          width: 380px;
+          height: 230px;
+          border-radius: 10px 10px 0 0;
+          margin-bottom: 18px;
         }
-        .item-contain {
-          width: 293px;
-          font-size: 14px;
-          font-weight: 500;
-          color: #2e2e2e;
-          line-height: 21px;
+        .bottom {
+          padding: 0px 26px;
+          text-align: left;
+
+          .item-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #000000;
+            line-height: 23px;
+            margin-bottom: 10px;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+          .item-contain {
+            width: 293px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #2e2e2e;
+            line-height: 21px;
+
+            display: -webkit-box;
+            word-break: break-all;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 5;
+          }
         }
       }
     }
@@ -220,7 +248,6 @@ body {
         height: 452px;
         box-sizing: border-box;
         margin: 30px 30px;
-        padding: 26px;
         background: #ffffff;
         box-shadow: 0px 7px 19px 0px rgba(0, 0, 0, 0.25);
         border-radius: 10px 10px 10px 10px;
@@ -238,22 +265,39 @@ body {
           // opacity: 1;
         }
         img {
-          width: 344px;
+          width: 380px;
           height: 230px;
+          border-radius: 10px 10px 0 0;
+          margin-bottom: 18px;
         }
-        .item-title {
-          width: 211px;
-          font-size: 15px;
-          font-weight: 600;
-          color: #000000;
-          line-height: 23px;
-        }
-        .item-contain {
-          width: 293px;
-          font-size: 14px;
-          font-weight: 500;
-          color: #2e2e2e;
-          line-height: 21px;
+        .bottom {
+          padding: 0 26px;
+          text-align: left;
+          .item-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #000000;
+            line-height: 23px;
+            margin-bottom: 10px;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+          .item-contain {
+            width: 293px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #2e2e2e;
+            line-height: 21px;
+
+            display: -webkit-box;
+            word-break: break-all;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 5;
+          }
         }
       }
     }
