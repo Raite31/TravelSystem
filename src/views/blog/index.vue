@@ -11,11 +11,15 @@
         <ul>
           <li v-for="(item, index) in blogs" :key="index">
             <div class="left">
-              <img :src="item.photo" alt="" />
+              <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
             </div>
             <div class="right">
               <div class="title">{{ item.title }}</div>
-              <div class="tag">{{ item.tags }}</div>
+              <div class="tag">
+                <span v-for="item in item.tags" :key="item.index">
+                  {{ item }}
+                </span>
+              </div>
               <div class="list-contain">{{ item.contain }}</div>
             </div>
           </li>
@@ -45,7 +49,6 @@ export default {
     getdata() {
       getBlogPage().then((res) => {
         this.blogs = res.data;
-        console.log(this.blogs);
       });
     },
   },
