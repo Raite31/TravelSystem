@@ -99,7 +99,6 @@ export default {
       });
       getDestinationRecommend().then((res) => {
         this.recommends = res.data.slice(0, 3);
-        console.log(this.recommends);
       });
       getDestinationLowPrice().then((res) => {
         this.lists = res.data.slice(0, 3);
@@ -195,7 +194,7 @@ body {
         .bottom {
           padding: 0px 26px;
           text-align: left;
-          
+
           display: flex;
           flex-direction: column;
           align-items: center;

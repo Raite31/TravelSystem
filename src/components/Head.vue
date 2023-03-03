@@ -9,45 +9,50 @@
     <!--logo end-->
     <div class="logo_end">
       <ul class="header_nav">
-        <li @click="click_nav(1)" @mouseenter="select_nav(1)">
+        <li @click="click_nav(1)">
           <router-link
-            :class="clickFlag == 1 ? 'header_nav_hover' : ''"
+            :class="this.clickFlag == 1 ? 'header_nav_active' : ''"
             to="/home"
             >首页</router-link
           >
         </li>
-        <li @click="click_nav(2)" @mouseenter="select_nav(2)">
+        <li @click="click_nav(2)">
           <router-link
-            :class="clickFlag == 2 ? 'header_nav_hover' : ''"
+            :class="this.clickFlag == 2 ? 'header_nav_active' : ''"
             to="/destination"
             >目的地</router-link
           >
         </li>
-        <li @click="click_nav(3)" @mouseenter="select_nav(3)">
+        <li @click="click_nav(3)">
           <router-link
-            :class="clickFlag == 3 ? 'header_nav_hover' : ''"
+            :class="this.clickFlag == 3 ? 'header_nav_active' : ''"
             to="/story"
             >旅行故事</router-link
           >
         </li>
-        <li @click="click_nav(4)" @mouseenter="select_nav(4)">
+        <li @click="click_nav(4)">
           <router-link
-            :class="clickFlag == 4 ? 'header_nav_hover' : ''"
+            :class="this.clickFlag == 4 ? 'header_nav_active' : ''"
             to="/blogList"
-            >博客</router-link
-          >
+            >博客
+          </router-link>
         </li>
       </ul>
       <!--登录的显示start-->
       <div class="login_info">
         <div class="download">
-          <a href="javascript:;" title="退出登录">退出登录 </a>
+          <a href="javascript:;" title="退出登录" v-if="1 == 3"> 退出登录 </a>
+          <router-link
+            :class="this.clickFlag == 4 ? 'header_nav_active' : ''"
+            to="/personal"
+            >头像
+          </router-link>
         </div>
       </div>
       <ul class="header_nav header_nav2">
-        <li @click="click_nav(5)" @mouseenter="select_nav(5)">
+        <li @click="click_nav(5)">
           <router-link
-            :class="clickFlag == 5 ? 'header_nav_hover' : ''"
+            :class="this.clickFlag == 5 ? 'header_nav_active' : ''"
             to="/cart"
             >购物车</router-link
           >
@@ -93,7 +98,6 @@ export default {
   data() {
     return {
       index: 1,
-      nav_select: 0,
       user: {
         id: "",
         username: "",
@@ -149,12 +153,9 @@ export default {
           // 发送请求失败
         });
     },
-    select_nav(val) {
-      this.nav_select = val;
-    },
     click_nav(val) {
-      console.log(11111);
       this.clickFlag = val;
+      console.log(this.clickFlag);
     },
     handleClose(done) {
       this.$confirm("确认关闭？")
@@ -176,21 +177,14 @@ export default {
   justify-content: space-between;
   .header_logo {
   }
+  .header_nav_active {
+    background-color: rgba(0, 0, 0, 0.07);
+  }
   .logo_end {
     // width: 450px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    .header_nav_hover {
-      list-style: none;
-      text-decoration: none;
-      cursor: pointer;
-      color: #282828;
-      font-size: 16px;
-      border-radius: 30px;
-      font-weight: 600;
-      background-color: rgba(0, 0, 0, 0.07);
-    }
     .header_nav {
       width: 300px;
       list-style: none;
