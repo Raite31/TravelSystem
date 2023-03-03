@@ -9,33 +9,33 @@
     <!--logo end-->
     <div class="logo_end">
       <ul class="header_nav">
-        <li
-          @click="click_nav(1)"
-          @mouseenter="select_nav(1)"
-          :class="nav_select == 1 ? 'header_nav_hover' : ''"
-        >
-          <router-link to="/home">首页</router-link>
+        <li @click="click_nav(1)" @mouseenter="select_nav(1)">
+          <router-link
+            :class="clickFlag == 1 ? 'header_nav_hover' : ''"
+            to="/home"
+            >首页</router-link
+          >
         </li>
-        <li
-          @click="click_nav(2)"
-          @mouseenter="select_nav(2)"
-          :class="nav_select == 2 ? 'header_nav_hover' : ''"
-        >
-          <router-link to="/destination">目的地</router-link>
+        <li @click="click_nav(2)" @mouseenter="select_nav(2)">
+          <router-link
+            :class="clickFlag == 2 ? 'header_nav_hover' : ''"
+            to="/destination"
+            >目的地</router-link
+          >
         </li>
-        <li
-          @click="click_nav(4)"
-          @mouseenter="select_nav(4)"
-          :class="nav_select == 4 ? 'header_nav_hover' : ''"
-        >
-          <router-link to="/story">旅行故事</router-link>
+        <li @click="click_nav(3)" @mouseenter="select_nav(3)">
+          <router-link
+            :class="clickFlag == 3 ? 'header_nav_hover' : ''"
+            to="/story"
+            >旅行故事</router-link
+          >
         </li>
-        <li
-          @click="click_nav(6)"
-          @mouseenter="select_nav(6)"
-          :class="nav_select == 6 ? 'header_nav_hover' : ''"
-        >
-          <router-link to="/blogList">博客</router-link>
+        <li @click="click_nav(4)" @mouseenter="select_nav(4)">
+          <router-link
+            :class="clickFlag == 4 ? 'header_nav_hover' : ''"
+            to="/blogList"
+            >博客</router-link
+          >
         </li>
       </ul>
       <!--登录的显示start-->
@@ -45,12 +45,12 @@
         </div>
       </div>
       <ul class="header_nav header_nav2">
-        <li
-          @click="click_nav(7)"
-          @mouseenter="select_nav(7)"
-          :class="nav_select == 6 ? 'header_nav_hover' : ''"
-        >
-          <router-link to="/cart">购物车</router-link>
+        <li @click="click_nav(5)" @mouseenter="select_nav(5)">
+          <router-link
+            :class="clickFlag == 5 ? 'header_nav_hover' : ''"
+            to="/cart"
+            >购物车</router-link
+          >
         </li>
       </ul>
     </div>
@@ -101,6 +101,7 @@ export default {
         headImg: "",
       },
       dialogVisible: false,
+      clickFlag: 0,
     };
   },
   mounted() {
@@ -152,7 +153,8 @@ export default {
       this.nav_select = val;
     },
     click_nav(val) {
-      this.index = val;
+      console.log(11111);
+      this.clickFlag = val;
     },
     handleClose(done) {
       this.$confirm("确认关闭？")
@@ -179,6 +181,16 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .header_nav_hover {
+      list-style: none;
+      text-decoration: none;
+      cursor: pointer;
+      color: #282828;
+      font-size: 16px;
+      border-radius: 30px;
+      font-weight: 600;
+      background-color: rgba(0, 0, 0, 0.07);
+    }
     .header_nav {
       width: 300px;
       list-style: none;
