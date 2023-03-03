@@ -35,7 +35,7 @@
         <div class="title">旅行故事</div>
         <div class="items">
           <div class="item" v-for="item of all.slice(0, 3)" :key="item.index">
-            <img src="@/assets/imgs/home_travel.png" alt="" />
+            <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
             <div class="describe">
               {{ item.title }}
             </div>
@@ -46,8 +46,8 @@
       <div class="red_revolution">
         <div class="title">4个必去的红色旅游景点</div>
         <div class="items">
-          <div class="item" v-for="item in reds.slice(0, 4)" :key="item.index">
-            <img src="@/assets/imgs/home_travel.png" alt="" />
+          <div class="item" v-for="item in reds.slice(0, 3)" :key="item.index">
+            <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
             <div class="describe">
               {{ item.title }}
             </div>
@@ -64,7 +64,7 @@
               v-for="item in City_escapes.slice(0, 3)"
               :key="item.index"
             >
-              <img src="@/assets/imgs/home_travel.png" alt="" />
+              <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
               <div class="describe">
                 {{ item.title }}
               </div>
@@ -79,7 +79,7 @@
               v-for="item in Destination_experiences.slice(0, 3)"
               :key="item.index"
             >
-              <img src="@/assets/imgs/home_travel.png" alt="" />
+              <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
               <div class="describe">
                 {{ item.title }}
               </div>
@@ -94,7 +94,7 @@
               v-for="item in Eat_drink.slice(0, 3)"
               :key="item.index"
             >
-              <img src="@/assets/imgs/home_travel.png" alt="" />
+              <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
               <div class="describe">
                 {{ item.title }}
               </div>
@@ -109,7 +109,7 @@
               v-for="item in Stay.slice(0, 3)"
               :key="item.index"
             >
-              <img src="@/assets/imgs/home_travel.png" alt="" />
+              <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
               <div class="describe">
                 Exploring Utah's National Parks with my non-outdoorsy tweens
               </div>
@@ -124,7 +124,7 @@
               v-for="item in Culture_history.slice(0, 3)"
               :key="item.index"
             >
-              <img src="@/assets/imgs/home_travel.png" alt="" />
+              <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
               <div class="describe">
                 Exploring Utah's National Parks with my non-outdoorsy tweens
               </div>
@@ -139,7 +139,7 @@
               v-for="item in Travel_style.slice(0, 3)"
               :key="item.index"
             >
-              <img src="@/assets/imgs/home_travel.png" alt="" />
+              <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
               <div class="describe">
                 Exploring Utah's National Parks with my non-outdoorsy tweens
               </div>
@@ -154,7 +154,7 @@
               v-for="item in Related.slice(0, 3)"
               :key="item.index"
             >
-              <img src="@/assets/imgs/home_travel.png" alt="" />
+              <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
               <div class="describe">
                 {{ item.title }}
               </div>
@@ -231,6 +231,19 @@ export default {
 };
 </script>
 <style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+body {
+  background-color: #f1f1f1;
+}
 .contains_all {
   width: 1200px;
   margin: 100px auto;

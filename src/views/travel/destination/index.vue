@@ -8,16 +8,16 @@
       </div>
       <div class="list">
         <ul>
-          <li v-for="item in lists" :key="item.title">
-            <img :src="item.cov" />
+          <li v-for="item in lists" :key="item.index">
+            <img :src="require('@/assets/imgs/' + item.photo)" />
             <div class="right">
               <div class="title">{{ item.title }}</div>
-              <div class="views">
+              <span class="views">
                 {{ item.view }}
-              </div>
-              <div class="comment">
+              </span>
+              <span class="comment">
                 {{ item.comm_num }}
-              </div>
+              </span>
               <div class="introduction">{{ item.introduce }}</div>
             </div>
           </li>

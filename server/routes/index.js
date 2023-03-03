@@ -37,14 +37,12 @@ router.post("/front/api/destination/getDestinationRecommend", function(req, res)
     if (err) {
       console.log("getDestinationRecommend查询语句执行异常");
     }
-    console.log(result);
     for (const item of result) {
       item.tags = item.tags.split("\"");
       item.tags = item.tags.filter((item) => item != "[");
       item.tags = item.tags.filter((item) => item != "]");
       item.tags = item.tags.filter((item) => item != ",");
     }
-    console.log(result);
     res.send(result);
   });
 });
@@ -66,6 +64,12 @@ router.post("/front/api/blog/getBlogPage", function(req, res) {
   conn.query(sql, function(err, result) {
     if (err) {
       console.log("getBlogPage查询语句执行异常");
+    }
+    for (const item of result) {
+      item.tags = item.tags.split("\"");
+      item.tags = item.tags.filter((item) => item != "[");
+      item.tags = item.tags.filter((item) => item != "]");
+      item.tags = item.tags.filter((item) => item != ",");
     }
     res.send(result);
   });

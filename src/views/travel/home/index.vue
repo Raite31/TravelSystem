@@ -28,8 +28,8 @@
             <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
             <div class="bottom">
               <div class="item-title">{{ item.title }}</div>
-              <div class="item-tag" v-for="item2 in item.tags.slice(0, 3)">
-                {{ item2 }}
+              <div class="item-tag">
+                <span v-for="item2 in item.tags.slice(0, 3)">{{ item2 }}</span>
               </div>
               <div class="item-date">{{ item.date_time }}</div>
               <div class="item-contain">{{ item.contain }}</div>
@@ -125,7 +125,6 @@ body {
 }
 .contains {
   width: 100%;
-  height: calc(100vh - 70px);
   margin: 0 auto;
   .firstScreen {
     img {
@@ -168,9 +167,9 @@ body {
       .item {
         float: left;
         width: 380px;
-        height: 452px;
         box-sizing: border-box;
         margin: 30px 30px;
+        padding-bottom: 10px;
 
         background: #ffffff;
         box-shadow: 0px 7px 19px 0px rgba(0, 0, 0, 0.25);
@@ -196,6 +195,10 @@ body {
         .bottom {
           padding: 0px 26px;
           text-align: left;
+          
+          display: flex;
+          flex-direction: column;
+          align-items: center;
 
           .item-title {
             font-size: 15px;
@@ -221,6 +224,8 @@ body {
             overflow: hidden;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 5;
+
+            margin-bottom: 10px;
           }
         }
       }
@@ -245,9 +250,10 @@ body {
       .item {
         float: left;
         width: 380px;
-        height: 452px;
         box-sizing: border-box;
         margin: 30px 30px;
+        padding-bottom: 10px;
+
         background: #ffffff;
         box-shadow: 0px 7px 19px 0px rgba(0, 0, 0, 0.25);
         border-radius: 10px 10px 10px 10px;
@@ -273,6 +279,10 @@ body {
         .bottom {
           padding: 0 26px;
           text-align: left;
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
           .item-title {
             font-size: 15px;
             font-weight: 600;
@@ -283,6 +293,12 @@ body {
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+          }
+          .item-tag {
+            margin-bottom: 10px;
+          }
+          .item-date {
+            margin-bottom: 10px;
           }
           .item-contain {
             width: 293px;
@@ -297,6 +313,8 @@ body {
             overflow: hidden;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 5;
+
+            margin-bottom: 10px;
           }
         }
       }
