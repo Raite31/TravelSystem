@@ -101,6 +101,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .contain-all {
+  background: white;
+  padding: 20px;
   // 图片上传组件
   :deep(.avatar-uploader .el-upload) {
     border: 1px dashed #d9d9d9;
