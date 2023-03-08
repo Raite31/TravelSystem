@@ -4,11 +4,15 @@
     <div class="contain_all">
       <div class="self">
         <div class="left">
-          <img :src="authors.avatar" alt="" />
+          <img :src="require('@/assets/imgs/' + authors.avatar)" alt="" />
         </div>
         <div class="right">
           <div class="title">{{ authors.name }}</div>
-          <div class="tag">{{ authors.tags }}</div>
+          <div class="tag">
+            <span v-for="item in authors.tags" :key="item.index">
+              {{ item }}
+            </span>
+          </div>
           <div class="introduce">{{ authors.introduce }}</div>
         </div>
       </div>
@@ -21,7 +25,11 @@
             </div>
             <div class="right">
               <div class="title">{{ item.title }}</div>
-              <div class="tag">{{ item.tags }}</div>
+              <div class="tag">
+                <span v-for="item2 in item.tags" :key="item2.index">
+                  {{ item2 }}
+                </span>
+              </div>
               <div class="contain">{{ item.contain }}</div>
             </div>
           </li>
@@ -33,6 +41,7 @@
 <script>
 import Head from "@/components/Head.vue";
 import Footer from "@/components/Footer.vue";
+import { getAuthorBlog, getAuthor } from "@/api/author/index";
 
 export default {
   components: {
@@ -41,74 +50,24 @@ export default {
   },
   data() {
     return {
-      authors: {
-        avatar: "@/assets/imgs/item_photo.png",
-        name: "姓名",
-        tags: ["11111111", "222222222", "3333333"],
-        introduce:
-          "简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介v",
-      },
-      blogs: {
-        0: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "你好",
-          tags: ["11111111", "222222222", "3333333"],
-          contain:
-            "Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.",
-        },
-        1: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "你好",
-          tags: ["11111111", "222222222", "3333333"],
-          contain:
-            "Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.",
-        },
-        2: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "你好",
-          tags: ["11111111", "222222222", "3333333"],
-          contain:
-            "Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.",
-        },
-        3: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "你好",
-          tags: ["11111111", "222222222", "3333333"],
-          contain:
-            "Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.",
-        },
-        4: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "你好",
-          tags: ["11111111", "222222222", "3333333"],
-          contain: "dfasssssssssssguhdijvfbcdhnsjiygreuhdisjkvcbdhxsnj",
-        },
-        5: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "你好",
-          tags: ["11111111", "222222222", "3333333"],
-          contain: "dfasssssssssssguhdijvfbcdhnsjiygreuhdisjkvcbdhxsnj",
-        },
-        6: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "你好",
-          tags: ["11111111", "222222222", "3333333"],
-          contain: "dfasssssssssssguhdijvfbcdhnsjiygreuhdisjkvcbdhxsnj",
-        },
-        7: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "你好",
-          tags: ["11111111", "222222222", "3333333"],
-          contain: "dfasssssssssssguhdijvfbcdhnsjiygreuhdisjkvcbdhxsnj",
-        },
-        8: {
-          cov: "@/assets/imgs/item_photo.png",
-          title: "你好",
-          tags: ["11111111", "222222222", "3333333"],
-          contain: "dfasssssssssssguhdijvfbcdhnsjiygreuhdisjkvcbdhxsnj",
-        },
-      },
+      authors: {},
+      blogs: {},
     };
+  },
+  methods: {
+    getData() {
+      getAuthorBlog().then((res) => {
+        this.blogs = res.data;
+        console.log("this.blogs: ", this.blogs);
+      });
+      getAuthor().then((res) => {
+        this.authors = res.data[0];
+        console.log("this.authors: ", this.authors);
+      });
+    },
+  },
+  created() {
+    this.getData();
   },
 };
 </script>

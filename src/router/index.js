@@ -61,7 +61,7 @@ const routes = [
   },
   // =================作者主页
   {
-    path: "/blog/author",
+    path: "/author",
     name: "blogAuthor",
     component: () => import("@/views/blog/author/index.vue"),
   },

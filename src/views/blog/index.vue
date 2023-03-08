@@ -46,7 +46,7 @@ export default {
     };
   },
   methods: {
-    getdata() {
+    getData() {
       getBlogPage().then((res) => {
         this.blogs = res.data;
       });
@@ -54,7 +54,7 @@ export default {
   },
 
   created() {
-    this.getdata();
+    this.getData();
   },
 };
 </script>

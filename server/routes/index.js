@@ -74,17 +74,40 @@ router.post("/front/api/blog/getBlogPage", function(req, res) {
     res.send(result);
   });
 });
-
-
-// =========================================================================================================== 用户api
-router.get("/front/api/check", function(req, res) {
-  const sql = "SELECT * FROM user";
+// 作者主页的博客列表
+router.post("/front/api/blog/authorBlogPage", function(req, res) {
+  const sql = "SELECT * FROM blog WHERE userId = 1";
   conn.query(sql, function(err, result) {
     if (err) {
-      console.log("查询语句执行异常");
+      console.log("getBlogPage查询语句执行异常");
+    }
+    for (const item of result) {
+      item.tags = item.tags.split("\"");
+      item.tags = item.tags.filter((item) => item != "[");
+      item.tags = item.tags.filter((item) => item != "]");
+      item.tags = item.tags.filter((item) => item != ",");
     }
     res.send(result);
   });
 });
+
+
+// =========================================================================================================== 用户api
+router.post("/front/api/getAuthor", function(req, res) {
+  const sql = "SELECT * FROM user WHERE id = 1";
+  conn.query(sql, function(err, result) {
+    if (err) {
+      console.log("查询语句执行异常");
+    }
+    for (const item of result) {
+      item.tags = item.tags.split("\"");
+      item.tags = item.tags.filter((item) => item != "[");
+      item.tags = item.tags.filter((item) => item != "]");
+      item.tags = item.tags.filter((item) => item != ",");
+    }
+    res.send(result);
+  });
+});
+
 
 module.exports = router;
