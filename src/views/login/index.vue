@@ -11,12 +11,14 @@
             type="text"
             name="username"
             v-model="username"
+            placeholder="请输入账号"
           />
           <el-input
             id="password"
             type="password"
             name="password"
             v-model="password"
+            placeholder="请输入密码"
           />
           <div class="function">
             <el-checkbox class="remember" v-model="remember"
@@ -42,6 +44,7 @@
 <script>
 import axios from "axios";
 import Head from "@/components/Head.vue";
+import { checkLogin } from "@/api/login/index";
 
 export default {
   components: {
@@ -62,6 +65,9 @@ export default {
       this.codeImg = "http://localhost:8080/codeImg?date" + new Date();
     },
     login_click() {
+      checkLogin().then((res) => {
+        console.log("res:", res);
+      });
       // this.postRequest('/login', {
       //   username: this.username,
       //   password: this.password,

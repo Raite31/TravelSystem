@@ -1,4 +1,5 @@
 var express = require("express");
+var bodyParser = require("body-parser");
 const conn = require("../public/connectDB/conn_sql");
 var router = express.Router();
 
@@ -7,6 +8,19 @@ var router = express.Router();
 /* GET home page. */
 router.get("/", function(req, res, next) {
   res.render("index", { title: "Express" });
+});
+
+// 检验登录
+router.post("/front/api/checkLogin", function(req, res) {
+  console.log("req.query: ", req.query);
+  res.send(req.query);
+  // const sql = "SELECT * FROM destination";
+  // conn.query(sql, function(err, result) {
+  //   if (err) {
+  //     console.log("getDestinationPage查询语句执行异常");
+  //   }
+  //   res.send(result);
+  // });
 });
 
 // =========================================================================================================== 景点api
