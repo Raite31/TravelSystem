@@ -7,17 +7,17 @@
         <div class="contain">想要获得独特的优惠？...</div>
         <div class="section_background_sr">
           <el-input
-            id="username"
+            id="account"
             type="text"
-            name="username"
-            v-model="username"
+            name="account"
+            v-model="login.account"
             placeholder="请输入账号"
           />
           <el-input
             id="password"
             type="password"
             name="password"
-            v-model="password"
+            v-model="login.password"
             placeholder="请输入密码"
           />
           <div class="function">
@@ -42,7 +42,6 @@
   </div>
 </template>
 <script>
-import axios from "axios";
 import Head from "@/components/Head.vue";
 import { checkLogin } from "@/api/login/index";
 
@@ -54,8 +53,11 @@ export default {
     return {
       remember: false,
       id: 123,
-      username: "zhangsan",
-      password: "123",
+      login: {
+        account: "",
+        password: "",
+      },
+
       code: "",
       codeImg: "http://localhost:8080/codeImg?date" + new Date(),
     };
@@ -65,8 +67,8 @@ export default {
       this.codeImg = "http://localhost:8080/codeImg?date" + new Date();
     },
     login_click() {
-      checkLogin().then((res) => {
-        console.log("res:", res);
+      checkLogin(this.login).then((res) => {
+        console.log("res:", res.data);
       });
       // this.postRequest('/login', {
       //   username: this.username,
@@ -87,7 +89,7 @@ export default {
       //     // this.$message.error(res.data);
       //   });
 
-      this.$router.replace("/home");
+      // this.$router.replace("/home");
     },
   },
 };
@@ -125,7 +127,7 @@ export default {
     .section_background_sr {
       background-color: white;
       border-radius: 0.625rem;
-      #username,
+      #account,
       #password {
         width: 324px;
         background: #f8f8f8;

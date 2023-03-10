@@ -12,8 +12,15 @@ router.get("/", function(req, res, next) {
 
 // 检验登录
 router.post("/front/api/checkLogin", function(req, res) {
-  console.log("req.query: ", req.query);
-  res.send(req.query);
+  let { account, password } = req.body;
+  const sql = "SELECT * FROM user WHERE account = account AND password = password";
+  conn.query(sql, function(err, result) {
+    if (err) {
+      console.log("checkLogin查询语句执行异常");
+    }
+    res.send(result);
+  });
+
   // const sql = "SELECT * FROM destination";
   // conn.query(sql, function(err, result) {
   //   if (err) {
