@@ -12,11 +12,33 @@ router.get("/", function(req, res, next) {
 
 // 检验登录
 router.post("/front/api/checkLogin", function(req, res) {
-  let { account, password } = req.body;
-  const sql = "SELECT * FROM user WHERE account = account AND password = password";
-  conn.query(sql, function(err, result) {
+  const login = req.body;
+  const sql = "SELECT * FROM user WHERE account = ? ";
+  conn.query(sql, login.account, function(err, result) {
     if (err) {
       console.log("checkLogin查询语句执行异常");
+    }
+    if (!result.length) {
+      return res.json({
+        status: -1,
+        msg: "该用户不存在"
+      });
+    } else {
+      if (result[0].password == login.password) {
+        let token = {
+          login: true,
+          account: login.account
+        };
+        return res.json({
+          status: 1,
+          msg: "登录成功",
+          token: token
+        });
+      }
+      return res.json({
+        status: -2,
+        msg: "密码错误"
+      });
     }
     res.send(result);
   });
