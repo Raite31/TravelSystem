@@ -14,6 +14,7 @@ router.get("/", function(req, res, next) {
 router.post("/front/api/checkLogin", function(req, res) {
   const login = req.body;
   const sql = "SELECT * FROM user WHERE account = ? ";
+  const sql2 = "INSERT INTO user(account,password) values(?,?)";
   conn.query(sql, login.account, function(err, result) {
     if (err) {
       console.log("checkLogin查询语句执行异常");
@@ -25,15 +26,30 @@ router.post("/front/api/checkLogin", function(req, res) {
       });
     }
     if (!result.length) {
-      return res.json({
-        status: -1,
-        msg: "该用户不存在"
+      conn.query(sql2, [login.account, login.password], function(err, result) {
+        if (err) {
+          console.log("checkLogin插入语句执行异常");
+        }
+        console.log(result);
+        // res = result;
       });
+      let token = {
+        login: true,
+        account: login.account,
+        password: login.password
+      };
+      return res.json({
+        status: 1,
+        msg: "注册成功",
+        token: token
+      });
+
     } else {
       if (result[0].password == login.password) {
         let token = {
           login: true,
-          account: login.account
+          account: login.account,
+          password: login.password
         };
         return res.json({
           status: 1,

@@ -11,44 +11,44 @@
       >
         <el-row :gutter="80">
           <el-col>
-            <el-from-item>
+            <el-form-item>
               <div class="title"></div>
-            </el-from-item>
+            </el-form-item>
           </el-col>
           <el-col>
-            <el-from-item label="昵称" prop="name">
-              <el-input></el-input>
-            </el-from-item>
+            <el-form-item label="昵称" prop="name">
+              <el-input placeholder="请输入昵称"></el-input>
+            </el-form-item>
           </el-col>
           <el-col>
-            <el-from-item label="邮箱" prop="email"
-              ><el-input></el-input
-            ></el-from-item>
+            <el-form-item label="邮箱" prop="email"
+              ><el-input placeholder="请输入邮箱"></el-input
+            ></el-form-item>
           </el-col>
           <el-col>
-            <el-from-item label="城市" prop="city"
-              ><el-input></el-input
-            ></el-from-item>
+            <el-form-item label="城市" prop="city"
+              ><el-input placeholder="请选择城市"></el-input
+            ></el-form-item>
           </el-col>
           <el-col>
-            <el-from-item label="兴趣" prop="hobby"
-              ><el-input></el-input
-            ></el-from-item>
+            <el-form-item label="兴趣" prop="hobby"
+              ><el-input placeholder="请选择兴趣"></el-input
+            ></el-form-item>
           </el-col>
           <el-col>
-            <el-from-item label="账号" prop="account"
-              ><el-input></el-input
-            ></el-from-item>
+            <el-form-item label="账号" prop="account"
+              ><el-input placeholder="请输入账号"></el-input
+            ></el-form-item>
           </el-col>
           <el-col>
-            <el-from-item label="密码" prop="password"
-              ><el-input></el-input
-            ></el-from-item>
+            <el-form-item label="密码" prop="password"
+              ><el-input placeholder="请输入密码"></el-input
+            ></el-form-item>
           </el-col>
         </el-row>
 
         <el-row>
-          <el-button></el-button>
+          <el-button>创建账号</el-button>
         </el-row>
       </el-form>
     </div>

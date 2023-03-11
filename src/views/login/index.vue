@@ -39,7 +39,7 @@
               @click="login_click(loginForm)"
               @keydown.enter.native="login_click(loginForm)"
             >
-              登录
+              登录/注册
             </el-button>
           </el-col>
         </el-row>
@@ -105,7 +105,7 @@ export default {
             this.$message.success(res.data.msg);
             // 去除后端的数据，存到sessionStorage作用域中
             sessionStorage.setItem("user", JSON.stringify(res.data.token));
-            this.$router.replace("/home");
+            // this.$router.replace("/home");
             return;
           }
         })
