@@ -5,7 +5,7 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 const routes = [
-  // ==================登录页
+  // ====================登录页
   {
     path: "/",
     name: "",
@@ -15,14 +15,20 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "@/views/login/index.vue"),
   },
-  // =================个人主页
+  // ====================注册页
+  {
+    path: "/register",
+    name: "register",
+    component: () => import("@/views/login/register.vue"),
+  },
+  // ====================个人主页
   {
     path: "/personal",
     name: "personal",
     component: () => import("@/views/personal/index.vue"),
   },
 
-  // =========================================travel的路由
+  // ============================================================travel的路由
   // ====================购物车
   {
     path: "/cart",
@@ -53,20 +59,22 @@ const routes = [
     name: "story",
     component: () => import("@/views/travel/story/story.vue"),
   },
-  // ===============博客首页（列表)
+
+  // ============================================================Blog的路由
+  // ====================博客首页（列表)
   {
     path: "/blogList",
     name: "blogList",
     component: () => import("@/views/blog/index.vue"),
   },
-  // =================作者主页
+  // ====================作者主页
   {
     path: "/author",
     name: "blogAuthor",
     component: () => import("@/views/blog/author/index.vue"),
   },
 
-  // ==================写博客
+  // ====================写博客
   {
     path: "/pushBlog",
     name: "pushBlog",

@@ -5,8 +5,8 @@
       <div class="title">欢迎回来！</div>
       <div class="contain">想要获得独特的优惠？</div>
       <el-form :model="loginForm" :rules="rules" ref="loginFrom">
-        <el-row>
-          <el-col :span="20">
+        <el-row :gutter="80">
+          <el-col>
             <el-form-item prop="account">
               <el-input
                 id="account"
@@ -16,9 +16,7 @@
               />
             </el-form-item>
           </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="20">
+          <el-col>
             <el-form-item prop="password">
               <el-input
                 id="password"
@@ -28,27 +26,27 @@
               />
             </el-form-item>
           </el-col>
-        </el-row>
-        <el-row :span="20">
-          <div class="function">
-            <el-checkbox class="remember" v-model="remember"
-              >记住我</el-checkbox
+          <el-col>
+            <div class="function">
+              <el-checkbox class="remember" v-model="remember"
+                >记住我</el-checkbox
+              >
+              <a class="forget">忘记密码？</a>
+            </div>
+          </el-col>
+          <el-col>
+            <el-button
+              @click="login_click(loginForm)"
+              @keydown.enter.native="login_click(loginForm)"
             >
-            <a class="forget">忘记密码？</a>
-          </div>
-        </el-row>
-        <el-row>
-          <el-button
-            @click="login_click(loginForm)"
-            @keydown.enter.native="login_click(loginForm)"
-          >
-            登录
-          </el-button>
+              登录
+            </el-button>
+          </el-col>
         </el-row>
       </el-form>
       <div class="register">
         还没有账号？
-        <a href="./regist.html">马上注册</a>
+        <router-link to="/register">马上注册</router-link>
       </div>
     </div>
   </div>
@@ -108,6 +106,7 @@ export default {
             // 去除后端的数据，存到sessionStorage作用域中
             sessionStorage.setItem("user", JSON.stringify(res.data.token));
             this.$router.replace("/home");
+            return;
           }
         })
         .catch((error) => {
@@ -124,7 +123,7 @@ export default {
     });
   },
   beforeDestroy() {
-    document.removeEventListener("keydown", this.login_click(this.loginForm));
+    document.removeEventListener("keydown", this.login_click());
   },
 };
 </script>
@@ -149,6 +148,7 @@ export default {
     margin-bottom: 23px;
   }
   .el-form {
+    width: 320px;
     .el-input {
       width: 324px;
       border-radius: 10px;
