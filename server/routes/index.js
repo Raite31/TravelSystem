@@ -18,6 +18,12 @@ router.post("/front/api/checkLogin", function(req, res) {
     if (err) {
       console.log("checkLogin查询语句执行异常");
     }
+    if (!login.account || !login.password) {
+      return res.json({
+        status: -3,
+        msg: "请输入账号密码"
+      });
+    }
     if (!result.length) {
       return res.json({
         status: -1,
