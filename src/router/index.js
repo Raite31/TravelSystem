@@ -15,12 +15,6 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "@/views/login/index.vue"),
   },
-  // ====================注册页
-  {
-    path: "/register",
-    name: "register",
-    component: () => import("@/views/login/register.vue"),
-  },
   // ====================个人主页
   {
     path: "/personal",

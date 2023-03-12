@@ -26,30 +26,48 @@ router.post("/front/api/checkLogin", function(req, res) {
       });
     }
     if (!result.length) {
-      conn.query(sql2, [login.account, login.password], function(err, result) {
-        if (err) {
-          console.log("checkLogin插入语句执行异常");
-        }
-        console.log(result);
-        // res = result;
-      });
-      let token = {
-        login: true,
-        account: login.account,
-        password: login.password
-      };
-      return res.json({
-        status: 1,
-        msg: "注册成功",
-        token: token
+      let id2 = null;
+
+      function f() {
+        return new Promise(function(resolve, reject) {
+          conn.query(sql2, [login.account, login.password], function(err, rows) {
+            if (err) {
+              console.log("checkLogin插入语句执行异常");
+            }
+            resolve(rows.insertId);
+          });
+        });
+      }
+
+      f().then(function(res) {
+        console.log(res);
+        id2 = res;
       });
 
+      // setTimeout(() => console.log(id2), 3000);
+
+      setTimeout(function() {
+        const token = {
+          login: true,
+          account: login.account,
+          password: login.password,
+          id: id2
+        };
+
+        return res.json({
+          status: 1,
+          msg: "注册成功",
+          token: token
+        });
+      }, 1500);
+      return;
     } else {
       if (result[0].password == login.password) {
         let token = {
           login: true,
           account: login.account,
-          password: login.password
+          password: login.password,
+          id: result[0].id
         };
         return res.json({
           status: 1,

@@ -44,10 +44,6 @@
           </el-col>
         </el-row>
       </el-form>
-      <div class="register">
-        还没有账号？
-        <router-link to="/register">马上注册</router-link>
-      </div>
     </div>
   </div>
 </template>
@@ -181,20 +177,6 @@ export default {
       color: #1c1c1c;
       line-height: 24px;
       margin-bottom: 50px;
-    }
-  }
-
-  .register {
-    background-color: rgba(0, 0, 0, 0.4);
-    padding: 5px;
-    box-sizing: border-box;
-    color: white;
-    font-size: 15px;
-    border-radius: 12px;
-    a {
-      color: #000000;
-      outline: none;
-      text-decoration: none;
     }
   }
 }

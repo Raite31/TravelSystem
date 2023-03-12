@@ -41,8 +41,9 @@
       <!--登录的显示start-->
       <div class="login_info">
         <div class="download">
-          <a href="javascript:;" title="退出登录" v-if="1 == 3"> 退出登录 </a>
+          <router-link v-if="!user.login" to="/"> 登录 </router-link>
           <router-link
+            v-else
             :class="this.clickFlag == 4 ? 'header_nav_active' : ''"
             to="/personal"
             >头像
@@ -99,10 +100,9 @@ export default {
     return {
       index: 1,
       user: {
-        id: "",
-        username: "",
+        account: "",
         password: "",
-        headImg: "",
+        login: "",
       },
       dialogVisible: false,
       clickFlag: 0,
@@ -113,7 +113,6 @@ export default {
     let user = JSON.parse(sessionStorage.getItem("user"));
     // 拷贝
     Object.assign(this.user, user);
-    // console.log(this.user);
   },
   methods: {
     uploadSuccess(success) {
