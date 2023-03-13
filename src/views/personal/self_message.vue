@@ -2,7 +2,7 @@
   <div class="contain-all-message">
     <div class="myself">
       <div class="avatar">
-        <img :src="avatar" alt="" />
+        <img :src="require('@/assets/imgs/' + form.avatar)" alt="" />
       </div>
       <div class="name">{{ form.account }}</div>
     </div>
@@ -59,18 +59,18 @@
 </template>
 <script>
 import { Message } from "element-ui";
-import { getAuthor } from "@/api/author/index";
+import { getAuthor, updateAuthor } from "@/api/author/index";
 
 export default {
   data() {
     return {
+      user: null,
       avatar: "",
       form: {
         name: "",
         id: "",
         sex: "",
         introduce: "",
-        place: [],
         birthday: "",
         workTime: "",
       },
@@ -78,20 +78,20 @@ export default {
     };
   },
   methods: {
-    onSubmit() {
-      formRef.value.validate(async (valid) => {
-        if (valid) {
-          try {
-          } catch {}
-        }
-      });
+    async onSubmit(data) {
+      const res = await updateAuthor(data);
+      if (res.data.status == 1) {
+        this.$message.success(res.data.msg);
+        getAuthor({ id: this.user.id }).then((res) => {
+          this.form = res.data[0];
+        });
+        return;
+      }
     },
     initData() {
-      const user = JSON.parse(sessionStorage.getItem("user"));
-      getAuthor({ id: 1 }).then((res) => {
-        console.log(res);
+      this.user = JSON.parse(sessionStorage.getItem("user"));
+      getAuthor({ id: this.user.id }).then((res) => {
         this.form = res.data[0];
-        console.log("this.form: ", this.form);
       });
     },
   },

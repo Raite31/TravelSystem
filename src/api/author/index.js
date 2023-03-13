@@ -16,3 +16,12 @@ export function getAuthor(data) {
     data: data,
   });
 }
+
+// 更新用户信息
+export function updateAuthor(data) {
+  return request({
+    url: "updateAuthor",
+    method: "POST",
+    data: data,
+  });
+}

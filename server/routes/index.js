@@ -178,10 +178,10 @@ router.post("/front/api/blog/authorBlogPage", function(req, res) {
 // =========================================================================================================== 用户api
 router.post("/front/api/getAuthor", function(req, res) {
   const id = req.body.id;
-  const sql = "SELECT * FROM user WHERE id = ?";
+  const sql = "SELECT * FROM user WHERE id = 2";
   conn.query(sql, id, function(err, result) {
       if (err) {
-        console.log("查询语句执行异常");
+        console.log("getAuthor查询语句执行异常");
       }
       for (const item of result) {
         item.tags = item.tags.split("\"");
@@ -189,31 +189,37 @@ router.post("/front/api/getAuthor", function(req, res) {
         item.tags = item.tags.filter((item) => item != "]");
         item.tags = item.tags.filter((item) => item != ",");
       }
-      console.log("result:", result);
+      for (const item of result) {
+        item.place = item.place.split("\"");
+        item.place = item.place.filter((item) => item != "[");
+        item.place = item.place.filter((item) => item != "]");
+        item.place = item.place.filter((item) => item != ",");
+      }
       res.send(result);
     }
   )
   ;
 });
 
-// router.post("/front/api/updateAuthor", function(req, res) {
-//   const user = req.body;
-//   const sql = "UPDATE user SET avatar=?,name=?,sex=?,introduce=?,place=?,birthday=?,tags=?,account=?,password=?";
-//   conn.query(sql, user.id, function(err, result) {
-//       if (err) {
-//         console.log("查询语句执行异常");
-//       }
-//       for (const item of result) {
-//         item.tags = item.tags.split("\"");
-//         item.tags = item.tags.filter((item) => item != "[");
-//         item.tags = item.tags.filter((item) => item != "]");
-//         item.tags = item.tags.filter((item) => item != ",");
-//       }
-//       res.send(result);
-//     }
-//   )
-//   ;
-// });
+router.post("/front/api/updateAuthor", function(req, res) {
+  const user = req.body;
+  user.place = req.body.place.toString();
+  user.tags = req.body.tags.toString();
+
+  const sql = "UPDATE user SET avatar=?,name=?,sex=?,introduce=?,place=?,birthday=?,tags=?,account=?,password=? WHERE id=?";
+  conn.query(sql, [user.avatar, user.name, user.sex, user.introduce, user.place, user.birthday, user.tags, user.account, user.password, user.id], function(err, result) {
+      if (err) {
+        console.log("updateAuthor查询语句执行异常");
+      }
+      return res.json({
+        status: 1,
+        msg: "更新成功"
+      });
+      res.send(result);
+    }
+  )
+  ;
+});
 
 
 module.exports = router;
