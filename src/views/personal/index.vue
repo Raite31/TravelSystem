@@ -66,7 +66,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 * {
   margin: 0;
   padding: 0;
@@ -84,7 +84,7 @@ body {
   margin-bottom: 50px;
   .grid {
     display: grid;
-    grid-template-columns: 15% 5fr;
+    grid-template-columns: 15% 1fr;
     grid-template-rows: auto auto;
     column-gap: 2px;
     .left {

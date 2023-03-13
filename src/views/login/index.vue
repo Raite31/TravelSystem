@@ -101,7 +101,7 @@ export default {
             this.$message.success(res.data.msg);
             // 去除后端的数据，存到sessionStorage作用域中
             sessionStorage.setItem("user", JSON.stringify(res.data.token));
-            // this.$router.replace("/home");
+            this.$router.replace("/home");
             return;
           }
         })
@@ -119,7 +119,7 @@ export default {
     });
   },
   beforeDestroy() {
-    document.removeEventListener("keydown", this.login_click());
+    document.removeEventListener("keydown", this.login_click);
   },
 };
 </script>

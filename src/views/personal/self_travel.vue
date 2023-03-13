@@ -1,5 +1,5 @@
 <template>
-  <div class="contain-all">
+  <div class="contain-all-travel">
     <div class="list">
       <ul>
         <div v-for="item in orders" :key="item.index">
@@ -228,15 +228,7 @@ export default {
   padding: 0;
 }
 
-html,
-body {
-  width: 100%;
-  height: 100%;
-  background: #f1f1f1;
-}
-
-.contain-all {
-  width: 1200px;
+.contain-all-travel {
   margin: 0 auto;
   margin-bottom: 50px;
   text-align: left;
@@ -298,7 +290,7 @@ body {
             margin-bottom: 30px;
             .list_right_total {
               font-size: 14px;
-              font-weight: 500  ;
+              font-weight: 500;
               color: #333;
             }
           }

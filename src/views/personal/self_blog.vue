@@ -1,5 +1,5 @@
 <template>
-  <div class="contain-all">
+  <div class="contain-all-blog">
     <div class="nav">
       <el-menu
         :default-active="activeIndex"
@@ -68,7 +68,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.contain-all {
+.contain-all-blog {
   background: white;
   .nav {
     border-bottom: 1px solid #f0f0f2;

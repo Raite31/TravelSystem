@@ -177,20 +177,43 @@ router.post("/front/api/blog/authorBlogPage", function(req, res) {
 
 // =========================================================================================================== 用户api
 router.post("/front/api/getAuthor", function(req, res) {
-  const sql = "SELECT * FROM user WHERE id = 1";
-  conn.query(sql, function(err, result) {
-    if (err) {
-      console.log("查询语句执行异常");
+  const id = req.body.id;
+  const sql = "SELECT * FROM user WHERE id = ?";
+  conn.query(sql, id, function(err, result) {
+      if (err) {
+        console.log("查询语句执行异常");
+      }
+      for (const item of result) {
+        item.tags = item.tags.split("\"");
+        item.tags = item.tags.filter((item) => item != "[");
+        item.tags = item.tags.filter((item) => item != "]");
+        item.tags = item.tags.filter((item) => item != ",");
+      }
+      console.log("result:", result);
+      res.send(result);
     }
-    for (const item of result) {
-      item.tags = item.tags.split("\"");
-      item.tags = item.tags.filter((item) => item != "[");
-      item.tags = item.tags.filter((item) => item != "]");
-      item.tags = item.tags.filter((item) => item != ",");
-    }
-    res.send(result);
-  });
+  )
+  ;
 });
+
+// router.post("/front/api/updateAuthor", function(req, res) {
+//   const user = req.body;
+//   const sql = "UPDATE user SET avatar=?,name=?,sex=?,introduce=?,place=?,birthday=?,tags=?,account=?,password=?";
+//   conn.query(sql, user.id, function(err, result) {
+//       if (err) {
+//         console.log("查询语句执行异常");
+//       }
+//       for (const item of result) {
+//         item.tags = item.tags.split("\"");
+//         item.tags = item.tags.filter((item) => item != "[");
+//         item.tags = item.tags.filter((item) => item != "]");
+//         item.tags = item.tags.filter((item) => item != ",");
+//       }
+//       res.send(result);
+//     }
+//   )
+//   ;
+// });
 
 
 module.exports = router;

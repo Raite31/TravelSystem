@@ -1,5 +1,5 @@
 <template>
-  <div class="contain-all">
+  <div class="contain-all-create">
     <div></div>
     <el-form label-position="left">
       <el-row :gutter="80">
@@ -100,7 +100,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.contain-all {
+.contain-all-create {
   background: white;
   padding: 20px;
   // 图片上传组件
