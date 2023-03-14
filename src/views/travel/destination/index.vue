@@ -9,7 +9,7 @@
       <div class="list">
         <ul>
           <li v-for="item in lists" :key="item.index">
-            <img :src="require('@/assets/imgs/' + item.photo)" />
+            <img :src="item.photo[0]" />
             <div class="right">
               <div class="title">{{ item.title }}</div>
               <span class="views">

@@ -100,6 +100,23 @@ router.post("/front/api/destination/getDestinationPage", function(req, res) {
     if (err) {
       console.log("getDestinationPage查询语句执行异常");
     }
+    for (const item of result) {
+      item.photo = (item.photo || "").split("\"");
+      item.photo = item.photo.filter((item) => item != "[");
+      item.photo = item.photo.filter((item) => item != "]");
+      item.photo = item.photo.filter((item) => item != ",");
+
+      item.precautions = (item.precautions || "").split("\"");
+      item.precautions = item.precautions.filter((item) => item != "[");
+      item.precautions = item.precautions.filter((item) => item != "]");
+      item.precautions = item.precautions.filter((item) => item != ",");
+
+      item.tags = (item.tags || "").split("\"");
+      item.tags = item.tags.filter((item) => item != "[");
+      item.tags = item.tags.filter((item) => item != "]");
+      item.tags = item.tags.filter((item) => item != ",");
+    }
+
     res.send(result);
   });
 });
