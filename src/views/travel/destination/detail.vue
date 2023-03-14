@@ -8,17 +8,17 @@
             <img src="@/assets/imgs/item_photo.png" alt="" />
           </div>
           <div class="information">
-            <div class="title">{{ title }}</div>
+            <div class="title">{{ list.title }}</div>
             <div>
-              <span class="view">{{ view }}</span>
-              <span class="comment">{{ comment }}</span>
+              <span class="view">{{ list.view }}</span>
+              <span class="comment">{{ list.comment }}</span>
             </div>
-            <div class="introduce">{{ introduce }}</div>
+            <div class="introduce">{{ list.introduce }}</div>
           </div>
           <hr />
           <div class="precautions">
             <ul>
-              <li v-for="item in precautions" :key="item.index">
+              <li v-for="item in list.precautions" :key="item.index">
                 {{ item.text }}
               </li>
             </ul>
@@ -85,13 +85,13 @@
             </div>
             <!-- <p class="tip3">一个预约可用于{{ date }}</p> -->
             <div class="information">
-              <div class="title">{{ title }}</div>
+              <div class="title">{{ list.title }}</div>
               <div class="image"></div>
               <div class="tip4">立即预定并稍后付款符合条件</div>
-              <div class="computed">{{ num }}人 x ￥{{ price }}</div>
-              <div class="total">Total ￥{{ num * price }}</div>
+              <div class="computed">{{ list.num }}人 x ￥{{ list.price }}</div>
+              <div class="total">Total ￥{{ list.num * list.price }}</div>
               <div class="tip">(无额外税费或预定费)</div>
-              <el-button class="time">{{ time }}</el-button>
+              <el-button class="time">{{ list.time }}</el-button>
             </div>
             <div class="precautions">
               立即预订并稍后付款符合条件 -
