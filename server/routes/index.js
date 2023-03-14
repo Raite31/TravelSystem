@@ -95,30 +95,59 @@ router.post("/front/api/checkLogin", function(req, res) {
 // =========================================================================================================== 景点api
 // 获取总的
 router.post("/front/api/destination/getDestinationPage", function(req, res) {
-  const sql = "SELECT * FROM destination";
-  conn.query(sql, function(err, result) {
-    if (err) {
-      console.log("getDestinationPage查询语句执行异常");
-    }
-    for (const item of result) {
-      item.photo = (item.photo || "").split("\"");
-      item.photo = item.photo.filter((item) => item != "[");
-      item.photo = item.photo.filter((item) => item != "]");
-      item.photo = item.photo.filter((item) => item != ",");
+  const id = "" || req.body.id;
+  const sql = "SELECT * FROM destination WHERE id = ?";
+  const sql2 = "SELECT * FROM destination";
+  if (id) {
+    conn.query(sql, id, function(err, result) {
+      if (err) {
+        console.log("getDestinationPage查询语句执行异常");
+      }
+      for (const item of result) {
+        item.photo = (item.photo || "").split("\"");
+        item.photo = item.photo.filter((item) => item != "[");
+        item.photo = item.photo.filter((item) => item != "]");
+        item.photo = item.photo.filter((item) => item != ",");
 
-      item.precautions = (item.precautions || "").split("\"");
-      item.precautions = item.precautions.filter((item) => item != "[");
-      item.precautions = item.precautions.filter((item) => item != "]");
-      item.precautions = item.precautions.filter((item) => item != ",");
+        item.precautions = (item.precautions || "").split("\"");
+        item.precautions = item.precautions.filter((item) => item != "[");
+        item.precautions = item.precautions.filter((item) => item != "]");
+        item.precautions = item.precautions.filter((item) => item != ",");
 
-      item.tags = (item.tags || "").split("\"");
-      item.tags = item.tags.filter((item) => item != "[");
-      item.tags = item.tags.filter((item) => item != "]");
-      item.tags = item.tags.filter((item) => item != ",");
-    }
+        item.tags = (item.tags || "").split("\"");
+        item.tags = item.tags.filter((item) => item != "[");
+        item.tags = item.tags.filter((item) => item != "]");
+        item.tags = item.tags.filter((item) => item != ",");
+      }
 
-    res.send(result);
-  });
+      res.send(result);
+    });
+  } else {
+    conn.query(sql2, function(err, result) {
+      if (err) {
+        console.log("getDestinationPage查询语句执行异常");
+      }
+      for (const item of result) {
+        item.photo = (item.photo || "").split("\"");
+        item.photo = item.photo.filter((item) => item != "[");
+        item.photo = item.photo.filter((item) => item != "]");
+        item.photo = item.photo.filter((item) => item != ",");
+
+        item.precautions = (item.precautions || "").split("\"");
+        item.precautions = item.precautions.filter((item) => item != "[");
+        item.precautions = item.precautions.filter((item) => item != "]");
+        item.precautions = item.precautions.filter((item) => item != ",");
+
+        item.tags = (item.tags || "").split("\"");
+        item.tags = item.tags.filter((item) => item != "[");
+        item.tags = item.tags.filter((item) => item != "]");
+        item.tags = item.tags.filter((item) => item != ",");
+      }
+
+      res.send(result);
+    });
+  }
+
 });
 // 获取分类为hots的
 router.post("/front/api/destination/getDestinationHots", function(req, res) {

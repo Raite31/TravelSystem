@@ -83,7 +83,7 @@
               </div>
               <el-dialog></el-dialog>
             </div>
-            <p class="tip3">一个预约可用于{{ date }}</p>
+            <!-- <p class="tip3">一个预约可用于{{ date }}</p> -->
             <div class="information">
               <div class="title">{{ title }}</div>
               <div class="image"></div>
@@ -148,6 +148,7 @@
 <script>
 import Head from "@/components/Head.vue";
 import Footer from "@/components/Footer.vue";
+import { getDestinationPage } from "@/api/destination/index";
 
 export default {
   components: {
@@ -156,22 +157,26 @@ export default {
   },
   data() {
     return {
-      photo: ["@/assets/imgs/item_photo.png"],
-      title: "The occupational traffic permit is one things in the company  ",
-      view: 4,
-      comment: 7,
-      introduce:
-        "What's included Private Transport from and back to your Hotel in Marrakech by air-conditioned vehicle Guide Camel ride Lunch Tea What's not included Food and drinks, unless specified Highlights All taxes, fuel surcharges and service fees included A la carte lunch included All entrance fees included",
-      precautions: {
-        0: { text: "Ages 15-65, max of 4 per group" },
-        1: { text: "Ages 15-65, max of 4 per group" },
-        2: { text: "Ages 15-65, max of 4 per group" },
-        3: { text: "Ages 15-65, max of 4 per group" },
-      },
-      num: 4,
-      price: 170,
-      time: "8:30 AM",
+      // 获取跳转的id
+      // 方式一
+      // id: this.$route.params.id
+      // 方式二
+      id: this.$route.query.id,
+
+      list: null,
     };
+  },
+  methods: {
+    getData() {
+      console.log("this.id:", this.id);
+      getDestinationPage({ id: this.id }).then((res) => {
+        this.list = res.data[0];
+        console.log("this.list:", this.list);
+      });
+    },
+  },
+  created() {
+    this.getData();
   },
 };
 </script>

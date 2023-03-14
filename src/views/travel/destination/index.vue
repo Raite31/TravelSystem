@@ -8,7 +8,7 @@
       </div>
       <div class="list">
         <ul>
-          <li v-for="item in lists" :key="item.index">
+          <li v-for="item in lists" :key="item.index" @click="toDetail(item)">
             <img :src="item.photo[0]" />
             <div class="right">
               <div class="title">{{ item.title }}</div>
@@ -32,6 +32,7 @@
 import Head from "@/components/Head.vue";
 import Footer from "@/components/Footer.vue";
 import { getDestinationPage } from "@/api/destination/index";
+
 export default {
   components: {
     Head,
@@ -39,13 +40,28 @@ export default {
   },
   data() {
     return {
+      user: null,
       lists: null,
     };
   },
   methods: {
     getdata() {
+      this.user = JSON.parse(sessionStorage.getItem("user"));
       getDestinationPage().then((res) => {
         this.lists = res.data;
+      });
+    },
+    toDetail(item) {
+      console.log("Data: ", item.id);
+      this.$router.push({
+        // 方式一
+        // name: "destinationDetail",
+        // params: {
+        //   id: item.id,
+        // },
+
+        // 方式二
+        path: `/destination/detail/?id=${item.id}`,
       });
     },
   },

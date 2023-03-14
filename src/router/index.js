@@ -44,7 +44,7 @@ const routes = [
   // ====================目的地详情页
   {
     path: "/destination/detail",
-    name: "detail",
+    name: "destinationDetail",
     component: () => import("@/views/travel/destination/detail.vue"),
   },
   // ====================旅行故事

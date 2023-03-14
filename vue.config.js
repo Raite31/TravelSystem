@@ -17,11 +17,11 @@ module.exports = defineConfig({
   },
   devServer: {
     proxy: {
-      "front/api": {
+      "/front/api": {
         // 这个别名也很重要
         target: "http://127.0.0.1:3000/", //实际请求地址
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
+        rewrite: (path) => path.replace(/^\/front\/api/, ""),
       },
     },
   },
