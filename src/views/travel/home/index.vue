@@ -12,11 +12,11 @@
         <div class="title">热门旅游</div>
         <div class="items">
           <div class="item" v-for="item in hots" :key="item.index">
-            <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
+            <img :src="item.photo[0]" alt="" />
             <div class="bottom">
               <div class="item-title">{{ item.title }}</div>
               <div class="item-contain">{{ item.contain }}</div>
-              <el-button></el-button>
+              <el-button>查看详情</el-button>
             </div>
           </div>
         </div>
@@ -25,7 +25,7 @@
         <div class="title">我们推荐</div>
         <div class="items">
           <div class="item" v-for="item in recommends" :key="item.index">
-            <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
+            <img :src="item.photo[0]" alt="" />
             <div class="bottom">
               <div class="item-title">{{ item.title }}</div>
               <div class="item-tag">
@@ -33,7 +33,7 @@
               </div>
               <div class="item-date">{{ item.date_time }}</div>
               <div class="item-contain">{{ item.contain }}</div>
-              <el-button></el-button>
+              <el-button>订购</el-button>
             </div>
           </div>
         </div>
@@ -200,6 +200,7 @@ body {
           align-items: center;
 
           .item-title {
+            width: 100%;
             font-size: 15px;
             font-weight: 600;
             color: #000000;
@@ -283,6 +284,7 @@ body {
           flex-direction: column;
           align-items: center;
           .item-title {
+            width: 100%;
             font-size: 15px;
             font-weight: 600;
             color: #000000;
