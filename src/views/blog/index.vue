@@ -9,7 +9,11 @@
       <div class="title">博客分享集合地</div>
       <div class="list">
         <ul>
-          <li v-for="(item, index) in blogs" :key="index">
+          <li
+            v-for="(item, index) in blogs"
+            :key="index"
+            @click="toDetail(item)"
+          >
             <div class="left">
               <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
             </div>
@@ -49,6 +53,18 @@ export default {
     getData() {
       getBlogPage().then((res) => {
         this.blogs = res.data;
+      });
+    },
+    toDetail(item) {
+      this.$router.push({
+        // 方式一
+        // name: "destinationDetail",
+        // params: {
+        //   id: item.id,
+        // },
+
+        // 方式二
+        path: `/blogList/blogDetail/?id=${item.id}`,
       });
     },
   },

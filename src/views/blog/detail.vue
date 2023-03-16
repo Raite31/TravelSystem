@@ -48,9 +48,16 @@ export default {
   },
   data() {
     return {
+      // 获取跳转的id
+      // 方式一
+      // id: this.$route.params.id
+      // 方式二
+      id: this.$route.query.id,
+
       user: null,
       form: {
         id: "",
+        uid: "",
         cov: "",
         title: "",
         name: "",
@@ -66,25 +73,24 @@ export default {
   },
   methods: {
     getData() {
-      getBlogDetail({ id: 1 }).then((res) => {
+      getBlogDetail({ id: this.id }).then((res) => {
         this.form.id = res.data[0].id;
-
+        this.form.uid = res.data[0].userId;
         this.form.title = res.data[0].title;
         this.form.createTime = res.data[0].create_time;
         this.form.tags = res.data[0].tags;
         this.form.contain = res.data[0].contain;
-      });
-      getAuthor({ id: 1 }).then((res) => {
-        this.form.avatar = res.data[0].avatar;
-        this.form.name = res.data[0].name;
-        this.form.place = res.data[0].place;
-        this.form.introduce = res.data[0].introduce;
+        getAuthor({ id: this.form.uid }).then((res) => {
+          this.form.avatar = res.data[0].avatar;
+          this.form.name = res.data[0].name;
+          this.form.place = res.data[0].place;
+          this.form.introduce = res.data[0].introduce;
+        });
       });
     },
   },
   created() {
     this.getData();
-    console.log("this.form: ", this.form);
   },
 };
 </script>

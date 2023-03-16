@@ -324,15 +324,15 @@ router.post('/front/api/blog/getBlogPage', function (req, res) {
         res.send(result)
     })
 })
-// 获取全部博客详情
+// 获取博客详情
 router.post('/front/api/blog/getBlogDetail', function (req, res) {
     const id = req.body.id
+    console.log(id)
     const sql = 'SELECT * FROM blog WHERE id = ?'
     conn.query(sql, id, function (err, result) {
         if (err) {
             console.log('getBlogPage查询语句执行异常')
         }
-        console.log(result)
         for (const item of result) {
             item.tags = item.tags.split('"')
             item.tags = item.tags.filter((item) => item != '[')
@@ -363,7 +363,7 @@ router.post('/front/api/blog/authorBlogPage', function (req, res) {
 // =========================================================================================================== 用户api
 router.post('/front/api/getAuthor', function (req, res) {
     const id = req.body.id
-    const sql = 'SELECT * FROM user WHERE id = 2'
+    const sql = 'SELECT * FROM user WHERE id = ?'
     conn.query(sql, id, function (err, result) {
             if (err) {
                 console.log('getAuthor查询语句执行异常')

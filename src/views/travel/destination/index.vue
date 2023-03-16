@@ -52,7 +52,6 @@ export default {
       });
     },
     toDetail(item) {
-      console.log("Data: ", item.id);
       this.$router.push({
         // 方式一
         // name: "destinationDetail",
