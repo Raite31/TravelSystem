@@ -61,6 +61,12 @@ const routes = [
     name: "blogList",
     component: () => import("@/views/blog/index.vue"),
   },
+  // ====================博客详情页
+  {
+    path: "/blogList/blogDetail",
+    name: "blogDetail",
+    component: () => import("@/views/blog/detail.vue"),
+  },
   // ====================作者主页
   {
     path: "/author",

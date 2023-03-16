@@ -9,6 +9,15 @@ export function getBlogPage(data) {
   });
 }
 
+// 获取博客详情
+export function getBlogDetail(data) {
+  return request({
+    url: "blog/getBlogDetail",
+    method: "POST",
+    data: data,
+  });
+}
+
 // // 获取分类为red的
 // export function getBlogPage(data) {
 //   return request({
