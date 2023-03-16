@@ -9,6 +9,7 @@
               placeholder="请输入你文章的标题"
               maxlength="100"
               show-word-limit="true"
+              v-model="dataForm.title"
             />
           </el-form-item>
         </el-col>
@@ -36,28 +37,29 @@
               show-word-limit="true"
               type="textarea"
               :rows="6"
+              v-model="dataForm.introduce"
             />
           </el-form-item>
         </el-col>
         <el-col :span="24">
           <el-form-item label="博客详情">
-            <Editor></Editor>
+            <Editor v-model="dataForm.detail"></Editor>
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="标签">
-            <VKeywords></VKeywords>
+            <VKeywords v-model="dataForm.tags"></VKeywords>
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="分类">
-            <VKeywords></VKeywords>
+            <VKeywords v-model="dataForm.classify"></VKeywords>
           </el-form-item>
         </el-col>
         <el-col>
           <el-form-item>
             <el-button>保存草稿</el-button>
-            <el-button>发布文章</el-button>
+            <el-button @click="submit(dataForm)">发布文章</el-button>
           </el-form-item>
         </el-col>
       </el-row>
@@ -78,6 +80,14 @@ export default {
       imageUrl: "",
       content: null,
       editorOption: {},
+      dataForm: {
+        title: "",
+        cov: "",
+        introduce: "",
+        detail: "",
+        tags: [],
+        classify: [],
+      },
     };
   },
   methods: {
@@ -95,6 +105,9 @@ export default {
         this.$message.error("上传头像图片大小不能超过 2MB!");
       }
       return isJPG && isLt2M;
+    },
+    submit(data) {
+      console.log(data);
     },
   },
 };
