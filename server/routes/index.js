@@ -374,6 +374,7 @@ router.post('/front/api/blog/authorBlogPage', function (req, res) {
 
 
 // =========================================================================================================== 用户api
+// 搜索用户
 router.post('/front/api/getAuthor', function (req, res) {
     const id = req.body.id
     const sql = 'SELECT * FROM user WHERE id = ?'
@@ -399,6 +400,7 @@ router.post('/front/api/getAuthor', function (req, res) {
 
 })
 
+// 更新用户信息
 router.post('/front/api/updateAuthor', function (req, res) {
     const user = req.body
     user.place = req.body.place.toString()
