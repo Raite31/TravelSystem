@@ -310,13 +310,14 @@ router.post('/front/api/destination/getDestinationLowPrice', function (req, res)
 // =========================================================================================================== 博客api
 // 新增博客
 router.post('/front/api/blog/createBlog', function (req, res) {
-    const data = req.body.data
-    const sql = 'INSERT INTO blog(title,photo,contain,introduce,tags,classify) values (?,?,?,?,?,? ) '
-    conn.query(sql, function (err, result) {
+    const data = req.body
+    const values = [1, data.title, data.cov, data.detail, data.introduce, data.tags, data.classify, '2022-03-01 13:18']
+    const sql = 'INSERT INTO blog(userId,title,photo,contain,introduce,tags,classify,create_time) VALUES (?,?,?,?,?,"?","?",?) '
+    conn.query(sql, values, function (err, result) {
         if (err) {
             console.log('createBlog查询语句执行异常')
         }
-        console.log(result)
+        res.send(result.insertId.toString())
 
     })
 })

@@ -69,6 +69,7 @@
 <script>
 import Editor from "@/components/Editor.vue";
 import VKeywords from "@/components/VKeywords.vue";
+import { createBlog } from "@/api/blog/index";
 
 export default {
   components: {
@@ -107,6 +108,7 @@ export default {
       return isJPG && isLt2M;
     },
     submit(data) {
+      createBlog(data);
       console.log(data);
     },
   },

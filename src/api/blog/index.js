@@ -1,5 +1,14 @@
 import request from "@/utils/request";
 
+// 新建博客文章
+export function createBlog(data) {
+  return request({
+    url: "blog/createBlog",
+    method: "POST",
+    data: data,
+  });
+}
+
 // 获取总的
 export function getBlogPage(data) {
   return request({
