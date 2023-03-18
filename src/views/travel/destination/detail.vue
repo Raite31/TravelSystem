@@ -5,7 +5,7 @@
       <div class="grid">
         <div class="left">
           <div class="photo">
-            <img src="@/assets/imgs/item_photo.png" alt="" />
+            <img :src="list.photo[0]" alt="" />
           </div>
           <div class="information">
             <div class="title">{{ list.title }}</div>
@@ -69,16 +69,16 @@
         </div>
         <div class="right">
           <div class="photo">
-            <img src="@/assets/imgs/item_photo.png" alt="" />
+            <img :src="list.photo[1]" alt="" />
           </div>
           <div class="photo" style="margin-bottom: 20px">
-            <img src="@/assets/imgs/item_photo.png" alt="" />
+            <img :src="list.photo[2]" alt="" />
           </div>
           <div class="sell">
             <div class="title">预留你的位置</div>
-            <div class="date">
+            <div class="date_num">
               <div>
-                <el-date-picker></el-date-picker>
+                <el-date-picker placeholder="请选择日期"></el-date-picker>
                 <el-button></el-button>
               </div>
               <el-dialog></el-dialog>
@@ -275,7 +275,11 @@ body {
             "Lucida Sans", Arial, sans-serif;
           margin-bottom: 24px;
         }
-        .date {
+        .date_num {
+          margin-bottom: 20px;
+          .el-date-editor {
+            margin-right: 10px;
+          }
         }
         .tip3 {
           margin: 24px 0;

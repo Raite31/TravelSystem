@@ -50,11 +50,7 @@
             :class="this.clickFlag == 4 ? 'header_nav_active' : ''"
             to="/personal"
           >
-            <img
-              class=""
-              :src="require('@/assets/imgs/' + user.avatar)"
-              alt=""
-            />
+            <img :src="require('@/assets/imgs/' + user.avatar)" alt="" />
           </router-link>
         </div>
       </div>
@@ -108,8 +104,8 @@ export default {
   data() {
     return {
       index: 1,
-      userFlag: null,
-      user: null,
+      userFlag: {},
+      user: {},
       dialogVisible: false,
       clickFlag: 0,
     };
@@ -117,13 +113,15 @@ export default {
   mounted() {
     // 从sessionStorage中取出user并转为JSON
     this.userFlag = JSON.parse(sessionStorage.getItem("user"));
-    console.log("this.userFlag: ", this.userFlag);
     getAuthor({ id: this.userFlag.id }).then((res) => {
       this.user = res.data[0];
-      console.log("this.user: ", this.user);
     });
   },
   methods: {
+    click_nav(val) {
+      this.clickFlag = val;
+      console.log(this.clickFlag);
+    },
     // uploadSuccess(success) {
     //   // 上传头像成功
     //   console.log(success);
@@ -160,10 +158,7 @@ export default {
     //       // 发送请求失败
     //     });
     // },
-    // click_nav(val) {
-    //   this.clickFlag = val;
-    //   console.log(this.clickFlag);
-    // },
+
     // handleClose(done) {
     //   this.$confirm("确认关闭？")
     //     .then((_) => {
