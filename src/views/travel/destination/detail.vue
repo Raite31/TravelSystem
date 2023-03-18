@@ -77,19 +77,115 @@
           <div class="sell">
             <div class="title">预留你的位置</div>
             <div class="date_num">
-              <div>
-                <el-date-picker placeholder="请选择日期"></el-date-picker>
-                <el-button></el-button>
+              <div class="date_num_show">
+                <el-date-picker
+                  placeholder="请选择日期"
+                  v-model="list.date_time"
+                ></el-date-picker>
+                <div class="num">
+                  <img
+                    src="@/assets/default/people.svg"
+                    alt=""
+                    @click="dialogVisible = true"
+                  />
+                  <span class="people">
+                    {{
+                      Number(list.adults_num) +
+                      Number(list.children_num) +
+                      Number(list.infants_num)
+                    }}
+                  </span>
+                </div>
               </div>
-              <el-dialog></el-dialog>
+              <el-dialog
+                title="选择人数"
+                :visible.sync="dialogVisible"
+                width="30%"
+                :append-to-body="true"
+              >
+                <div
+                  class="item"
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 10px;
+                  "
+                >
+                  <div class="left">
+                    <div>成人</div>
+                    <div>年龄：13-100</div>
+                  </div>
+                  <div class="right">
+                    <el-input
+                      type="number"
+                      v-model="list.adults_num"
+                    ></el-input>
+                  </div>
+                </div>
+                <div
+                  class="item"
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 10px;
+                  "
+                >
+                  <div class="left">
+                    <div>儿童</div>
+                    <div>年龄：6-12</div>
+                  </div>
+                  <div class="right">
+                    <el-input
+                      type="number"
+                      v-model="list.children_num"
+                    ></el-input>
+                  </div>
+                </div>
+                <div
+                  class="item"
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 10px;
+                  "
+                >
+                  <div class="left">
+                    <div>婴儿</div>
+                    <div>年龄：0-5</div>
+                  </div>
+                  <div class="right">
+                    <el-input
+                      type="number"
+                      v-model="list.infants_num"
+                    ></el-input>
+                  </div>
+                </div>
+                <el-button></el-button>
+              </el-dialog>
             </div>
             <!-- <p class="tip3">一个预约可用于{{ date }}</p> -->
             <div class="information">
               <div class="title">{{ list.title }}</div>
               <div class="image"></div>
               <div class="tip4">立即预定并稍后付款符合条件</div>
-              <div class="computed">{{ list.num }}人 x ￥{{ list.price }}</div>
-              <div class="total">Total ￥{{ list.num * list.price }}</div>
+              <div class="computed">
+                {{
+                  Number(list.adults_num) +
+                  Number(list.children_num) +
+                  Number(list.infants_num)
+                }}人 x ￥{{ list.price }}
+              </div>
+              <div class="total">
+                Total ￥{{
+                  (Number(list.adults_num) +
+                    Number(list.children_num) +
+                    Number(list.infants_num)) *
+                  list.price
+                }}
+              </div>
               <div class="tip">(无额外税费或预定费)</div>
               <el-button class="time">{{ list.time }}</el-button>
             </div>
@@ -98,7 +194,9 @@
               不确定您的计划？您可以预订一个位置并稍后付款。只需点击“立即预订”即可查看更多付款选项。
             </div>
             <div class="button">
-              <el-button class="add_to_cart">添加到购物车</el-button>
+              <el-button class="add_to_cart" @click="createOrder(list)">
+                添加到购物车
+              </el-button>
               <el-button class="reserve_now">立即预订</el-button>
             </div>
             <div class="tip2">
@@ -157,22 +255,33 @@ export default {
   },
   data() {
     return {
+      dialogVisible: false,
       // 获取跳转的id
       // 方式一
       // id: this.$route.params.id
       // 方式二
       id: this.$route.query.id,
 
-      list: null,
+      list: {
+        adults_num: 0,
+        children_num: 0,
+        infants_num: 0,
+        date_time: null,
+        photo: [],
+      },
     };
   },
   methods: {
     getData() {
       console.log("this.id:", this.id);
       getDestinationPage({ id: this.id }).then((res) => {
-        this.list = res.data[0];
+        this.list = Object.assign(this.list, res.data[0]);
+        // this.list = res.data[0];
         console.log("this.list:", this.list);
       });
+    },
+    createOrder(data) {
+      console.log("data:", data);
     },
   },
   created() {
@@ -181,7 +290,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 * {
   margin: 0;
   padding: 0;
@@ -277,8 +386,23 @@ body {
         }
         .date_num {
           margin-bottom: 20px;
-          .el-date-editor {
-            margin-right: 10px;
+          .date_num_show {
+            display: flex;
+            align-items: center;
+            .el-date-editor {
+              margin-right: 20px;
+            }
+            .num {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              img {
+                margin-right: 3px;
+              }
+              .people {
+                font-weight: 600;
+              }
+            }
           }
         }
         .tip3 {
