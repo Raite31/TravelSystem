@@ -83,6 +83,22 @@ router.post('/front/api/checkLogin', function (req, res) {
         res.send(result)
     })
 })
+// =========================================================================================================== 购物车api
+// 加入购物车
+router.post('/front/api/cart/addCart', function (req, res) {
+    const data = req.body
+    const values = [data.id, 1, data.title, data.price, 2, data.tags, data.introduce, data.date_time, data.adults_num, data.children_num, data.infants_num, '2022-01-03']
+    console.log('data:', data)
+    const sql = 'INSERT INTO cart(dId,uid,title,price,time,tags,introduce,date_time,adults_num,children_num,infants_num,create_time) VALUES (?,?,?,?,?,"?",?,?,?,?,?,?) '
+    conn.query(sql, values, function (err, result) {
+        if (err) {
+            console.log('addCart查询语句执行异常')
+        }
+        console.log(err)
+        console.log(result)
+        res.send(result.insertId.toString())
+    })
+})
 
 // =========================================================================================================== 景点api
 // 获取总的

@@ -247,6 +247,7 @@
 import Head from "@/components/Head.vue";
 import Footer from "@/components/Footer.vue";
 import { getDestinationPage } from "@/api/destination/index";
+import { addCart } from "@/api/cart/index";
 
 export default {
   components: {
@@ -281,7 +282,9 @@ export default {
       });
     },
     createOrder(data) {
-      console.log("data:", data);
+      addCart(data).then((res) => {
+        console.log("res: ", res);
+      });
     },
   },
   created() {
