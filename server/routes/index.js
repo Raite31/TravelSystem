@@ -84,12 +84,37 @@ router.post('/front/api/checkLogin', function (req, res) {
     })
 })
 // =========================================================================================================== 购物车api
+// 获取购物车列表
+router.post('/front/api/cart/getCartList', function (req, res) {
+    const id = req.body.id
+    console.log('id: ', id)
+    const sql = 'SELECT * FROM cart where uid = ?'
+    conn.query(sql, id, function (err, result) {
+        if (err) {
+            console.log('getCartList查询语句执行异常')
+        }
+        for (const item of result) {
+            item.information = (item.information || '').split('"')
+            item.information = item.information.filter((item) => item != '[')
+            item.information = item.information.filter((item) => item != ']')
+            item.information = item.information.filter((item) => item != ',')
+
+            item.cov = (item.cov || '').split('\'')
+            item.cov = item.cov.filter((item) => item != '[')
+            item.cov = item.cov.filter((item) => item != ']')
+            item.cov = item.cov.filter((item) => item != ',')
+        }
+
+        console.log(result)
+        res.send(result)
+    })
+})
 // 加入购物车
 router.post('/front/api/cart/addCart', function (req, res) {
     const data = req.body
-    const values = [data.id, 1, data.title, data.price, 2, data.tags, data.introduce, data.date_time, data.adults_num, data.children_num, data.infants_num, '2022-01-03']
+    const values = [data.id, 1, data.photo, data.title, data.price, 2, data.tags, data.introduce, data.date_time, data.adults_num, data.children_num, data.infants_num, '2022-01-03']
     console.log('data:', data)
-    const sql = 'INSERT INTO cart(dId,uid,title,price,time,tags,introduce,date_time,adults_num,children_num,infants_num,create_time) VALUES (?,?,?,?,?,"?",?,?,?,?,?,?) '
+    const sql = 'INSERT INTO cart(dId,uid,cov,title,price,time,information,introduce,date_time,adults_num,children_num,infants_num,create_time) VALUES (?,?,"[?]",?,?,?,"?",?,?,?,?,?,?) '
     conn.query(sql, values, function (err, result) {
         if (err) {
             console.log('addCart查询语句执行异常')
@@ -327,6 +352,7 @@ router.post('/front/api/destination/getDestinationLowPrice', function (req, res)
 // 新增博客
 router.post('/front/api/blog/createBlog', function (req, res) {
     const data = req.body
+    console.log(data)
     const values = [1, data.title, data.cov, data.detail, data.introduce, data.tags, data.classify, '2022-03-01 13:18']
     const sql = 'INSERT INTO blog(userId,title,photo,contain,introduce,tags,classify,create_time) VALUES (?,?,?,?,?,"?","?",?) '
     conn.query(sql, values, function (err, result) {
@@ -334,7 +360,6 @@ router.post('/front/api/blog/createBlog', function (req, res) {
             console.log('createBlog查询语句执行异常')
         }
         res.send(result.insertId.toString())
-
     })
 })
 // 获取全部博客列表

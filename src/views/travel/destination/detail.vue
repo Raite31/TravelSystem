@@ -274,16 +274,13 @@ export default {
   },
   methods: {
     getData() {
-      console.log("this.id:", this.id);
       getDestinationPage({ id: this.id }).then((res) => {
         this.list = Object.assign(this.list, res.data[0]);
-        // this.list = res.data[0];
-        console.log("this.list:", this.list);
       });
     },
     createOrder(data) {
       addCart(data).then((res) => {
-        console.log("res: ", res);
+        this.$message.success("添加购物车成功");
       });
     },
   },

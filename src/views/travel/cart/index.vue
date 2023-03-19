@@ -15,19 +15,29 @@
           <div v-for="item in orders" :key="item.index">
             <li>
               <div class="cov">
-                <img src="" alt="" />
+                <img :src="item.cov[0]" alt="" />
               </div>
               <div class="detail">
                 <div class="list_title">{{ item.title }}</div>
                 <div class="introduce">{{ item.introduce }}</div>
-                <div class="date_and_time">{{ item.date_and_time }}</div>
+                <div class="date_and_time">{{ item.date_time }}</div>
                 <div>
                   <span class="human">
-                    {{ item.human }} Adults x
+                    {{
+                      Number(item.adults_num) +
+                      Number(item.children_num) +
+                      Number(item.infants_num)
+                    }}
+                    Adults x
                     <span style="font-weight: bold">RMB{{ item.price }}</span>
                   </span>
                   <span class="total" style="font-weight: bold">
-                    {{ item.human * item.price }}
+                    {{
+                      (Number(item.adults_num) +
+                        Number(item.children_num) +
+                        Number(item.infants_num)) *
+                      item.price
+                    }}
                   </span>
                 </div>
                 <div class="information">
@@ -82,6 +92,7 @@
 <script>
 import Head from "@/components/Head.vue";
 import Footer from "@/components/Footer.vue";
+import { getCartList } from "@/api/cart/index";
 
 export default {
   components: {
@@ -90,173 +101,10 @@ export default {
   },
   data() {
     return {
+      user: null,
       show: true,
       orders: {
-        0: {
-          title: "2-Hour Snorkeling in Two Spots of Tulum's Reef",
-          introduce:
-            "2-Hour Snorkeling in Two Spots of Tulum's Reef - 10:00 AM",
-          date_and_time: "Thursday, March 9, 2023 | 10:00 AM",
-          human: 4,
-          price: 56.7,
-          information: [
-            "Duration: 2h",
-            "Instant Confirmation",
-            "Mobile Ticket Accepted",
-            "Free cancellation before March 8",
-          ],
-          status: false,
-        },
-        1: {
-          title: "2-Hour Snorkeling in Two Spots of Tulum's Reef",
-          introduce:
-            "2-Hour Snorkeling in Two Spots of Tulum's Reef - 10:00 AM",
-          date_and_time: "Thursday, March 9, 2023 | 10:00 AM",
-          human: 4,
-          price: 56.7,
-          information: [
-            "Duration: 2h",
-            "Instant Confirmation",
-            "Mobile Ticket Accepted",
-            "Free cancellation before March 8",
-          ],
-          status: true,
-        },
-        2: {
-          title: "2-Hour Snorkeling in Two Spots of Tulum's Reef",
-          introduce:
-            "2-Hour Snorkeling in Two Spots of Tulum's Reef - 10:00 AM",
-          date_and_time: "Thursday, March 9, 2023 | 10:00 AM",
-          human: 4,
-          price: 56.7,
-          information: [
-            "Duration: 2h",
-            "Instant Confirmation",
-            "Mobile Ticket Accepted",
-            "Free cancellation before March 8",
-          ],
-          status: false,
-        },
-        3: {
-          title: "2-Hour Snorkeling in Two Spots of Tulum's Reef",
-          introduce:
-            "2-Hour Snorkeling in Two Spots of Tulum's Reef - 10:00 AM",
-          date_and_time: "Thursday, March 9, 2023 | 10:00 AM",
-          human: 4,
-          price: 56.7,
-          information: [
-            "Duration: 2h",
-            "Instant Confirmation",
-            "Mobile Ticket Accepted",
-            "Free cancellation before March 8",
-          ],
-          status: false,
-        },
-        4: {
-          title: "2-Hour Snorkeling in Two Spots of Tulum's Reef",
-          introduce:
-            "2-Hour Snorkeling in Two Spots of Tulum's Reef - 10:00 AM",
-          date_and_time: "Thursday, March 9, 2023 | 10:00 AM",
-          human: 4,
-          price: 56.7,
-          information: [
-            "Duration: 2h",
-            "Instant Confirmation",
-            "Mobile Ticket Accepted",
-            "Free cancellation before March 8",
-          ],
-          status: true,
-        },
-        5: {
-          title: "2-Hour Snorkeling in Two Spots of Tulum's Reef",
-          introduce:
-            "2-Hour Snorkeling in Two Spots of Tulum's Reef - 10:00 AM",
-          date_and_time: "Thursday, March 9, 2023 | 10:00 AM",
-          human: 4,
-          price: 56.7,
-          information: [
-            "Duration: 2h",
-            "Instant Confirmation",
-            "Mobile Ticket Accepted",
-            "Free cancellation before March 8",
-          ],
-          status: false,
-        },
-        6: {
-          title: "2-Hour Snorkeling in Two Spots of Tulum's Reef",
-          introduce:
-            "2-Hour Snorkeling in Two Spots of Tulum's Reef - 10:00 AM",
-          date_and_time: "Thursday, March 9, 2023 | 10:00 AM",
-          human: 4,
-          price: 56.7,
-          information: [
-            "Duration: 2h",
-            "Instant Confirmation",
-            "Mobile Ticket Accepted",
-            "Free cancellation before March 8",
-          ],
-          status: false,
-        },
-        7: {
-          title: "2-Hour Snorkeling in Two Spots of Tulum's Reef",
-          introduce:
-            "2-Hour Snorkeling in Two Spots of Tulum's Reef - 10:00 AM",
-          date_and_time: "Thursday, March 9, 2023 | 10:00 AM",
-          human: 4,
-          price: 56.7,
-          information: [
-            "Duration: 2h",
-            "Instant Confirmation",
-            "Mobile Ticket Accepted",
-            "Free cancellation before March 8",
-          ],
-          status: false,
-        },
-        8: {
-          title: "2-Hour Snorkeling in Two Spots of Tulum's Reef",
-          introduce:
-            "2-Hour Snorkeling in Two Spots of Tulum's Reef - 10:00 AM",
-          date_and_time: "Thursday, March 9, 2023 | 10:00 AM",
-          human: 4,
-          price: 56.7,
-          information: [
-            "Duration: 2h",
-            "Instant Confirmation",
-            "Mobile Ticket Accepted",
-            "Free cancellation before March 8",
-          ],
-          status: false,
-        },
-        9: {
-          title: "2-Hour Snorkeling in Two Spots of Tulum's Reef",
-          introduce:
-            "2-Hour Snorkeling in Two Spots of Tulum's Reef - 10:00 AM",
-          date_and_time: "Thursday, March 9, 2023 | 10:00 AM",
-          human: 4,
-          price: 56.7,
-          information: [
-            "Duration: 2h",
-            "Instant Confirmation",
-            "Mobile Ticket Accepted",
-            "Free cancellation before March 8",
-          ],
-          status: false,
-        },
-        10: {
-          title: "2-Hour Snorkeling in Two Spots of Tulum's Reef",
-          introduce:
-            "2-Hour Snorkeling in Two Spots of Tulum's Reef - 10:00 AM",
-          date_and_time: "Thursday, March 9, 2023 | 10:00 AM",
-          human: 4,
-          price: 56.7,
-          information: [
-            "Duration: 2h",
-            "Instant Confirmation",
-            "Mobile Ticket Accepted",
-            "Free cancellation before March 8",
-          ],
-          status: false,
-        },
+        cov: [],
       },
     };
   },
@@ -270,9 +118,17 @@ export default {
         this.show = true;
       }
     },
+    getData() {
+      this.user = JSON.parse(sessionStorage.getItem("user"));
+      getCartList({ id: this.user.id }).then((res) => {
+        this.orders = res.data;
+        console.log("this.orders: ", this.orders);
+      });
+    },
   },
   mounted() {
     window.addEventListener("scroll", this.showBar);
+    this.getData();
   },
   destroyed() {
     document.removeEventListener("scroll", this.showBar);
@@ -280,7 +136,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-
 .contain-all {
   width: 1200px;
   margin: 0 auto;

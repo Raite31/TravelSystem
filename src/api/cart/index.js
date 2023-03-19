@@ -8,3 +8,11 @@ export function addCart(data) {
     data: data,
   });
 }
+// 获取购物车列表
+export function getCartList(data) {
+  return request({
+    url: "cart/getCartList",
+    method: "POST",
+    data: data,
+  });
+}
