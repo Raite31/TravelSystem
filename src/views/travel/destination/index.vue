@@ -40,14 +40,16 @@ export default {
   },
   data() {
     return {
-      user: null,
       lists: null,
+      keyword: this.$route.query.keyword,
     };
   },
   methods: {
-    getdata() {
-      this.user = JSON.parse(sessionStorage.getItem("user"));
-      getDestinationPage().then((res) => {
+    onQuery(data) {
+      this.getdata(data);
+    },
+    getdata(data) {
+      getDestinationPage({ keyword: data }).then((res) => {
         this.lists = res.data;
       });
     },
@@ -65,7 +67,12 @@ export default {
     },
   },
   created() {
-    this.getdata();
+    if (this.keyword) {
+      console.log(this.keyword);
+      this.onQuery(this.keyword);
+    } else {
+      this.getdata();
+    }
   },
 };
 </script>

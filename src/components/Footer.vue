@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="contain-all">
     <img src="@/assets/imgs/footer.png" />
     <div class="bottom">
       <img src="@/assets/imgs/luori.png" alt="" />
@@ -26,14 +26,14 @@
 </template>
 <style lang="scss" scoped>
 img {
-  width: 1903px;
+  width: 1887px;
   background: #0522a0;
   border-radius: 0px 0px 0px 0px;
   opacity: 1;
 }
 
 .bottom {
-  width: 1903px;
+  width: 1887px;
   display: flex;
   justify-content: space-around;
   margin: 0 auto;

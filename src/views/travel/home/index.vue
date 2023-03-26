@@ -7,11 +7,11 @@
           src="https://static.tacdn.com/img2/brand/home/homemar2022_dt_trans.png"
         />
         <div class="search">
-          <!-- <img src="@/assets/default/search.svg" alt="" /> -->
           <el-input
             placeholder="去哪儿？"
             v-model="searchKeyword"
             prefix-icon="el-icon-search"
+            @keyup.enter.native="searchDestination(searchKeyword)"
           ></el-input>
         </div>
       </div>
@@ -52,7 +52,7 @@
           <div class="right">
             <ul class="list">
               <li v-for="item in lists" :key="item.index">
-                <img :src="require('@/assets/imgs/' + item.photo)" />
+                <img :src="item.photo[0]" />
                 <div>
                   <div>{{ item.place }}</div>
                   <div>￥{{ item.price }}</div>
@@ -60,8 +60,8 @@
               </li>
             </ul>
             <ul class="list">
-              <li v-for="item in lists2">
-                <img :src="require('@/assets/imgs/' + item.photo)" />
+              <li v-for="item in lists2" :key="item.index">
+                <img :src="item.photo[0]" />
                 <div>
                   <div>{{ item.place }}</div>
                   <div>￥{{ item.price }}</div>
@@ -110,6 +110,14 @@ export default {
       getDestinationLowPrice().then((res) => {
         this.lists = res.data.slice(0, 3);
         this.lists2 = res.data.slice(4, 7);
+      });
+    },
+    searchDestination(data) {
+      this.$router.push({
+        path: "/destination",
+        query: {
+          keyword: data,
+        },
       });
     },
   },

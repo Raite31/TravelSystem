@@ -128,13 +128,42 @@ router.post('/front/api/cart/addCart', function (req, res) {
 // =========================================================================================================== 景点api
 // 获取总的
 router.post('/front/api/destination/getDestinationPage', function (req, res) {
+    const keyword = '' || ['%' + req.body.keyword + '%']
     const id = '' || req.body.id
     const sql = 'SELECT * FROM destination WHERE id = ?'
     const sql2 = 'SELECT * FROM destination'
+    const sql3 = 'SELECT * FROM destination WHERE title LIKE ?'
+    if (keyword) {
+        console.log('keyword: ', keyword)
+        conn.query(sql3, keyword, function (err, result) {
+            if (err) {
+                console.log('getDestinationPage 搜索查询语句执行异常')
+            }
+            for (const item of result) {
+                item.photo = (item.photo || '').split('"')
+                item.photo = item.photo.filter((item) => item != '[')
+                item.photo = item.photo.filter((item) => item != ']')
+                item.photo = item.photo.filter((item) => item != ',')
+
+                item.precautions = (item.precautions || '').split('"')
+                item.precautions = item.precautions.filter((item) => item != '[')
+                item.precautions = item.precautions.filter((item) => item != ']')
+                item.precautions = item.precautions.filter((item) => item != ',')
+
+                item.tags = (item.tags || '').split('"')
+                item.tags = item.tags.filter((item) => item != '[')
+                item.tags = item.tags.filter((item) => item != ']')
+                item.tags = item.tags.filter((item) => item != ',')
+            }
+
+            res.send(result)
+        })
+    }
     if (id) {
+        // 获取详情
         conn.query(sql, id, function (err, result) {
             if (err) {
-                console.log('getDestinationPage查询语句执行异常')
+                console.log('getDestinationPage 详情查询语句执行异常')
             }
             for (const item of result) {
                 item.photo = (item.photo || '').split('"')
@@ -190,7 +219,7 @@ router.post('/front/api/destination/getDestinationHots', function (req, res) {
     if (id) {
         conn.query(sql, id, function (err, result) {
             if (err) {
-                console.log('getDestinationPage查询语句执行异常')
+                console.log('getDestinationPage hots查询语句执行异常')
             }
             for (const item of result) {
                 item.photo = (item.photo || '').split('"')
@@ -245,7 +274,7 @@ router.post('/front/api/destination/getDestinationRecommend', function (req, res
     if (id) {
         conn.query(sql, id, function (err, result) {
             if (err) {
-                console.log('getDestinationPage查询语句执行异常')
+                console.log('getDestinationPage recommend查询语句执行异常')
             }
             for (const item of result) {
                 item.photo = (item.photo || '').split('"')
@@ -300,7 +329,7 @@ router.post('/front/api/destination/getDestinationLowPrice', function (req, res)
     if (id) {
         conn.query(sql, id, function (err, result) {
             if (err) {
-                console.log('getDestinationPage查询语句执行异常')
+                console.log('getDestinationPage lowPrice查询语句执行异常')
             }
             for (const item of result) {
                 item.photo = (item.photo || '').split('"')
