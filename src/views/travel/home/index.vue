@@ -3,7 +3,9 @@
     <Head />
     <div class="contains">
       <div class="firstScreen">
-        <img src="@/assets/imgs/home_travel.png" />
+        <img
+          src="https://static.tacdn.com/img2/brand/home/homemar2022_dt_trans.png"
+        />
         <div class="search">
           <el-input v-model="searchKeyword"></el-input>
         </div>
@@ -111,7 +113,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 * {
   margin: 0;
   padding: 0;
@@ -124,27 +126,28 @@ body {
 }
 .contains {
   width: 100%;
-  margin: 0 auto;
   .firstScreen {
+    margin: 50px auto;
     img {
-      width: 1903px;
-      height: 880px;
+      width: 1270px;
+      height: 348px;
     }
     .search {
-      position: relative;
-      width: 807px;
+      // position: relative;
+      width: 400px;
       height: 60px;
-      top: -600px;
+      top: -200px;
       margin: 0 auto;
       border-radius: 50px;
       box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+      z-index: 999;
+      background: white;
       .el-input__inner {
         font-size: 18px;
         width: 100%;
         border-radius: 50px;
         height: 60px;
         line-height: 36px;
-        opacity: 0.3;
       }
     }
   }

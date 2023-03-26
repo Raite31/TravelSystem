@@ -169,7 +169,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .contain_all {
   width: 1400px;
   height: 80px;

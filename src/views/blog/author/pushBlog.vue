@@ -304,7 +304,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #push {
   width: 80vw;
   height: 600px;
