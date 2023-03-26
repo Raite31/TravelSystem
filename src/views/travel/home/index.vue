@@ -7,7 +7,12 @@
           src="https://static.tacdn.com/img2/brand/home/homemar2022_dt_trans.png"
         />
         <div class="search">
-          <el-input v-model="searchKeyword"></el-input>
+          <!-- <img src="@/assets/default/search.svg" alt="" /> -->
+          <el-input
+            placeholder="去哪儿？"
+            v-model="searchKeyword"
+            prefix-icon="el-icon-search"
+          ></el-input>
         </div>
       </div>
       <div class="hot">
@@ -133,8 +138,8 @@ body {
       height: 348px;
     }
     .search {
-      // position: relative;
-      width: 400px;
+      position: relative;
+      width: 800px;
       height: 60px;
       top: -200px;
       margin: 0 auto;
@@ -142,12 +147,24 @@ body {
       box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
       z-index: 999;
       background: white;
-      .el-input__inner {
-        font-size: 18px;
-        width: 100%;
-        border-radius: 50px;
-        height: 60px;
-        line-height: 36px;
+      img {
+        width: 40px;
+        height: 40px;
+      }
+      .el-input {
+        :deep(.el-input__inner) {
+          height: 60px;
+          border-radius: 50px;
+          font-size: 22px;
+          padding-left: 60px;
+        }
+        :deep(.el-input__prefix) {
+          width: 40px;
+        }
+        :deep(.el-icon-search) {
+          margin-top: 10px;
+          font-size: 35px;
+        }
       }
     }
   }
