@@ -127,38 +127,43 @@ router.post('/front/api/cart/addCart', function (req, res) {
 
 // =========================================================================================================== 景点api
 // 获取详情
-// conn.query(sql, id, function (err, result) {
-//     if (err) {
-//         console.log('getDestinationPage 详情查询语句执行异常')
-//     }
-//     for (const item of result) {
-//         item.photo = (item.photo || '').split('"')
-//         item.photo = item.photo.filter((item) => item != '[')
-//         item.photo = item.photo.filter((item) => item != ']')
-//         item.photo = item.photo.filter((item) => item != ',')
-//
-//         item.precautions = (item.precautions || '').split('"')
-//         item.precautions = item.precautions.filter((item) => item != '[')
-//         item.precautions = item.precautions.filter((item) => item != ']')
-//         item.precautions = item.precautions.filter((item) => item != ',')
-//
-//         item.tags = (item.tags || '').split('"')
-//         item.tags = item.tags.filter((item) => item != '[')
-//         item.tags = item.tags.filter((item) => item != ']')
-//         item.tags = item.tags.filter((item) => item != ',')
-//     }
-//
-//     return res.send(result)
-// })
+router.post('/front/api/destination/getDestinationDetail', function (req, res) {
+    const id = '' || req.body.id
+    const sql = 'SELECT * FROM destination WHERE id = ?'
+    conn.query(sql, id, function (err, result) {
+        if (err) {
+            console.log('getDestinationPage 详情查询语句执行异常')
+        }
+        for (const item of result) {
+            item.photo = (item.photo || '').split('"')
+            item.photo = item.photo.filter((item) => item != '[')
+            item.photo = item.photo.filter((item) => item != ']')
+            item.photo = item.photo.filter((item) => item != ',')
+
+            item.precautions = (item.precautions || '').split('"')
+            item.precautions = item.precautions.filter((item) => item != '[')
+            item.precautions = item.precautions.filter((item) => item != ']')
+            item.precautions = item.precautions.filter((item) => item != ',')
+
+            item.tags = (item.tags || '').split('"')
+            item.tags = item.tags.filter((item) => item != '[')
+            item.tags = item.tags.filter((item) => item != ']')
+            item.tags = item.tags.filter((item) => item != ',')
+        }
+
+        res.send(result)
+    })
+})
+
 
 // 获取总的
 router.post('/front/api/destination/getDestinationPage', function (req, res) {
-    const keyword = '' || ['%' + req.body.keyword + '%']
-    const id = '' || req.body.id
-    const sql = 'SELECT * FROM destination WHERE id = ?'
+    const keywordFlag = req.body.keyword
+    const keyword = ['%' + req.body.keyword + '%']
     const sql2 = 'SELECT * FROM destination'
     const sql3 = 'SELECT * FROM destination WHERE title LIKE ?'
-    if (keyword) {
+
+    if (keywordFlag != undefined) {
         conn.query(sql3, keyword, function (err, result) {
             if (err) {
                 console.log('getDestinationPage 搜索查询语句执行异常')

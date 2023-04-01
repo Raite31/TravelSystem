@@ -31,8 +31,8 @@
           </div>
         </div>
       </div>
+      <Footer />
     </div>
-    <Footer />
   </div>
 </template>
 <script>
@@ -96,11 +96,13 @@ export default {
 </script>
 <style lang="scss" scoped>
 .contain-all {
-  width: 652px;
+  width: 100%;
   margin: 0 auto;
   .top-cov {
   }
   .blog-contain {
+    width: 652px;
+    margin: 0 auto;
     .title {
       font-size: 42px;
       font-family: Inter-Regular, Inter;

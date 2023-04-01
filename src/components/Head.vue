@@ -105,7 +105,9 @@ export default {
     return {
       index: 1,
       userFlag: {},
-      user: {},
+      user: {
+        avatar: "Head_small.svg",
+      },
       dialogVisible: false,
       clickFlag: 0,
     };

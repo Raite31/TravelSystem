@@ -2,12 +2,14 @@
   <div>
     <Head />
     <div class="contain-all">
-      <h1 class="title">购物车</h1>
-      <div class="link">
-        <router-link
-          :to="{ path: '/personal', query: { tag_flag: '全部订单' } }"
-          >查看所有订单</router-link
-        >
+      <div class="contain-top">
+        <h1 class="title">购物车</h1>
+        <div class="link">
+          <router-link
+            :to="{ path: '/personal', query: { tag_flag: '全部订单' } }"
+            >查看所有订单</router-link
+          >
+        </div>
       </div>
 
       <div class="list">
@@ -55,37 +57,40 @@
           </div>
         </ul>
       </div>
-      <div class="nav-holder" ref="scrollOne">
-        <div class="nav-left">
-          <div class="select-all">
-            <input type="checkbox" name="selectAll" />
-            <label for="selectAll">全选</label>
-          </div>
-          <button class="del">删除</button>
-        </div>
-        <div class="nav-right">
-          <div class="num">已选 个去向</div>
-          <div class="total">总价</div>
-          <button class="settlement">结算</button>
-        </div>
-      </div>
 
-      <div class="nav" ref="listheight" v-if="show">
-        <div class="nav-left">
-          <div class="select-all">
-            <input type="checkbox" name="selectAll" />
-            <label for="selectAll">全选</label>
+      <div class="nav-all">
+        <div class="nav-holder" ref="scrollOne">
+          <div class="nav-left">
+            <div class="select-all">
+              <input type="checkbox" name="selectAll" />
+              <label for="selectAll">全选</label>
+            </div>
+            <button class="del">删除</button>
           </div>
-          <button class="del">删除</button>
+          <div class="nav-right">
+            <div class="num">已选 个去向</div>
+            <div class="total">总价</div>
+            <button class="settlement">结算</button>
+          </div>
         </div>
-        <div class="nav-right">
-          <div class="num">已选 个去向</div>
-          <div class="total">总价</div>
-          <button class="settlement">结算</button>
+
+        <div class="nav" ref="listheight" v-if="show">
+          <div class="nav-left">
+            <div class="select-all">
+              <input type="checkbox" name="selectAll" />
+              <label for="selectAll">全选</label>
+            </div>
+            <button class="del">删除</button>
+          </div>
+          <div class="nav-right">
+            <div class="num">已选 个去向</div>
+            <div class="total">总价</div>
+            <button class="settlement">结算</button>
+          </div>
         </div>
       </div>
+      <Footer />
     </div>
-    <Footer />
   </div>
 </template>
 
@@ -136,8 +141,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+* {
+  margin: 0;
+  padding: 0;
+}
 .contain-all {
-  width: 1200px;
+  width: 100%;
   margin: 0 auto;
   margin-bottom: 50px;
   text-align: left;
@@ -146,19 +155,26 @@ export default {
     margin: 24px auto;
     border: 0.1px solid #e4e3e3;
   }
-  .title {
-    line-height: 50px;
-    margin-bottom: 8px;
-  }
-  .link {
-    margin-bottom: 8px;
-    a {
-      color: black;
-      font-size: 12px;
+  // 列表头部
+  .contain-top {
+    width: 1200px;
+    margin: 0 auto;
+    .title {
+      line-height: 50px;
+      margin-bottom: 8px;
+    }
+    .link {
+      margin-bottom: 8px;
+      a {
+        color: black;
+        font-size: 12px;
+      }
     }
   }
-
+  // item列表
   .list {
+    width: 1200px;
+    margin: 0 auto;
     padding: 20px 0;
     background-color: white;
     ul {
@@ -202,34 +218,38 @@ export default {
       }
     }
   }
-  .nav {
-    position: fixed;
-    bottom: 0;
-    width: 1180px;
-  }
-  .nav,
-  .nav-holder {
-    background-color: white;
-    padding: 30px 10px;
+  // "导航栏"
+  .nav-all {
     display: flex;
-    justify-content: space-between;
-    border-radius: 0 0 10px 10px;
-    .nav-left,
-    .nav-right {
+    justify-content: center;
+    .nav,
+    .nav-holder {
+      width: 1200px;
+      background-color: white;
+      padding: 30px 0px;
       display: flex;
-    }
-    .nav-left {
-      .select-all,
-      .del {
-        margin-right: 20px;
+      justify-content: space-between;
+      border-radius: 0 0 10px 10px;
+      .nav-left,
+      .nav-right {
+        display: flex;
+      }
+      .nav-left {
+        .select-all,
+        .del {
+          margin-right: 20px;
+        }
+      }
+      .nav-right {
+        .num,
+        .total {
+          margin-right: 20px;
+        }
       }
     }
-    .nav-right {
-      .num,
-      .total,
-      .settlement {
-        margin-right: 20px;
-      }
+    .nav {
+      position: fixed;
+      bottom: 0;
     }
   }
 }

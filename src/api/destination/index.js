@@ -9,6 +9,15 @@ export function getDestinationPage(data) {
   });
 }
 
+// // 获取详情
+export function getDestinationDetail(data) {
+  return request({
+    url: "destination/getDestinationDetail",
+    method: "POST",
+    data: data,
+  });
+}
+
 // 获取分类为hots的
 export function getDestinationHots(data) {
   return request({

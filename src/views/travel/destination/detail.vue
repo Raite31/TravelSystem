@@ -246,7 +246,7 @@
 <script>
 import Head from "@/components/Head.vue";
 import Footer from "@/components/Footer.vue";
-import { getDestinationPage } from "@/api/destination/index";
+import { getDestinationDetail } from "@/api/destination/index";
 import { addCart } from "@/api/cart/index";
 
 export default {
@@ -274,7 +274,7 @@ export default {
   },
   methods: {
     getData() {
-      getDestinationPage({ id: this.id }).then((res) => {
+      getDestinationDetail({ id: this.id }).then((res) => {
         this.list = Object.assign(this.list, res.data[0]);
       });
     },
