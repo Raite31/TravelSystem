@@ -119,7 +119,7 @@ export default {
   },
   methods: {
     change(data) {
-      if (data.status == 0) {
+      if (data.status == null) {
         this.settlementList.push(data.id);
       } else {
         this.settlementList.pop(data.id);
@@ -134,14 +134,16 @@ export default {
         return;
       }
       let data = {
+        uid: this.user.id,
         id: this.settlementList,
       };
       delCart(data).then((res) => {
-        if (res.code == 200) {
+        if (res.data.code == 200) {
           this.$message({
             message: "结算成功",
             type: "success",
           });
+          this.getData();
           this.settlementList = [];
         } else {
           this.$message({

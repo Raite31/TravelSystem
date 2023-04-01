@@ -20,8 +20,8 @@ export function getCartList(data) {
 // 清除购物车
 export function delCart(data) {
   return request({
-    url: "cart/delCart",
+    url: "cart/deleteCart",
     method: "DELETE",
-    data: data,
+    params: data,
   });
 }

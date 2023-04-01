@@ -40,7 +40,6 @@ router.post('/front/api/checkLogin', function (req, res) {
             }
 
             f().then(function (res) {
-                console.log(res)
                 id2 = res
             })
 
@@ -86,15 +85,22 @@ router.post('/front/api/checkLogin', function (req, res) {
 // =========================================================================================================== 购物车api
 // 清除购物车
 router.delete('/front/api/cart/deleteCart', function (req, res) {
-    console.log('req.body: ', req.body)
-    const settlementList = req.body
-    const sql = 'DELETE FROM cart WHERE id in ?'
-    // conn.query()
+    const uid = req.query.uid.toString()
+    const settlementList = req.query.id
+    const sql = `DELETE FROM cart WHERE uid = "${uid}" AND id IN (${settlementList.join(',')})`
+    conn.query(sql, function (err, result) {
+        if (err) {
+            console.log(err)
+            console.log('deleteCart查询语句执行异常')
+        } else {
+            result.code = 200
+        }
+        res.send(result)
+    })
 })
 // 获取购物车列表
 router.post('/front/api/cart/getCartList', function (req, res) {
     const id = req.body.id
-    console.log('id: ', id)
     const sql = 'SELECT * FROM cart where uid = ?'
     conn.query(sql, id, function (err, result) {
         if (err) {
@@ -112,7 +118,6 @@ router.post('/front/api/cart/getCartList', function (req, res) {
             item.cov = item.cov.filter((item) => item != ',')
         }
 
-        console.log(result)
         res.send(result)
     })
 })
@@ -120,14 +125,12 @@ router.post('/front/api/cart/getCartList', function (req, res) {
 router.post('/front/api/cart/addCart', function (req, res) {
     const data = req.body
     const values = [data.id, 1, data.photo, data.title, data.price, 2, data.tags, data.introduce, data.date_time, data.adults_num, data.children_num, data.infants_num, '2022-01-03']
-    console.log('data:', data)
     const sql = 'INSERT INTO cart(dId,uid,cov,title,price,time,information,introduce,date_time,adults_num,children_num,infants_num,create_time) VALUES (?,?,"[?]",?,?,?,"?",?,?,?,?,?,?) '
     conn.query(sql, values, function (err, result) {
         if (err) {
             console.log('addCart查询语句执行异常')
         }
         console.log(err)
-        console.log(result)
         res.send(result.insertId.toString())
     })
 })
