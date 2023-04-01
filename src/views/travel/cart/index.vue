@@ -49,7 +49,12 @@
                 </div>
               </div>
               <div class="checkbox">
-                <input type="checkbox" v-model="item.status" />
+                <input
+                  type="checkbox"
+                  v-model="item.status"
+                  @input="change(item)"
+                />
+                {{ item.status }}
               </div>
             </li>
 
@@ -70,7 +75,7 @@
           <div class="nav-right">
             <div class="num">已选 个去向</div>
             <div class="total">总价</div>
-            <button class="settlement">结算</button>
+            <button class="settlement" @click="settlement()">结算</button>
           </div>
         </div>
 
@@ -85,7 +90,7 @@
           <div class="nav-right">
             <div class="num">已选 个去向</div>
             <div class="total">总价</div>
-            <button class="settlement">结算</button>
+            <button class="settlement" @click="settlement()">结算</button>
           </div>
         </div>
       </div>
@@ -97,7 +102,7 @@
 <script>
 import Head from "@/components/Head.vue";
 import Footer from "@/components/Footer.vue";
-import { getCartList } from "@/api/cart/index";
+import { getCartList, delCart } from "@/api/cart/index";
 
 export default {
   components: {
@@ -108,12 +113,44 @@ export default {
     return {
       user: null,
       show: true,
-      orders: {
-        cov: [],
-      },
+      orders: {},
+      settlementList: [],
     };
   },
   methods: {
+    change(data) {
+      if (data.status == 0) {
+        this.settlementList.push(data.id);
+      } else {
+        this.settlementList.pop(data.id);
+      }
+    },
+    settlement() {
+      if (this.settlementList.length == 0) {
+        this.$message({
+          message: "请选择要结算的商品",
+          type: "error",
+        });
+        return;
+      }
+      let data = {
+        id: this.settlementList,
+      };
+      delCart(data).then((res) => {
+        if (res.code == 200) {
+          this.$message({
+            message: "结算成功",
+            type: "success",
+          });
+          this.settlementList = [];
+        } else {
+          this.$message({
+            message: res.msg,
+            type: "error",
+          });
+        }
+      });
+    },
     showBar() {
       let oneHeight = this.$refs.scrollOne.getBoundingClientRect().top;
       if (oneHeight < 911) {
@@ -127,7 +164,6 @@ export default {
       this.user = JSON.parse(sessionStorage.getItem("user"));
       getCartList({ id: this.user.id }).then((res) => {
         this.orders = res.data;
-        console.log("this.orders: ", this.orders);
       });
     },
   },

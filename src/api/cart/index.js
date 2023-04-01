@@ -16,3 +16,12 @@ export function getCartList(data) {
     data: data,
   });
 }
+
+// 清除购物车
+export function delCart(data) {
+  return request({
+    url: "cart/delCart",
+    method: "DELETE",
+    data: data,
+  });
+}

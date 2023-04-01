@@ -84,6 +84,13 @@ router.post('/front/api/checkLogin', function (req, res) {
     })
 })
 // =========================================================================================================== 购物车api
+// 清除购物车
+router.delete('/front/api/cart/deleteCart', function (req, res) {
+    console.log('req.body: ', req.body)
+    const settlementList = req.body
+    const sql = 'DELETE FROM cart WHERE id in ?'
+    // conn.query()
+})
 // 获取购物车列表
 router.post('/front/api/cart/getCartList', function (req, res) {
     const id = req.body.id
@@ -124,6 +131,7 @@ router.post('/front/api/cart/addCart', function (req, res) {
         res.send(result.insertId.toString())
     })
 })
+
 
 // =========================================================================================================== 景点api
 // 获取详情
