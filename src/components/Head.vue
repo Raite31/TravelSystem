@@ -9,30 +9,30 @@
     <!--logo end-->
     <div class="logo_end">
       <ul class="header_nav">
-        <li @click="click_nav(1)">
+        <li>
           <router-link
-            :class="this.clickFlag == 1 ? 'header_nav_active' : ''"
+            :class="this.pathName == 'home' ? 'header_nav_active' : ''"
             to="/home"
             >首页</router-link
           >
         </li>
-        <li @click="click_nav(2)">
+        <li>
           <router-link
-            :class="this.clickFlag == 2 ? 'header_nav_active' : ''"
+            :class="this.pathName == 'destination' ? 'header_nav_active' : ''"
             to="/destination"
             >目的地</router-link
           >
         </li>
-        <li @click="click_nav(3)">
+        <li>
           <router-link
-            :class="this.clickFlag == 3 ? 'header_nav_active' : ''"
+            :class="this.pathName == 'story' ? 'header_nav_active' : ''"
             to="/story"
             >旅行故事</router-link
           >
         </li>
-        <li @click="click_nav(4)">
+        <li>
           <router-link
-            :class="this.clickFlag == 4 ? 'header_nav_active' : ''"
+            :class="this.pathName == 'blogList' ? 'header_nav_active' : ''"
             to="/blogList"
             >博客
           </router-link>
@@ -44,57 +44,21 @@
           <router-link class="login" v-if="!userFlag.login" to="/">
             登录
           </router-link>
-          <router-link
-            class="avatar"
-            v-else
-            :class="this.clickFlag == 4 ? 'header_nav_active' : ''"
-            to="/personal"
-          >
+          <router-link class="avatar" v-else to="/personal">
             <img :src="require('@/assets/imgs/' + user.avatar)" alt="" />
           </router-link>
         </div>
       </div>
       <ul class="header_nav header_nav2">
-        <li @click="click_nav(5)">
+        <li>
           <router-link
-            :class="this.clickFlag == 5 ? 'header_nav_active' : ''"
+            :class="this.pathName == 'cart' ? 'header_nav_active' : ''"
             to="/cart"
             >购物车</router-link
           >
         </li>
       </ul>
     </div>
-
-    <!-- <el-dialog
-      title="修改用户信息"
-      :visible.sync="dialogVisible"
-      width="30%"
-      :before-close="handleClose"
-    >
-      action是发送请求
-      <el-upload
-        :show-file-list="false"
-        :before-upload="beforeAvatarUpload"
-        :on-success="uploadSuccess"
-        :on-error="uploadError"
-        :data="this.user"
-        action="http://localhost:8080/uploadUserImg"
-      >
-        <el-image :src="user.headImg" fit="fit"></el-image>
-      </el-upload>
-
-      <el-input
-        class="update_username"
-        v-model="user.username"
-        placeholder="请输入用户名"
-      ></el-input>
-      <el-input v-model="user.password" placeholder="请输入更新密码"></el-input>
-
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="update_click">修 改</el-button>
-      </span>
-    </el-dialog> -->
   </div>
 </template>
 <script>
@@ -110,6 +74,7 @@ export default {
       },
       dialogVisible: false,
       clickFlag: 0,
+      pathName: this.$route.name,
     };
   },
   mounted() {
@@ -120,10 +85,6 @@ export default {
     });
   },
   methods: {
-    click_nav(val) {
-      this.clickFlag = val;
-      console.log(this.clickFlag);
-    },
     // uploadSuccess(success) {
     //   // 上传头像成功
     //   console.log(success);
@@ -159,14 +120,6 @@ export default {
     //     .catch((error) => {
     //       // 发送请求失败
     //     });
-    // },
-
-    // handleClose(done) {
-    //   this.$confirm("确认关闭？")
-    //     .then((_) => {
-    //       done();
-    //     })
-    //     .catch((_) => {});
     // },
   },
 };
