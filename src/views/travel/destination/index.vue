@@ -8,7 +8,11 @@
       </div>
       <div class="list">
         <ul>
-          <li v-for="item in lists" :key="item.index" @click="toDetail(item)">
+          <li
+            v-for="item in pageTicket"
+            :key="item.index"
+            @click="toDetail(item)"
+          >
             <img :src="item.photo[0]" />
             <div class="right">
               <div class="title">{{ item.title }}</div>
@@ -22,6 +26,18 @@
             </div>
           </li>
         </ul>
+      </div>
+
+      <div class="block">
+        <el-pagination
+          :hide-on-single-page="true"
+          @current-change="handleCurrentChange"
+          :current-page="currentPage4"
+          :page-size="pageSize"
+          layout="total, prev, pager, next, jumper"
+          :total="total"
+        >
+        </el-pagination>
       </div>
       <Footer />
     </div>
@@ -42,16 +58,52 @@ export default {
     return {
       lists: null,
       keyword: this.$route.query.keyword,
+      currentPage4: 1,
+      pageSize: 10,
+      total: 0,
+      pageTicket: [], // 分页后当前页数据
     };
   },
   methods: {
+    // 切换分页
+    handleCurrentChange(val) {
+      this.currentPage4 = val;
+      this.getPageInfo();
+    },
+
     onQuery(data) {
       this.getdata(data);
     },
+    // 请求数据
     getdata(data) {
       getDestinationPage({ keyword: data }).then((res) => {
-        this.lists = res.data;
+        if (res.data.length) {
+          this.total = res.data.length;
+          this.lists = res.data;
+          this.getPageInfo();
+          this.$message({
+            message: "数据加载成功！",
+            type: "success",
+          });
+        } else {
+          this.$message({
+            message: res.data.msg,
+            type: "error",
+          });
+        }
       });
+    },
+    // 分页操作
+    getPageInfo() {
+      this.pageTicket = [];
+      for (
+        let i = (this.currentPage4 - 1) * this.pageSize;
+        i < this.total;
+        i++
+      ) {
+        this.pageTicket.push(this.lists[i]);
+        if (this.pageTicket.length === this.pageSize) break;
+      }
     },
     toDetail(item) {
       this.$router.push({
@@ -162,6 +214,9 @@ body {
         }
       }
     }
+  }
+  .block {
+    margin: 50px auto;
   }
 }
 </style>

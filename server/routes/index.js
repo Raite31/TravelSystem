@@ -178,48 +178,52 @@ router.post('/front/api/destination/getDestinationPage', function (req, res) {
         conn.query(sql3, keyword, function (err, result) {
             if (err) {
                 console.log('getDestinationPage 搜索查询语句执行异常')
+            } else {
+                for (const item of result) {
+                    item.photo = (item.photo || '').split('"')
+                    item.photo = item.photo.filter((item) => item != '[')
+                    item.photo = item.photo.filter((item) => item != ']')
+                    item.photo = item.photo.filter((item) => item != ',')
+
+                    item.precautions = (item.precautions || '').split('"')
+                    item.precautions = item.precautions.filter((item) => item != '[')
+                    item.precautions = item.precautions.filter((item) => item != ']')
+                    item.precautions = item.precautions.filter((item) => item != ',')
+
+                    item.tags = (item.tags || '').split('"')
+                    item.tags = item.tags.filter((item) => item != '[')
+                    item.tags = item.tags.filter((item) => item != ']')
+                    item.tags = item.tags.filter((item) => item != ',')
+                }
+                result.code = 200
+                console.log(result)
             }
-            for (const item of result) {
-                item.photo = (item.photo || '').split('"')
-                item.photo = item.photo.filter((item) => item != '[')
-                item.photo = item.photo.filter((item) => item != ']')
-                item.photo = item.photo.filter((item) => item != ',')
-
-                item.precautions = (item.precautions || '').split('"')
-                item.precautions = item.precautions.filter((item) => item != '[')
-                item.precautions = item.precautions.filter((item) => item != ']')
-                item.precautions = item.precautions.filter((item) => item != ',')
-
-                item.tags = (item.tags || '').split('"')
-                item.tags = item.tags.filter((item) => item != '[')
-                item.tags = item.tags.filter((item) => item != ']')
-                item.tags = item.tags.filter((item) => item != ',')
-            }
-
-            res.send(result)
+            res.send(result.code)
         })
     } else {
         conn.query(sql2, function (err, result) {
             if (err) {
                 console.log('getDestinationPage查询语句执行异常')
+            } else {
+                for (const item of result) {
+                    item.photo = (item.photo || '').split('"')
+                    item.photo = item.photo.filter((item) => item != '[')
+                    item.photo = item.photo.filter((item) => item != ']')
+                    item.photo = item.photo.filter((item) => item != ',')
+
+                    item.precautions = (item.precautions || '').split('"')
+                    item.precautions = item.precautions.filter((item) => item != '[')
+                    item.precautions = item.precautions.filter((item) => item != ']')
+                    item.precautions = item.precautions.filter((item) => item != ',')
+
+                    item.tags = (item.tags || '').split('"')
+                    item.tags = item.tags.filter((item) => item != '[')
+                    item.tags = item.tags.filter((item) => item != ']')
+                    item.tags = item.tags.filter((item) => item != ',')
+                }
+                result.code = 200
+                console.log(result.code)
             }
-            for (const item of result) {
-                item.photo = (item.photo || '').split('"')
-                item.photo = item.photo.filter((item) => item != '[')
-                item.photo = item.photo.filter((item) => item != ']')
-                item.photo = item.photo.filter((item) => item != ',')
-
-                item.precautions = (item.precautions || '').split('"')
-                item.precautions = item.precautions.filter((item) => item != '[')
-                item.precautions = item.precautions.filter((item) => item != ']')
-                item.precautions = item.precautions.filter((item) => item != ',')
-
-                item.tags = (item.tags || '').split('"')
-                item.tags = item.tags.filter((item) => item != '[')
-                item.tags = item.tags.filter((item) => item != ']')
-                item.tags = item.tags.filter((item) => item != ',')
-            }
-
             res.send(result)
         })
     }
