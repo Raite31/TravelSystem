@@ -85,8 +85,11 @@ const routes = [
 const router = new VueRouter({
   mode: "history",
   // hash类型的话，地址会多个#号
-  base: process.env.BASE_URL,
+  // base: process.env.BASE_URL,
   routes,
+  scrollBehavior() {
+    return { x: 0, y: 0 };
+  },
 });
 
 export default router;
