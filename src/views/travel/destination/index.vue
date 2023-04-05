@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Head />
+    <Head/>
     <div class="contains">
       <div class="search">
         <el-input></el-input>
@@ -9,11 +9,11 @@
       <div class="list">
         <ul>
           <li
-            v-for="item in pageTicket"
-            :key="item.index"
-            @click="toDetail(item)"
+              v-for="item in pageTicket"
+              :key="item.index"
+              @click="toDetail(item)"
           >
-            <img :src="item.photo[0]" />
+            <img :src="item.photo[0]"/>
             <div class="right">
               <div class="title">{{ item.title }}</div>
               <span class="views">
@@ -30,16 +30,16 @@
 
       <div class="block">
         <el-pagination
-          :hide-on-single-page="true"
-          @current-change="handleCurrentChange"
-          :current-page="currentPage4"
-          :page-size="pageSize"
-          layout="total, prev, pager, next, jumper"
-          :total="total"
+            :hide-on-single-page="true"
+            @current-change="handleCurrentChange"
+            :current-page="currentPage4"
+            :page-size="pageSize"
+            layout="total, prev, pager, next, jumper"
+            :total="total"
         >
         </el-pagination>
       </div>
-      <Footer />
+      <Footer/>
     </div>
   </div>
 </template>
@@ -52,7 +52,7 @@ import { getDestinationPage } from "@/api/destination/index";
 export default {
   components: {
     Head,
-    Footer,
+    Footer
   },
   data() {
     return {
@@ -61,7 +61,7 @@ export default {
       currentPage4: 1,
       pageSize: 10,
       total: 0,
-      pageTicket: [], // 分页后当前页数据
+      pageTicket: [] // 分页后当前页数据
     };
   },
   methods: {
@@ -69,6 +69,7 @@ export default {
     handleCurrentChange(val) {
       this.currentPage4 = val;
       this.getPageInfo();
+      window.scroll(0, 0);
     },
 
     onQuery(data) {
@@ -83,12 +84,12 @@ export default {
           this.getPageInfo();
           this.$message({
             message: "数据加载成功！",
-            type: "success",
+            type: "success"
           });
         } else {
           this.$message({
             message: res.data.msg,
-            type: "error",
+            type: "error"
           });
         }
       });
@@ -97,9 +98,9 @@ export default {
     getPageInfo() {
       this.pageTicket = [];
       for (
-        let i = (this.currentPage4 - 1) * this.pageSize;
-        i < this.total;
-        i++
+          let i = (this.currentPage4 - 1) * this.pageSize;
+          i < this.total;
+          i++
       ) {
         this.pageTicket.push(this.lists[i]);
         if (this.pageTicket.length === this.pageSize) break;
@@ -114,9 +115,9 @@ export default {
         // },
 
         // 方式二
-        path: `/destination/detail/?id=${item.id}`,
+        path: `/destination/detail/?id=${item.id}`
       });
-    },
+    }
   },
   created() {
     if (this.keyword) {
@@ -125,7 +126,7 @@ export default {
     } else {
       this.getdata();
     }
-  },
+  }
 };
 </script>
 
@@ -140,12 +141,15 @@ body {
   width: 100%;
   height: 100%;
 }
+
 body {
   background-color: #f1f1f1;
 }
+
 .contains {
   width: 100%;
   margin: 0 auto;
+
   .search {
     height: 130px;
     background-color: white;
@@ -153,14 +157,17 @@ body {
     align-items: center;
     padding-left: 320px;
     margin-bottom: 30px;
+
     .el-input {
       width: 550px;
       margin-right: 60px;
       border: none;
+
       .el-input__inner {
         border: none;
       }
     }
+
     .el-button {
       width: 205px;
       height: 45px;
@@ -168,17 +175,20 @@ body {
       background-color: #004f32;
       color: white;
       font-weight: 600;
+
       &:hover {
         background-color: #00aa6c;
       }
     }
   }
+
   .list {
     ul {
       list-style: none;
       display: flex;
       flex-direction: column;
       margin-left: 280px;
+
       li {
         display: flex;
         width: 918px;
@@ -187,20 +197,25 @@ body {
         padding: 20px 100px 20px 30px;
         box-sizing: border-box;
         text-align: left;
+
         img {
           width: 164px;
           height: 140px;
           margin-right: 16px;
         }
+
         .right {
           width: 600px;
+
           .title {
             font-size: 20px;
             font-weight: 600;
           }
+
           .views-and-comment {
             margin-bottom: 50px;
           }
+
           .introduction {
             font-size: 14px;
 
@@ -215,6 +230,7 @@ body {
       }
     }
   }
+
   .block {
     margin: 50px auto;
   }
