@@ -19,7 +19,7 @@
           <div class="precautions">
             <ul>
               <li v-for="item in list.precautions" :key="item.index">
-                {{ item.text }}
+                {{ item }}
               </li>
             </ul>
           </div>
@@ -27,7 +27,11 @@
           <div class="illustrate">
             <div class="include">
               <div class="title">包括什么</div>
-              <div></div>
+              <ul>
+                <li v-for="item in list.tags">
+                  {{ item }}
+                </li>
+              </ul>
             </div>
             <hr/>
             <div class="expect">
@@ -37,22 +41,36 @@
             <hr/>
             <div class="go">
               <div class="title">出发和返回</div>
-              <div></div>
+              <ul>
+                <li v-for="item in list.departure_and_return">
+                  {{ item }}
+                </li>
+              </ul>
             </div>
             <hr/>
             <div class="accessibility">
               <div class="title">辅助功能</div>
-              <div></div>
+              <ul>
+                <li v-for="item in list.accessibility">
+                  {{ item }}
+                </li>
+              </ul>
             </div>
             <hr/>
             <div class="additional_information">
               <div class="title">附加信息</div>
-              <div></div>
+              <ul>
+                <li v-for="item in list.addn_info">
+                  {{ item }}
+                </li>
+              </ul>
             </div>
             <hr/>
             <div class="cancel">
               <div class="title">取消政策</div>
-              <div></div>
+              <div>
+                {{ list.cancellation_policy }}
+              </div>
             </div>
             <hr/>
             <div class="question">
@@ -62,7 +80,7 @@
             <hr/>
             <div class="help">
               <div class="title">帮助</div>
-              <div></div>
+              <div>{{ list.help }}</div>
             </div>
             <hr/>
           </div>
@@ -370,6 +388,10 @@ body {
             font-size: 16px;
             font-weight: bold;
           }
+        }
+
+        ul {
+          margin-left: 20px;
         }
       }
     }
