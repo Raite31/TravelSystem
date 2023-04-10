@@ -1,24 +1,26 @@
 <template>
   <div>
-    <Head />
+    <Head/>
     <div class="contain-all">
-      <div class="grid">
-        <div class="left">
-          <ul class="tag">
-            <li v-for="item in tags" :key="item.index">
-              <a @click="change_tag_flag">{{ item.name }}</a>
-            </li>
-          </ul>
-        </div>
-        <div class="right">
-          <self_message v-if="tag_flag == '个人资料'" />
-          <self_travel v-else-if="tag_flag == '全部订单'" />
-          <self_blog v-else-if="tag_flag == '我的博客'" />
-          <self_create v-else />
+      <div class="personal">
+        <div class="grid">
+          <div class="left">
+            <ul class="tag">
+              <li v-for="item in tags" :key="item.index">
+                <a @click="change_tag_flag">{{ item.name }}</a>
+              </li>
+            </ul>
+          </div>
+          <div class="right">
+            <self_message v-if="tag_flag == '个人资料'"/>
+            <self_travel v-else-if="tag_flag == '全部订单'"/>
+            <self_blog v-else-if="tag_flag == '我的博客'"/>
+            <self_create v-else/>
+          </div>
         </div>
       </div>
+      <Footer/>
     </div>
-    <Footer />
   </div>
 </template>
 <script>
@@ -36,34 +38,34 @@ export default {
     self_message,
     self_travel,
     self_blog,
-    self_create,
+    self_create
   },
   data() {
     return {
       tag_flag: this.$route.query.tag_flag
-        ? this.$route.query.tag_flag
-        : "个人资料",
+          ? this.$route.query.tag_flag
+          : "个人资料",
       tags: {
         0: {
-          name: "个人资料",
+          name: "个人资料"
         },
         1: {
-          name: "全部订单",
+          name: "全部订单"
         },
         2: {
-          name: "我的博客",
+          name: "我的博客"
         },
         3: {
-          name: "创作中心",
-        },
-      },
+          name: "创作中心"
+        }
+      }
     };
   },
   methods: {
     change_tag_flag(e) {
       this.tag_flag = e.target.innerText;
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -78,36 +80,46 @@ body {
   height: 100%;
   background: #f1f1f1;
 }
+
 .contain-all {
-  width: 1200px;
+  width: 100%;
   margin: 0 auto;
   margin-bottom: 50px;
-  .grid {
-    display: grid;
-    grid-template-columns: 15% 1fr;
-    grid-template-rows: auto auto;
-    column-gap: 2px;
-    .left {
-      .tag {
-        list-style: none;
-        padding: 10px 0;
-        background-color: #fff;
-        li {
-          a {
-            text-align: center;
-            list-style: none;
-            text-decoration: none;
-            color: #282828;
-            font-size: 14px;
-            display: block;
-            padding: 20px 10px;
-            margin-right: 0;
+
+  .personal {
+    width: 1200px;
+    margin: 0 auto;
+
+    .grid {
+      display: grid;
+      grid-template-columns: 15% 1fr;
+      grid-template-rows: auto auto;
+      column-gap: 2px;
+
+      .left {
+        .tag {
+          list-style: none;
+          padding: 10px 0;
+          background-color: #fff;
+
+          li {
+            a {
+              text-align: center;
+              list-style: none;
+              text-decoration: none;
+              color: #282828;
+              font-size: 14px;
+              display: block;
+              padding: 20px 10px;
+              margin-right: 0;
+            }
           }
         }
       }
-    }
-    .right {
-      margin-left: 20px;
+
+      .right {
+        margin-left: 20px;
+      }
     }
   }
 }
