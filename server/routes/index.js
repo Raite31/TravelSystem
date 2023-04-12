@@ -432,6 +432,11 @@ router.post("/front/api/blog/getBlogPage", function(req, res) {
       console.log("getBlogPage查询语句执行异常");
     }
     for (const item of result) {
+      item.photo = (item.photo || "").split("\"");
+      item.photo = item.photo.filter((item) => item != "[");
+      item.photo = item.photo.filter((item) => item != "]");
+      item.photo = item.photo.filter((item) => item != ",");
+
       item.tags = item.tags.split("\"");
       item.tags = item.tags.filter((item) => item != "[");
       item.tags = item.tags.filter((item) => item != "]");
@@ -450,6 +455,11 @@ router.post("/front/api/blog/getBlogDetail", function(req, res) {
       console.log("getBlogPage查询语句执行异常");
     }
     for (const item of result) {
+      item.photo = (item.photo || "").split("\"");
+      item.photo = item.photo.filter((item) => item != "[");
+      item.photo = item.photo.filter((item) => item != "]");
+      item.photo = item.photo.filter((item) => item != ",");
+
       item.tags = item.tags.split("\"");
       item.tags = item.tags.filter((item) => item != "[");
       item.tags = item.tags.filter((item) => item != "]");
@@ -466,6 +476,11 @@ router.post("/front/api/blog/authorBlogPage", function(req, res) {
       console.log("getBlogPage查询语句执行异常");
     }
     for (const item of result) {
+      item.photo = (item.photo || "").split("\"");
+      item.photo = item.photo.filter((item) => item != "[");
+      item.photo = item.photo.filter((item) => item != "]");
+      item.photo = item.photo.filter((item) => item != ",");
+
       item.tags = item.tags.split("\"");
       item.tags = item.tags.filter((item) => item != "[");
       item.tags = item.tags.filter((item) => item != "]");

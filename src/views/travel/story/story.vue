@@ -1,27 +1,25 @@
 <template>
   <div>
-    <Head />
+    <Head/>
     <div class="contains_all">
       <div class="guide">
         <div class="part-one">
           <div class="title">指导：红色旅游</div>
           <div class="image">
-            <img src="@/assets/imgs/home_travel.png" alt="" />
+            <img src="@/assets/imgs/red_img.png" alt=""/>
           </div>
           <div class="describe">
-            We’re celebrating Black History Month by recognizing our Black
-            community's contributions 365 days a year. With this in mind, we’ve
-            launched this go-to resource, where you'll find our best travel recs
-            and stories all in one place—for February and beyond. Discover
-            Black-owned spots to eat, stay, and shop, plus follow some of our
-            favorite guides on their journeys around the world (itineraries
-            included!).
+            Red tourist attractions refer to tourist attractions with the theme of revolutionary war and revolutionary history.
+            It is a comprehensive tourist attraction with revolutionary history as the main line, integrating red culture, tourism, leisure, sightseeing, education and scientific research.
+            The main characteristics of the red tourist attractions are: with the theme of red culture,
+            highlighting the spirit of patriotism and revolutionary spirit; taking history and culture as the connotation,
+            promoting the excellent traditional Chinese culture and revolutionary culture; It is a comprehensive tourism product that combines various elements.
           </div>
         </div>
-        <hr />
+        <hr/>
         <div class="part-two">
           <div class="image">
-            <img src="@/assets/imgs/home_travel.png" alt="" />
+            <img src="@/assets/imgs/1681268396640.jpg" alt=""/>
           </div>
           <div class="describe">
             R&B and hip hop, jazz and house, these fests are pulling out all the
@@ -29,42 +27,42 @@
             vacation, too.
           </div>
         </div>
-        <hr />
+        <hr/>
       </div>
       <div class="traveler_stories">
         <div class="title">旅行故事</div>
         <div class="items">
           <div class="item" v-for="item of all.slice(0, 3)" :key="item.index">
-            <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
+            <img :src="item.photo[0]" alt=""/>
             <div class="describe">
               {{ item.title }}
             </div>
           </div>
         </div>
       </div>
-      <hr />
+      <hr/>
       <div class="red_revolution">
         <div class="title">4个必去的红色旅游景点</div>
         <div class="items">
           <div class="item" v-for="item in reds.slice(0, 3)" :key="item.index">
-            <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
+            <img :src="item.photo[0]" alt=""/>
             <div class="describe">
               {{ item.title }}
             </div>
           </div>
         </div>
       </div>
-      <hr />
+      <hr/>
       <div class="theme_Q">
         <div class="city_escapes">
           <div class="title">City_escapes</div>
           <div class="items">
             <div
-              class="item"
-              v-for="item in City_escapes.slice(0, 3)"
-              :key="item.index"
+                class="item"
+                v-for="item in City_escapes.slice(0, 3)"
+                :key="item.index"
             >
-              <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
+              <img :src="item.photo[0]" alt=""/>
               <div class="describe">
                 {{ item.title }}
               </div>
@@ -75,11 +73,11 @@
           <div class="title">Destination_experiences</div>
           <div class="items">
             <div
-              class="item"
-              v-for="item in Destination_experiences.slice(0, 3)"
-              :key="item.index"
+                class="item"
+                v-for="item in Destination_experiences.slice(0, 3)"
+                :key="item.index"
             >
-              <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
+              <img :src="item.photo[0]" alt=""/>
               <div class="describe">
                 {{ item.title }}
               </div>
@@ -90,11 +88,11 @@
           <div class="title">Eat_drink</div>
           <div class="items">
             <div
-              class="item"
-              v-for="item in Eat_drink.slice(0, 3)"
-              :key="item.index"
+                class="item"
+                v-for="item in Eat_drink.slice(0, 3)"
+                :key="item.index"
             >
-              <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
+              <img :src="item.photo[0]" alt=""/>
               <div class="describe">
                 {{ item.title }}
               </div>
@@ -105,13 +103,13 @@
           <div class="title">Stay</div>
           <div class="items">
             <div
-              class="item"
-              v-for="item in Stay.slice(0, 3)"
-              :key="item.index"
+                class="item"
+                v-for="item in Stay.slice(0, 3)"
+                :key="item.index"
             >
-              <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
+              <img :src="item.photo[0]" alt=""/>
               <div class="describe">
-                Exploring Utah's National Parks with my non-outdoorsy tweens
+                {{ item.introduce }}
               </div>
             </div>
           </div>
@@ -120,13 +118,13 @@
           <div class="title">Culture_history</div>
           <div class="items">
             <div
-              class="item"
-              v-for="item in Culture_history.slice(0, 3)"
-              :key="item.index"
+                class="item"
+                v-for="item in Culture_history.slice(0, 3)"
+                :key="item.index"
             >
-              <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
+              <img :src="item.photo[0]" alt=""/>
               <div class="describe">
-                Exploring Utah's National Parks with my non-outdoorsy tweens
+                {{ item.introduce }}
               </div>
             </div>
           </div>
@@ -135,13 +133,13 @@
           <div class="title">Travel_style</div>
           <div class="items">
             <div
-              class="item"
-              v-for="item in Travel_style.slice(0, 3)"
-              :key="item.index"
+                class="item"
+                v-for="item in Travel_style.slice(0, 3)"
+                :key="item.index"
             >
-              <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
+              <img :src="item.photo[0]" alt=""/>
               <div class="describe">
-                Exploring Utah's National Parks with my non-outdoorsy tweens
+                {{ item.introduce }}
               </div>
             </div>
           </div>
@@ -150,11 +148,11 @@
           <div class="title">Related</div>
           <div class="items">
             <div
-              class="item"
-              v-for="item in Related.slice(0, 3)"
-              :key="item.index"
+                class="item"
+                v-for="item in Related.slice(0, 3)"
+                :key="item.index"
             >
-              <img :src="require('@/assets/imgs/' + item.photo)" alt="" />
+              <img :src="item.photo[0]" alt=""/>
               <div class="describe">
                 {{ item.title }}
               </div>
@@ -163,7 +161,7 @@
         </div>
       </div>
     </div>
-    <Footer />
+    <Footer/>
   </div>
 </template>
 <script>
@@ -174,7 +172,7 @@ import { getBlogPage } from "@/api/blog/index";
 export default {
   components: {
     Head,
-    Footer,
+    Footer
   },
   data() {
     return {
@@ -186,7 +184,7 @@ export default {
       Stay: [],
       Culture_history: [],
       Travel_style: [],
-      Related: [],
+      Related: []
     };
   },
   methods: {
@@ -223,11 +221,11 @@ export default {
           }
         }
       });
-    },
+    }
   },
   created() {
     this.getdata();
-  },
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -241,33 +239,41 @@ body {
   width: 100%;
   height: 100%;
 }
+
 body {
   background-color: #f1f1f1;
 }
+
 .contains_all {
   width: 1200px;
   margin: 100px auto;
+
   hr {
     width: 65%;
     margin: 48px auto;
     border: 0.1px solid #e4e3e3;
   }
+
   .guide {
     margin: 0 auto;
+
     .part-one {
       .title {
         font-size: 45px;
         font-weight: 900;
         margin: 32px 0 24px 0;
       }
+
       .image {
         margin: 32px 0;
+
         img {
           width: 1136px;
           height: 456px;
           border-radius: 30px;
         }
       }
+
       .describe {
         margin: 0 auto;
         margin-bottom: 48px;
@@ -277,6 +283,7 @@ body {
         font-family: "Times New Roman", Times, serif;
       }
     }
+
     .part-two {
       .image {
         img {
@@ -285,17 +292,19 @@ body {
           border-radius: 30px;
         }
       }
+
       .describe {
         width: 65%;
         margin: 0 auto;
         text-align: left;
         font-size: 24px;
         font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-          "Lucida Sans", Arial, sans-serif;
+        "Lucida Sans", Arial, sans-serif;
         font-weight: 900;
       }
     }
   }
+
   .traveler_stories {
     .title {
       font-size: 45px;
@@ -304,28 +313,34 @@ body {
       text-align: left;
       margin-left: 20px;
     }
+
     .items {
       display: flex;
+
       .item {
         margin: 15px;
+
         img {
           width: 365px;
           height: 230px;
           margin-bottom: 24px;
         }
+
         .describe {
           width: 85%;
           margin: 0 auto;
           font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-            "Lucida Sans", Arial, sans-serif;
+          "Lucida Sans", Arial, sans-serif;
           font-size: 18px;
           font-weight: 900;
         }
       }
     }
   }
+
   .red_revolution {
     margin-bottom: 100px;
+
     .title {
       font-size: 45px;
       font-weight: 900;
@@ -333,26 +348,31 @@ body {
       text-align: left;
       margin-left: 20px;
     }
+
     .items {
       display: flex;
+
       .item {
         margin: 15px;
+
         img {
           width: 365px;
           height: 230px;
           margin-bottom: 24px;
         }
+
         .describe {
           width: 85%;
           margin: 0 auto;
           font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-            "Lucida Sans", Arial, sans-serif;
+          "Lucida Sans", Arial, sans-serif;
           font-size: 18px;
           font-weight: 900;
         }
       }
     }
   }
+
   .theme_Q {
     .city_escapes,
     .destination_experiences,
@@ -362,6 +382,7 @@ body {
     .travel_style,
     .related {
       margin-bottom: 100px;
+
       .title {
         font-size: 45px;
         font-weight: 900;
@@ -369,20 +390,24 @@ body {
         text-align: left;
         margin-left: 20px;
       }
+
       .items {
         display: flex;
+
         .item {
           margin: 15px;
+
           img {
             width: 365px;
             height: 230px;
             margin-bottom: 24px;
           }
+
           .describe {
             width: 85%;
             margin: 0 auto;
             font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-              "Lucida Sans", Arial, sans-serif;
+            "Lucida Sans", Arial, sans-serif;
             font-size: 18px;
             font-weight: 900;
           }
