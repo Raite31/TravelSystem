@@ -211,9 +211,8 @@ router.post("/front/api/destination/getDestinationPage", function(req, res) {
           item.tags = item.tags.filter((item) => item != ",");
         }
         result.code = 200;
-        console.log(result);
       }
-      res.send(result.code);
+      res.send(result);
     });
   } else {
     conn.query(sql2, function(err, result) {
@@ -237,7 +236,6 @@ router.post("/front/api/destination/getDestinationPage", function(req, res) {
           item.tags = item.tags.filter((item) => item != ",");
         }
         result.code = 200;
-        console.log(result.code);
       }
       res.send(result);
     });

@@ -298,9 +298,14 @@ export default {
       });
     },
     createOrder(data) {
-      addCart(data).then((res) => {
-        this.$message.success("添加购物车成功");
-      });
+      if (data.adults_num == 0 && data.children_num == 0 && data.infants_num == 0) {
+        this.$message.error("请先选择游客");
+      } else {
+        addCart(data).then((res) => {
+          this.$message.success("添加购物车成功");
+        });
+      }
+
     }
   },
   created() {
