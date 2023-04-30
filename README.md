@@ -34,7 +34,7 @@ npm install
 然后在 TravelSystem/server/src 中
 
 ```sh
-nodemon serve.js
+nodemon serve.js 或者 npm run devstart
 ```
 
 ### 项目结构

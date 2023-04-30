@@ -2,7 +2,7 @@
   <div class="contain-all-message">
     <div class="myself">
       <div class="avatar">
-        <img :src="require('@/assets/imgs/' + form.avatar)" alt="" />
+        <img :src="require('@/assets/imgs/' + form.avatar)" alt=""/>
       </div>
       <div class="name">{{ form.account }}</div>
     </div>
@@ -13,7 +13,7 @@
           <el-row :gutter="12">
             <el-col :span="24">
               <el-form-item label="用户昵称">
-                <el-input v-model="form.name"> </el-input>
+                <el-input v-model="form.name"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="24">
@@ -45,7 +45,7 @@
               </el-form-item>
             </el-col>
           </el-row>
-          <el-button @click="onSubmit(form)">保存</el-button>
+          <el-button @click="onSubmit(form)" type="primary">保存</el-button>
         </el-form>
       </div>
     </div>
@@ -72,9 +72,9 @@ export default {
         sex: "",
         introduce: "",
         birthday: "",
-        workTime: "",
+        workTime: ""
       },
-      formRef: null,
+      formRef: null
     };
   },
   methods: {
@@ -93,11 +93,11 @@ export default {
       getAuthor({ id: this.user.id }).then((res) => {
         this.form = res.data[0];
       });
-    },
+    }
   },
   created() {
     this.initData();
-  },
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -109,6 +109,7 @@ export default {
     display: flex;
     padding: 24px 0 40px 24px;
     margin-bottom: 10px;
+
     .avatar {
       img {
         width: 93px;
@@ -117,15 +118,18 @@ export default {
         margin-right: 16px;
       }
     }
+
     .name {
       flex: 1;
       font-size: 20px;
       font-weight: bold;
     }
   }
+
   .base_message {
     background-color: white;
     margin-bottom: 10px;
+
     .title {
       line-height: 48px;
       font-size: 18px;
@@ -134,12 +138,15 @@ export default {
       padding-left: 16px;
       border-bottom: 1px solid #f0f0f2;
     }
+
     .form {
       padding: 32px 0 32px 16px;
     }
   }
+
   .hobby {
     background-color: white;
+
     .title {
       line-height: 48px;
       font-size: 18px;
@@ -148,6 +155,7 @@ export default {
       padding-left: 16px;
       border-bottom: 1px solid #f0f0f2;
     }
+
     .form {
       padding: 32px 74px 32px 16px;
     }

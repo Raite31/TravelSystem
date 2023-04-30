@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     getData() {
-      w({ id: this.id }).then((res) => {
+      getBlogDetail({ id: this.id }).then((res) => {
         this.form.id = res.data[0].id;
         this.form.uid = res.data[0].userId;
         this.form.title = res.data[0].title;

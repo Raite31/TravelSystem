@@ -536,6 +536,21 @@ router.post("/front/api/updateAuthor", function(req, res) {
   );
 
 });
+// =========================================================================================================== 订单api
+// 返回所有订单
+router.post("/front/api/order/getOrder", function(req, res) {
+  const id = req.body.id;
+  const sql = "SELECT * FROM orders WHERE uid = ?";
+  conn.query(sql, id, function(err, result) {
+      if (err) {
+        console.log("err: ", err);
+        console.log("getOrder查询语句执行异常");
+      }
+      res.send(result);
+    }
+  );
+
+});
 
 
 module.exports = router;

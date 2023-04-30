@@ -6,7 +6,8 @@
         <div class="grid">
           <div class="left">
             <ul class="tag">
-              <li v-for="item in tags" :key="item.index">
+              <li v-for="(item,index) in tags" :key="item.index" :class="isactive==index?'addclass':''"
+                  @click="onclick(index)">
                 <a @click="change_tag_flag">{{ item.name }}</a>
               </li>
             </ul>
@@ -58,12 +59,16 @@ export default {
         3: {
           name: "创作中心"
         }
-      }
+      },
+      isactive: 0
     };
   },
   methods: {
     change_tag_flag(e) {
       this.tag_flag = e.target.innerText;
+    },
+    onclick(index) {
+      this.isactive = index;
     }
   }
 };
@@ -85,6 +90,10 @@ body {
   width: 100%;
   margin: 0 auto;
   margin-bottom: 50px;
+
+  .addclass {
+    background-color: rgba(0, 0, 0, 0.07);
+  }
 
   .personal {
     width: 1200px;
@@ -112,6 +121,10 @@ body {
               display: block;
               padding: 20px 10px;
               margin-right: 0;
+
+              &:hover {
+                background-color: rgba(0, 0, 0, 0.07);
+              }
             }
           }
         }

@@ -60,6 +60,7 @@
       </ul>
     </div>
   </div>
+
 </template>
 <script>
 import { getAuthor } from "@/api/author/index";
@@ -70,11 +71,11 @@ export default {
       index: 1,
       userFlag: {},
       user: {
-        avatar: "Head_small.svg",
+        avatar: "Head_small.svg"
       },
       dialogVisible: false,
       clickFlag: 0,
-      pathName: this.$route.name,
+      pathName: this.$route.name
     };
   },
   mounted() {
@@ -84,44 +85,7 @@ export default {
       this.user = res.data[0];
     });
   },
-  methods: {
-    // uploadSuccess(success) {
-    //   // 上传头像成功
-    //   console.log(success);
-    //   // 重新设置头像信息
-    //   this.user.headImg = success.data;
-    //   // alert(success.data);
-    //   this.$message.success(success.msg);
-    //   // 更新sessonStorage
-    //   this.user.headImg = success.data;
-    //   sessionStorage.setItem("user", JSON.stringify(this.user));
-    // },
-    // uploadError() {
-    //   this.$message.error("更新头像失败");
-    // },
-    // beforeAvatarUpload(file) {
-    //   const isJPG = file.type === "image/jpeg";
-    //   const isLt2M = file.size / 1024 / 1024 < 2;
-    //   if (!isJPG) {
-    //     this.$message.error("上传头像图片只能是 JPG 格式!");
-    //   }
-    //   if (!isLt2M) {
-    //     this.$message.error("上传头像图片大小不能超过 2MB!");
-    //   }
-    //   return isJPG && isLt2M;
-    // },
-    // update_click() {
-    //   // 发送请求
-    //   this.postRequest("/updateUser", this.user)
-    //     .then((success) => {
-    //       // 发送请求成功
-    //       this.dialogVisible = false;
-    //     })
-    //     .catch((error) => {
-    //       // 发送请求失败
-    //     });
-    // },
-  },
+  methods: {}
 };
 </script>
 <style lang="scss" scoped>
@@ -132,21 +96,26 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   .header_logo {
   }
+
   .header_nav_active {
     background-color: rgba(0, 0, 0, 0.07);
   }
+
   .logo_end {
     // width: 450px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     .header_nav {
       width: 300px;
       list-style: none;
       display: flex;
       justify-content: space-around;
+
       li {
         a {
           list-style: none;
@@ -157,12 +126,14 @@ export default {
           padding: 10px;
           border-radius: 30px;
           font-weight: 600;
+
           &:hover {
             background-color: rgba(0, 0, 0, 0.07);
           }
         }
       }
     }
+
     .login_info {
       .download {
         .login {
@@ -188,6 +159,7 @@ export default {
         }
       }
     }
+
     .header_nav2 {
       width: 80px;
     }
