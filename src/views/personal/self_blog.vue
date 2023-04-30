@@ -3,7 +3,7 @@
 
     <div class="list">
       <ul>
-        <li v-for="item in articles" :key="item.index">
+        <li v-for="item in articles" :key="item.index" @click="toDetail(item)">
           <div class="left">
             <img :src="item.photo[0]" alt="">
           </div>
@@ -43,6 +43,19 @@ export default {
     };
   },
   methods: {
+    // 跳转详情
+    toDetail(item) {
+      this.$router.push({
+        // 方式一
+        // name: "destinationDetail",
+        // params: {
+        //   id: item.id,
+        // },
+
+        // 方式二
+        path: `/blogList/blogDetail/?id=${item.id}`
+      });
+    },
     // 切换分页
     handleCurrentChange(val) {
       this.currentPage4 = val;
