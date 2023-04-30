@@ -61,6 +61,8 @@
     </div>
   </div>
 
+
+
 </template>
 <script>
 import { getAuthor } from "@/api/author/index";
@@ -115,6 +117,7 @@ export default {
       list-style: none;
       display: flex;
       justify-content: space-around;
+      padding: 0 20px;
 
       li {
         a {
