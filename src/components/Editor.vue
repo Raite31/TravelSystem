@@ -2,11 +2,10 @@
   <quill-editor
       class="editor"
       ref="myQuillEditor"
-      :options="editorOption"
       @blur="onEditorBlur($event)"
       @focus="onEditorFocus($event)"
       @change="onEditorChange($event)"
-      v-model="props.value"
+      v-model="content"
   >
   </quill-editor>
 </template>
@@ -16,13 +15,19 @@ import { quillEditor } from "vue-quill-editor";
 export default {
   name: "Editor",
   props: {
-    value: String
+    value: { type: String }
   },
   data() {
     return {
       content: null,
       editorOption: {}
     };
+  },
+  watch: {
+    value(val) {
+      this.content = val;
+      console.log("this.content: ", this.content);
+    }
   },
   methods: {
     onEditorBlur() {

@@ -43,8 +43,7 @@
         </el-col>
         <el-col :span="24">
           <el-form-item label="博客详情">
-            <Editor v-model="dataForm.detail"></Editor>
-            {{ dataForm.detail }}
+            <vue-editor v-model="dataForm.detail"></vue-editor>
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -68,13 +67,13 @@
   </div>
 </template>
 <script>
-import Editor from "@/components/Editor.vue";
+import { VueEditor } from "vue2-editor";
 import VKeywords from "@/components/VKeywords.vue";
 import { createBlog } from "@/api/blog/index";
 
 export default {
   components: {
-    Editor,
+    VueEditor,
     VKeywords
   },
   data() {

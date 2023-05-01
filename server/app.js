@@ -18,6 +18,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+// 解析 application / x - www - form - urlencoded【解析查询字符串格式参数】
+app.use(express.urlencoded({ extended: true, limit: "100mb" }));
+
+// 解析 application / json【解析JSON格式参数】
+app.use(express.json({ limit: "100mb" }));
+
 
 app.use("/", indexRouter);
 

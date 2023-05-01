@@ -418,6 +418,7 @@ router.post("/front/api/blog/createBlog", function(req, res) {
   conn.query(sql, values, function(err, result) {
     if (err) {
       console.log("createBlog查询语句执行异常");
+      console.log("err: ", err);
     }
     res.send(result.insertId.toString());
   });

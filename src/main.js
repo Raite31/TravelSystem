@@ -8,21 +8,19 @@ import "element-ui/lib/theme-chalk/index.css";
 import hevueImgPreview from "hevue-img-preview";
 import editor from "@blog1997/vue-umeditor";
 import * as echarts from "echarts";
-import VueQuillEditor from "vue-quill-editor";
-import "quill/dist/quill.core.css";
-import "quill/dist/quill.snow.css";
-import "quill/dist/quill.bubble.css";
 import VueRouter from "vue-router";
+// 富文本编辑器
+import Vue2Editor from "vue2-editor";
 
 Vue.prototype.$echarts = echarts;
 Vue.use(editor);
 Vue.use(hevueImgPreview);
 Vue.use(ElementUI);
-Vue.use(VueQuillEditor);
+Vue.use(Vue2Editor);
 
 Vue.config.productionTip = false;
 new Vue({
   router,
   stores,
-  render: (h) => h(App),
+  render: (h) => h(App)
 }).$mount("#app");
