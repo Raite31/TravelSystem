@@ -6,10 +6,10 @@
         <el-col :span="24">
           <el-form-item label="标题">
             <el-input
-              placeholder="请输入你文章的标题"
-              maxlength="100"
-              show-word-limit="true"
-              v-model="dataForm.title"
+                placeholder="请输入你文章的标题"
+                maxlength="100"
+                show-word-limit="true"
+                v-model="dataForm.title"
             />
           </el-form-item>
         </el-col>
@@ -17,13 +17,13 @@
           <el-form-item label="封面图片">
             <div>
               <el-upload
-                class="avatar-uploader"
-                action="https://jsonplaceholder.typicode.com/posts/"
-                :show-file-list="false"
-                :on-success="handleAvatarSuccess"
-                :before-upload="beforeAvatarUpload"
+                  class="avatar-uploader"
+                  action="https://jsonplaceholder.typicode.com/posts/"
+                  :show-file-list="false"
+                  :on-success="handleAvatarSuccess"
+                  :before-upload="beforeAvatarUpload"
               >
-                <img v-if="imageUrl" :src="imageUrl" class="avatar" />
+                <img v-if="imageUrl" :src="imageUrl" class="avatar"/>
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
               </el-upload>
             </div>
@@ -32,18 +32,19 @@
         <el-col :span="24">
           <el-form-item label="简介">
             <el-input
-              placeholder="请输入你文章的标题"
-              maxlength="100"
-              show-word-limit="true"
-              type="textarea"
-              :rows="6"
-              v-model="dataForm.introduce"
+                placeholder="请输入你文章的标题"
+                maxlength="100"
+                show-word-limit="true"
+                type="textarea"
+                :rows="6"
+                v-model="dataForm.introduce"
             />
           </el-form-item>
         </el-col>
         <el-col :span="24">
           <el-form-item label="博客详情">
             <Editor v-model="dataForm.detail"></Editor>
+            {{ dataForm.detail }}
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -74,7 +75,7 @@ import { createBlog } from "@/api/blog/index";
 export default {
   components: {
     Editor,
-    VKeywords,
+    VKeywords
   },
   data() {
     return {
@@ -87,8 +88,8 @@ export default {
         introduce: "",
         detail: "",
         tags: [],
-        classify: [],
-      },
+        classify: []
+      }
     };
   },
   methods: {
@@ -110,8 +111,8 @@ export default {
     submit(data) {
       createBlog(data);
       console.log(data);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -126,15 +127,19 @@ export default {
     position: relative;
     overflow: hidden;
   }
+
   :deep(.avatar-uploader) {
     margin-top: 43px;
   }
+
   :deep(.el-upload) {
     float: left;
   }
+
   :deep(.avatar-uploader .el-upload:hover) {
     border-color: #409eff;
   }
+
   :deep(.avatar-uploader-icon) {
     font-size: 28px;
     color: #8c939d;
@@ -143,6 +148,7 @@ export default {
     line-height: 178px;
     text-align: center;
   }
+
   :deep(.avatar) {
     width: 178px;
     height: 178px;
@@ -154,6 +160,7 @@ export default {
     margin-top: 43px;
     background-color: white;
   }
+
   :deep(.ql-container) {
     min-height: 400px;
   }
