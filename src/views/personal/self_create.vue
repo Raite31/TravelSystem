@@ -43,7 +43,9 @@
         </el-col>
         <el-col :span="24">
           <el-form-item label="博客详情">
-            <vue-editor v-model="dataForm.detail"></vue-editor>
+            <vue-editor
+                v-model="dataForm.detail"
+            ></vue-editor>
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -88,6 +90,7 @@ export default {
         detail: "",
         tags: [],
         classify: []
+
       }
     };
   },

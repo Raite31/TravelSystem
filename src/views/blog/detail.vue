@@ -14,11 +14,11 @@
           </span>
           <div class="tags">
             <span class="tags-item" v-for="item in form.tags" :key="item.index">
-              #{{ item }}
+              {{ item }}
             </span>
           </div>
         </div>
-        <div class="contain">{{ form.contain }}</div>
+        <div class="contain" v-html="form.contain"></div>
         <div class="author">
           <div class="text">关于我</div>
           <div class="author-information">
