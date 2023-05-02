@@ -8,13 +8,7 @@ const router = new VueRouter({
     mode: "history",
     // hash类型的话，地址会多个#号
     // base: process.env.BASE_URL,
-    scrollBehavior(to, form, savedPosition) {
-      if (savedPosition) {
-        return savedPosition;
-      } else {
-        return { x: 0, y: 0 };
-      }
-    },
+
     routes: [
       // ====================登录页
       {
@@ -92,7 +86,14 @@ const router = new VueRouter({
         name: "pushBlog",
         component: () => import("@/views/blog/author/pushBlog.vue")
       }
-    ]
+    ],
+    scrollBehavior(to, from, savedPosition) {
+      if (savedPosition) {
+        return savedPosition;
+      } else {
+        return { x: 0, y: 0 };
+      }
+    }
 
   })
 ;
