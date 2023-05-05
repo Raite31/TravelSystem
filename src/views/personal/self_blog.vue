@@ -35,6 +35,7 @@ import { getBlogPage } from "@/api/blog/index";
 export default {
   data() {
     return {
+      user: null,
       articles: null,
       currentPage4: 1,
       pageSize: 10,
@@ -67,8 +68,9 @@ export default {
     },
     // 请求数据
     getdata(data) {
-      getBlogPage({ keyword: data }).then((res) => {
-        if (res.data.length) {
+      getBlogPage({ userId: data }).then((res) => {
+        console.log("res: ", res);
+        if (res.status == 200) {
           this.total = res.data.length;
           this.articles = res.data;
           this.getPageInfo();
@@ -95,10 +97,15 @@ export default {
         this.pageTicket.push(this.articles[i]);
         if (this.pageTicket.length === this.pageSize) break;
       }
+    },
+
+    initData() {
+      this.user = JSON.parse(sessionStorage.getItem("user"));
+      this.getdata(this.user.id);
     }
   },
   created() {
-    this.getdata();
+    this.initData();
   }
 };
 </script>

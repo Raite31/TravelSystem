@@ -35,6 +35,7 @@ router.post("/front/api/checkLogin", function(req, res) {
 
       f().then(function(res) {
         id2 = res;
+        console.log("id2: " + id2);
       });
 
       // setTimeout(() => console.log(id2), 3000);
@@ -419,18 +420,21 @@ router.post("/front/api/blog/createBlog", function(req, res) {
 });
 // 获取全部博客列表
 router.post("/front/api/blog/getBlogPage", function(req, res) {
-  const sql = "SELECT * FROM blog";
-  conn.query(sql, function(err, result) {
+  const id = req.body.userId;
+  console.log("id: ", id);
+  const sql = "SELECT * FROM blog WHERE userId = ?";
+  conn.query(sql, id, function(err, result) {
     if (err) {
       console.log("getBlogPage查询语句执行异常");
     }
+    console.log("result: ",result);
     for (const item of result) {
       item.photo = (item.photo || "").split("\"");
       item.photo = item.photo.filter((item) => item != "[");
       item.photo = item.photo.filter((item) => item != "]");
       item.photo = item.photo.filter((item) => item != ",");
 
-      item.tags = item.tags.split("\"");
+      item.tags = (item.tags || "").split("\"");
       item.tags = item.tags.filter((item) => item != "[");
       item.tags = item.tags.filter((item) => item != "]");
       item.tags = item.tags.filter((item) => item != ",");
@@ -453,7 +457,7 @@ router.post("/front/api/blog/getBlogDetail", function(req, res) {
       item.photo = item.photo.filter((item) => item != "]");
       item.photo = item.photo.filter((item) => item != ",");
 
-      item.tags = item.tags.split("\"");
+      item.tags = (item.tags || "").split("\"");
       item.tags = item.tags.filter((item) => item != "[");
       item.tags = item.tags.filter((item) => item != "]");
       item.tags = item.tags.filter((item) => item != ",");
@@ -474,7 +478,7 @@ router.post("/front/api/blog/authorBlogPage", function(req, res) {
       item.photo = item.photo.filter((item) => item != "]");
       item.photo = item.photo.filter((item) => item != ",");
 
-      item.tags = item.tags.split("\"");
+      item.tags = (item.tags || "").split("\"");
       item.tags = item.tags.filter((item) => item != "[");
       item.tags = item.tags.filter((item) => item != "]");
       item.tags = item.tags.filter((item) => item != ",");
@@ -495,13 +499,13 @@ router.post("/front/api/getAuthor", function(req, res) {
         console.log("err: " + err);
       }
       for (const item of result) {
-        item.tags = item.tags.split("\"");
+        item.tags = (item.tags || "").split("\"");
         item.tags = item.tags.filter((item) => item != "[");
         item.tags = item.tags.filter((item) => item != "]");
         item.tags = item.tags.filter((item) => item != ",");
       }
       for (const item of result) {
-        item.place = item.place.split("\"");
+        item.place = (item.place || "").split("\"");
         item.place = item.place.filter((item) => item != "[");
         item.place = item.place.filter((item) => item != "]");
         item.place = item.place.filter((item) => item != ",");

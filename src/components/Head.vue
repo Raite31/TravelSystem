@@ -1,9 +1,9 @@
-<template lang="">
+<template>
   <div class="contain_all">
     <!--logo start-->
     <div class="header_logo">
       <a href="javascript:;" class="lww_logo">
-        <img src="@/assets/header-small-sprites3.png" alt="" />
+        <img src="@/assets/header-small-sprites3.png" alt=""/>
       </a>
     </div>
     <!--logo end-->
@@ -11,30 +11,34 @@
       <ul class="header_nav">
         <li>
           <router-link
-            :class="this.pathName == 'home' ? 'header_nav_active' : ''"
-            to="/home"
-            >首页</router-link
+              :class="this.pathName == 'home' ? 'header_nav_active' : ''"
+              to="/home"
           >
+            首页
+          </router-link>
         </li>
         <li>
           <router-link
-            :class="this.pathName == 'destination' ? 'header_nav_active' : ''"
-            to="/destination"
-            >目的地</router-link
+              :class="this.pathName == 'destination' ? 'header_nav_active' : ''"
+              to="/destination"
           >
+            目的地
+          </router-link>
         </li>
         <li>
           <router-link
-            :class="this.pathName == 'story' ? 'header_nav_active' : ''"
-            to="/story"
-            >旅行故事</router-link
+              :class="this.pathName == 'story' ? 'header_nav_active' : ''"
+              to="/story"
           >
+            旅行故事
+          </router-link>
         </li>
         <li>
           <router-link
-            :class="this.pathName == 'blogList' ? 'header_nav_active' : ''"
-            to="/blogList"
-            >博客
+              :class="this.pathName == 'blogList' ? 'header_nav_active' : ''"
+              to="/blogList"
+          >
+            博客
           </router-link>
         </li>
       </ul>
@@ -45,22 +49,22 @@
             登录
           </router-link>
           <router-link class="avatar" v-else to="/personal">
-            <img :src="require('@/assets/imgs/' + user.avatar)" alt="" />
+            <img :src="require('@/assets/imgs/' + user.avatar)" alt=""/>
           </router-link>
         </div>
       </div>
       <ul class="header_nav header_nav2">
         <li>
           <router-link
-            :class="this.pathName == 'cart' ? 'header_nav_active' : ''"
-            to="/cart"
-            >购物车</router-link
+              :class="this.pathName == 'cart' ? 'header_nav_active' : ''"
+              to="/cart"
           >
+            购物车
+          </router-link>
         </li>
       </ul>
     </div>
   </div>
-
 
 
 </template>
