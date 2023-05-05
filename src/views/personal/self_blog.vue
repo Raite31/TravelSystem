@@ -67,7 +67,7 @@ export default {
       this.getdata(data);
     },
     // 请求数据
-    getdata(data) {
+    getData(data) {
       getBlogPage({ userId: data }).then((res) => {
         console.log("res: ", res);
         if (res.status == 200) {
@@ -101,7 +101,7 @@ export default {
 
     initData() {
       this.user = JSON.parse(sessionStorage.getItem("user"));
-      this.getdata(this.user.id);
+      this.getData(this.user.id);
     }
   },
   created() {

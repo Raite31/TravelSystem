@@ -66,12 +66,27 @@ export default {
         this.show = "已完成";
       }
     },
-    initData() {
-      this.user = JSON.parse(sessionStorage.getItem("user"));
+    getData(data) {
       getOrder({ id: this.user.id }).then((res) => {
         console.log("res: ", res);
-        this.orders = res.data;
+        if (res.status == 200) {
+          this.orders = res.data;
+          this.$message({
+            message: "数据加载成功！",
+            type: "success"
+          });
+        } else {
+          this.$message({
+            message: res.data.msg,
+            type: "error"
+          });
+        }
+
       });
+    },
+    initData() {
+      this.user = JSON.parse(sessionStorage.getItem("user"));
+      this.getData()
     }
   },
   created() {
