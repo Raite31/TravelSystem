@@ -19,12 +19,6 @@ router.post("/front/api/checkLogin", function(req, res) {
     if (err) {
       console.log("checkLogin查询语句执行异常");
     }
-    if (!login.account || !login.password) {
-      return res.json({
-        status: -3,
-        msg: "请输入账号密码"
-      });
-    }
     if (!result.length) {
       let id2 = null;
 
@@ -498,6 +492,7 @@ router.post("/front/api/getAuthor", function(req, res) {
   conn.query(sql, id, function(err, result) {
       if (err) {
         console.log("getAuthor查询语句执行异常");
+        console.log("err: " + err);
       }
       for (const item of result) {
         item.tags = item.tags.split("\"");
