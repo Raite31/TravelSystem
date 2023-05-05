@@ -9,11 +9,8 @@
             <img src="@/assets/imgs/red_img.png" alt=""/>
           </div>
           <div class="describe">
-            Red tourist attractions refer to tourist attractions with the theme of revolutionary war and revolutionary history.
-            It is a comprehensive tourist attraction with revolutionary history as the main line, integrating red culture, tourism, leisure, sightseeing, education and scientific research.
-            The main characteristics of the red tourist attractions are: with the theme of red culture,
-            highlighting the spirit of patriotism and revolutionary spirit; taking history and culture as the connotation,
-            promoting the excellent traditional Chinese culture and revolutionary culture; It is a comprehensive tourism product that combines various elements.
+            红色旅游景区是指以革命战争、革命历史为主题的旅游景区。 是以革命历史为主线，集红色文化、旅游、休闲、观光、教育、科研为一体的综合性旅游景区。 红色旅游景区的主要特点是：以红色文化为主题，突出爱国主义和革命精神；
+            以历史文化为内涵，弘扬中华优秀传统文化和革命文化； 是集多种要素于一体的综合性旅游产品。
           </div>
         </div>
         <hr/>
