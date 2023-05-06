@@ -1,6 +1,6 @@
 <template>
   <div class="v-keywords" :class="`v-keywords--${inputSize}`">
-    <div style="display: contents;">
+    <div style="display: contents">
       <el-tag
         v-for="(tag, index) in value"
         :key="index"
@@ -22,7 +22,7 @@
       size="small"
       @keyup.enter.native="handleInputConfirm"
       @change="handleInputConfirm"
-      @blur="inputVisible=false"
+      @blur="inputVisible = false"
     />
     <div
       v-else-if="!inputDisabled && isShow"
@@ -36,83 +36,83 @@
 
 <script>
 export default {
-  name: 'VKeywords',
+  name: "VKeywords",
   inheritAttrs: false,
-  inject: ['elForm'],
+  inject: ["elForm"],
   model: {
-    prop: 'value',
-    event: 'input'
+    prop: "value",
+    event: "input",
   },
   props: {
     value: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     text: {
       type: String,
-      default: '关键词'
+      default: "关键词",
     },
     maxLength: {
-      type: Number
+      type: Number,
     },
     maxSize: {
-      type: Number
+      type: Number,
     },
-    disabled: Boolean
+    disabled: Boolean,
   },
   computed: {
     isShow() {
       if (this.value.length >= this.maxLength) {
-        return false
+        return false;
       }
-      return true
+      return true;
     },
     inputDisabled() {
-      return this.disabled || (this.elForm || {}).disabled
+      return this.disabled || (this.elForm || {}).disabled;
     },
     inputSize() {
-      return (this.elForm || {}).size || 'large'
-    }
+      return (this.elForm || {}).size || "large";
+    },
   },
   data() {
     return {
-      inputValue: '',
-      inputVisible: false
-    }
+      inputValue: "",
+      inputVisible: false,
+    };
   },
   methods: {
     handleClose(tag) {
-      const value = (this.value || []).slice()
-      value.splice(value.indexOf(tag), 1)
-      this.$emit('input', value)
+      const value = (this.value || []).slice();
+      value.splice(value.indexOf(tag), 1);
+      this.$emit("input", value);
       if (!this.isShow) {
-        this.inputVisible = true
+        this.inputVisible = true;
         this.$nextTick(() => {
-          this.$refs.inputRef.focus()
-        })
+          this.$refs.inputRef.focus();
+        });
       }
     },
     showInput() {
-      this.inputVisible = true
+      this.inputVisible = true;
       this.$nextTick(() => {
-        this.$refs.inputRef.focus()
-      })
+        this.$refs.inputRef.focus();
+      });
     },
     handleInputConfirm() {
-      const value = (this.value || []).slice()
+      const value = (this.value || []).slice();
       if (this.inputValue) {
-        value.push(this.inputValue)
+        value.push(this.inputValue);
       }
-      this.inputValue = ''
-      this.$emit('input', value)
+      this.inputValue = "";
+      this.$emit("input", value);
       if (this.isShow) {
-        this.$refs.inputRef.focus()
+        this.$refs.inputRef.focus();
       } else {
-        this.inputVisible = false
+        this.inputVisible = false;
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -123,7 +123,7 @@ export default {
   align-items: center;
   flex-wrap: wrap;
   border-radius: 4px;
-  border: 1px solid #D9D9D9;
+  border: 1px solid #d9d9d9;
   padding: 2px 0;
 
   ::v-deep .el-tag {
@@ -135,9 +135,9 @@ export default {
     line-height: 24px;
     font-size: 14px;
 
-    background-color: #FFF9F5;
-    border-color: #F67831;
-    color: #F67831;
+    background: #ecf5ff;
+    border: 1px solid #d9ecff;
+    color: #409eff;
 
     .el-tag__close.el-icon-close {
       top: 1px;
@@ -156,9 +156,9 @@ export default {
   }
 
   .v-keywords-action {
-    flex: 1;
+    // flex: 1;
     cursor: pointer;
-    color: #8C8C8C;
+    color: #8c8c8c;
     height: 32px;
     line-height: 32px;
     margin: 5px 0 5px 10px;

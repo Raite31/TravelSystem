@@ -1,6 +1,6 @@
 <template>
   <div class="contain-all-travel">
-    <div class="list">
+    <div v-if="orders.length" class="list">
       <ul>
         <div v-for="item in orders" :key="item.index">
           <li>
@@ -27,10 +27,11 @@
               </div>
             </div>
           </li>
-          <hr/>
+          <hr />
         </div>
       </ul>
     </div>
+    <el-empty v-if="!orders.length" description="暂无订单"></el-empty>
   </div>
 </template>
 
@@ -41,7 +42,7 @@ export default {
   data() {
     return {
       show: "已完成",
-      orders: {}
+      orders: {},
     };
   },
   methods: {
@@ -54,7 +55,7 @@ export default {
         // },
 
         // 方式二
-        path: `/destination/detail/?id=${item.attract_id}`
+        path: `/destination/detail/?id=${item.attract_id}`,
       });
     },
     showBar() {
@@ -73,25 +74,24 @@ export default {
           this.orders = res.data;
           this.$message({
             message: "数据加载成功！",
-            type: "success"
+            type: "success",
           });
         } else {
           this.$message({
             message: res.data.msg,
-            type: "error"
+            type: "error",
           });
         }
-
       });
     },
     initData() {
       this.user = JSON.parse(sessionStorage.getItem("user"));
-      this.getData()
-    }
+      this.getData();
+    },
   },
   created() {
     this.initData();
-  }
+  },
 };
 </script>
 
@@ -102,8 +102,10 @@ export default {
 }
 
 .contain-all-travel {
-  margin: 0 auto;
-  margin-bottom: 50px;
+  background: #ebe8e8;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 40px;
   text-align: left;
 
   hr {
@@ -152,7 +154,7 @@ export default {
             .list_title {
               font-size: 18px;
               font-family: "Trebuchet MS", "Lucida Sans Unicode",
-              "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+                "Lucida Grande", "Lucida Sans", Arial, sans-serif;
               margin-bottom: 10px;
             }
 

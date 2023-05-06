@@ -6,10 +6,10 @@
         <el-col :span="24">
           <el-form-item label="标题">
             <el-input
-                placeholder="请输入你文章的标题"
-                maxlength="100"
-                show-word-limit="true"
-                v-model="dataForm.title"
+              placeholder="请输入"
+              maxlength="100"
+              show-word-limit="true"
+              v-model="dataForm.title"
             />
           </el-form-item>
         </el-col>
@@ -17,13 +17,13 @@
           <el-form-item label="封面图片">
             <div>
               <el-upload
-                  class="avatar-uploader"
-                  action="https://jsonplaceholder.typicode.com/posts/"
-                  :show-file-list="false"
-                  :on-success="handleAvatarSuccess"
-                  :before-upload="beforeAvatarUpload"
+                class="avatar-uploader"
+                action="https://jsonplaceholder.typicode.com/posts/"
+                :show-file-list="false"
+                :on-success="handleAvatarSuccess"
+                :before-upload="beforeAvatarUpload"
               >
-                <img v-if="imageUrl" :src="imageUrl" class="avatar"/>
+                <img v-if="imageUrl" :src="imageUrl" class="avatar" />
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
               </el-upload>
             </div>
@@ -32,19 +32,20 @@
         <el-col :span="24">
           <el-form-item label="简介">
             <el-input
-                placeholder="请输入你文章的标题"
-                maxlength="100"
-                show-word-limit="true"
-                type="textarea"
-                :rows="6"
-                v-model="dataForm.introduce"
+              placeholder="请输入"
+              maxlength="100"
+              show-word-limit="true"
+              type="textarea"
+              :rows="6"
+              v-model="dataForm.introduce"
             />
           </el-form-item>
         </el-col>
         <el-col :span="24">
           <el-form-item label="博客详情">
             <vue-editor
-                v-model="dataForm.detail"
+              v-model="dataForm.detail"
+              placeholder="请输入"
             ></vue-editor>
           </el-form-item>
         </el-col>
@@ -61,7 +62,9 @@
         <el-col>
           <el-form-item>
             <el-button>保存草稿</el-button>
-            <el-button @click="submit(dataForm)">发布文章</el-button>
+            <el-button @click="submit(dataForm)" type="primary"
+              >发布文章</el-button
+            >
           </el-form-item>
         </el-col>
       </el-row>
@@ -76,7 +79,7 @@ import { createBlog } from "@/api/blog/index";
 export default {
   components: {
     VueEditor,
-    VKeywords
+    VKeywords,
   },
   data() {
     return {
@@ -89,9 +92,8 @@ export default {
         introduce: "",
         detail: "",
         tags: [],
-        classify: []
-
-      }
+        classify: [],
+      },
     };
   },
   methods: {
@@ -113,14 +115,16 @@ export default {
     submit(data) {
       createBlog(data);
       console.log(data);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
 .contain-all-create {
-  background: white;
+  background: #ebe8e8;
   padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 40px;
   // 图片上传组件
   :deep(.avatar-uploader .el-upload) {
     border: 1px dashed #d9d9d9;
@@ -136,6 +140,7 @@ export default {
 
   :deep(.el-upload) {
     float: left;
+    background: white;
   }
 
   :deep(.avatar-uploader .el-upload:hover) {
@@ -158,13 +163,28 @@ export default {
   }
 
   // 富文本
-  :deep(.quill-editor) {
+  :deep(.quillWrapper) {
     margin-top: 43px;
     background-color: white;
+    border-radius: 10px;
+    border: none;
   }
 
   :deep(.ql-container) {
     min-height: 400px;
+  }
+
+  :deep(.v-keywords) {
+    background-color: white;
+  }
+  :deep(.v-keywords-action) {
+    width: 15%;
+
+    background: #409eff;
+    border-radius: 4px;
+    opacity: 1;
+    border: 1px solid #d9ecff;
+    color: #ecf5ff;
   }
 }
 </style>

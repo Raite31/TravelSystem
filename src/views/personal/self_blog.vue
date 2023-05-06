@@ -1,29 +1,28 @@
 <template>
   <div class="contain-all-blog">
-
-    <div class="list">
+    <div v-if="articles.length" class="list">
       <ul>
         <li v-for="item in articles" :key="item.index" @click="toDetail(item)">
           <div class="left">
-            <img :src="item.photo[0]" alt="">
+            <img :src="item.photo[0]" alt="" />
           </div>
           <div class="right">
             <div class="title">{{ item.title }}</div>
             <div class="introduction">{{ item.introduce }}</div>
             <span class="date">{{ item.create_time }}</span>
           </div>
-
         </li>
       </ul>
     </div>
-    <div class="block">
+    <el-empty v-if="!articles.length" description="暂无订博客"></el-empty>
+    <div v-if="articles" class="block">
       <el-pagination
-          :hide-on-single-page="true"
-          @current-change="handleCurrentChange"
-          :current-page="currentPage4"
-          :page-size="pageSize"
-          layout="total, prev, pager, next, jumper"
-          :total="total"
+        :hide-on-single-page="true"
+        @current-change="handleCurrentChange"
+        :current-page="currentPage4"
+        :page-size="pageSize"
+        layout="total, prev, pager, next, jumper"
+        :total="total"
       >
       </el-pagination>
     </div>
@@ -40,7 +39,7 @@ export default {
       currentPage4: 1,
       pageSize: 10,
       total: 0,
-      pageTicket: [] // 分页后当前页数据
+      pageTicket: [], // 分页后当前页数据
     };
   },
   methods: {
@@ -54,7 +53,7 @@ export default {
         // },
 
         // 方式二
-        path: `/blogList/blogDetail/?id=${item.id}`
+        path: `/blogList/blogDetail/?id=${item.id}`,
       });
     },
     // 切换分页
@@ -76,12 +75,12 @@ export default {
           this.getPageInfo();
           this.$message({
             message: "数据加载成功！",
-            type: "success"
+            type: "success",
           });
         } else {
           this.$message({
             message: res.data.msg,
-            type: "error"
+            type: "error",
           });
         }
       });
@@ -90,9 +89,9 @@ export default {
     getPageInfo() {
       this.pageTicket = [];
       for (
-          let i = (this.currentPage4 - 1) * this.pageSize;
-          i < this.total;
-          i++
+        let i = (this.currentPage4 - 1) * this.pageSize;
+        i < this.total;
+        i++
       ) {
         this.pageTicket.push(this.articles[i]);
         if (this.pageTicket.length === this.pageSize) break;
@@ -102,16 +101,19 @@ export default {
     initData() {
       this.user = JSON.parse(sessionStorage.getItem("user"));
       this.getData(this.user.id);
-    }
+    },
   },
   created() {
     this.initData();
-  }
+  },
 };
 </script>
 <style lang="scss" scoped>
 .contain-all-blog {
-  background: white;
+  background: #ebe8e8;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 40px;
 
   .nav {
     border-bottom: 1px solid #f0f0f2;
@@ -165,7 +167,6 @@ export default {
             margin-right: 8px;
           }
         }
-
       }
     }
   }

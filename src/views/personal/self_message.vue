@@ -1,7 +1,7 @@
 <template>
   <div class="contain-all-message">
     <div class="myself">
-      <div class="avatar">
+      <div class="avatar_img">
         <el-upload
           class="avatar-uploader"
           action="https://jsonplaceholder.typicode.com/posts/"
@@ -22,7 +22,7 @@
           <el-row :gutter="12">
             <el-col :span="24">
               <el-form-item label="用户昵称">
-                <el-input v-model="form.name"></el-input>
+                <el-input v-model="form.name" placeholder="请输入"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="24">
@@ -40,7 +40,7 @@
             </el-col>
             <el-col :span="24">
               <el-form-item label="个人简介">
-                <el-input v-model="form.introduce"></el-input>
+                <el-input v-model="form.introduce" placeholder="请输入"></el-input>
               </el-form-item>
             </el-col>
             <!-- <el-col :span="24">
@@ -50,7 +50,7 @@
             </el-col> -->
             <el-col :span="24">
               <el-form-item label="出生日期">
-                <el-date-picker v-model="form.birthday"></el-date-picker>
+                <el-date-picker v-model="form.birthday" placeholder="请输入"></el-date-picker>
               </el-form-item>
             </el-col>
           </el-row>
@@ -125,44 +125,43 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.avatar-uploader .el-upload {
-  border: 1px dashed #d9d9d9;
-  border-radius: 6px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-.avatar-uploader .el-upload:hover {
-  border-color: #409eff;
-}
-.avatar-uploader-icon {
-  font-size: 28px;
-  color: #8c939d;
-  width: 178px;
-  height: 178px;
-  line-height: 178px;
-  text-align: center;
-}
-.avatar {
-  width: 178px;
-  height: 178px;
-  display: block;
-}
 .contain-all-message {
   text-align: left;
+  background: #ebe8e8;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 40px;
   // width: 900px !important;
   .myself {
     background-color: white;
     display: flex;
     padding: 24px 0 40px 24px;
     margin-bottom: 10px;
+    border-radius: 10px;
 
-    .avatar {
-      img {
-        width: 93px;
-        height: 93px;
-        border-radius: 50%;
-        margin-right: 16px;
+    .avatar_img {
+      margin-right: 20px;
+      border: 1px dashed #d9d9d9;
+      border-radius: 4px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      // 头像上传组件
+      &:hover {
+        border-color: #409eff;
+      }
+      .avatar-uploader-icon {
+        font-size: 28px;
+        color: #8c939d;
+        width: 178px;
+        height: 178px;
+        line-height: 178px;
+        text-align: center;
+      }
+      .avatar {
+        width: 178px;
+        height: 178px;
+        display: block;
       }
     }
 
@@ -176,6 +175,8 @@ export default {
   .base_message {
     background-color: white;
     margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 10px;
 
     .title {
       line-height: 48px;
@@ -193,7 +194,8 @@ export default {
 
   .hobby {
     background-color: white;
-
+    border-radius: 10px;
+    padding: 10px;
     .title {
       line-height: 48px;
       font-size: 18px;
