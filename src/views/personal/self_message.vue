@@ -2,7 +2,16 @@
   <div class="contain-all-message">
     <div class="myself">
       <div class="avatar">
-        <img :src="require('@/assets/imgs/' + form.avatar)" alt=""/>
+        <el-upload
+          class="avatar-uploader"
+          action="https://jsonplaceholder.typicode.com/posts/"
+          :show-file-list="false"
+          :on-success="handleAvatarSuccess"
+          :before-upload="beforeAvatarUpload"
+        >
+          <img v-if="form.avatar" :src="form.avatar" class="avatar" />
+          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+        </el-upload>
       </div>
       <div class="name">{{ form.account }}</div>
     </div>
@@ -18,7 +27,7 @@
             </el-col>
             <el-col :span="24">
               <el-form-item label="用户ID">
-                <el-input v-model="form.id"></el-input>
+                <el-input v-model="form.id" disabled></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="24">
@@ -72,12 +81,27 @@ export default {
         sex: "",
         introduce: "",
         birthday: "",
-        workTime: ""
+        workTime: "",
       },
-      formRef: null
+      formRef: null,
     };
   },
   methods: {
+    beforeAvatarUpload(file) {
+      const isJPG = file.type === "image/jpeg";
+      const isLt2M = file.size / 1024 / 1024 < 2;
+
+      if (!isJPG) {
+        this.$message.error("上传头像图片只能是 JPG 格式!");
+      }
+      if (!isLt2M) {
+        this.$message.error("上传头像图片大小不能超过 2MB!");
+      }
+      return isJPG && isLt2M;
+    },
+    handleAvatarSuccess(res, file) {
+      this.form.avatar = URL.createObjectURL(file.raw);
+    },
     async onSubmit(data) {
       const res = await updateAuthor(data);
       if (res.data.status == 1) {
@@ -93,14 +117,37 @@ export default {
       getAuthor({ id: this.user.id }).then((res) => {
         this.form = res.data[0];
       });
-    }
+    },
   },
   created() {
     this.initData();
-  }
+  },
 };
 </script>
 <style lang="scss" scoped>
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #409eff;
+}
+.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 178px;
+  height: 178px;
+  line-height: 178px;
+  text-align: center;
+}
+.avatar {
+  width: 178px;
+  height: 178px;
+  display: block;
+}
 .contain-all-message {
   text-align: left;
   // width: 900px !important;
