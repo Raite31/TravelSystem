@@ -117,16 +117,17 @@ body {
       width: 900px;
       display: flex;
       margin-bottom: 50px;
-      padding: 10px;
+      padding: 20px;
       background: rgb(248, 243, 168, 0.7);
       border-radius: 10px;
+      transition: all 0.5s;
 
       .left {
         margin-right: 55px;
 
         img {
-          width: 371px;
-          height: 298px;
+          width: 150px;
+          height: 150px;
           border-radius: 10px;
         }
       }
@@ -135,8 +136,8 @@ body {
         text-align: left;
 
         .title {
-          width: 400px;
-          font-size: 33px;
+          width: 600px;
+          font-size: 24px;
           font-weight: 400;
           color: #000000;
           line-height: 40px;
@@ -164,25 +165,27 @@ body {
         }
 
         .list-contain {
-          width: 430px;
+          width: 680px;
           font-size: 16px;
           font-weight: 400;
           color: #000000;
           line-height: 22px;
-          height: 200px;
 
           display: -webkit-box;
           word-break: break-all;
           text-overflow: ellipsis;
           overflow: hidden;
           -webkit-box-orient: vertical;
-          -webkit-line-clamp: 9;
+          -webkit-line-clamp: 3;
 
           // display: block;
           // overflow: hidden;
           // white-space: nowrap;
           // text-overflow: ellipsis;
         }
+      }
+      &:hover {
+        transform: scale(1.2);
       }
     }
   }
