@@ -348,6 +348,7 @@ body {
 
       .item {
         margin: 15px;
+        width: 365px;
 
         img {
           width: 365px;
@@ -383,6 +384,7 @@ body {
 
       .item {
         margin: 15px;
+        width: 365px;
 
         img {
           width: 365px;
@@ -425,6 +427,7 @@ body {
 
         .item {
           margin: 15px;
+          width: 365px;
 
           img {
             width: 365px;
@@ -444,6 +447,5 @@ body {
       }
     }
   }
-  
 }
 </style>
