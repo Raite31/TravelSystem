@@ -1,21 +1,21 @@
 <template>
   <div>
-    <Head/>
+    <Head />
     <div class="contain">
       <div class="cover">
-        <img src="@/assets/imgs/blog_cover.png" alt=""/>
+        <img src="@/assets/imgs/blog_cover.png" alt="" />
       </div>
       <div class="search"></div>
       <div class="title">博客分享集合地</div>
       <div class="list">
         <ul>
           <li
-              v-for="(item, index) in blogs"
-              :key="index"
-              @click="toDetail(item)"
+            v-for="(item, index) in blogs"
+            :key="index"
+            @click="toDetail(item)"
           >
             <div class="left">
-              <img :src="item.photo[0]" alt=""/>
+              <img :src="item.photo[0]" alt="" />
             </div>
             <div class="right">
               <div class="title">{{ item.title }}</div>
@@ -29,7 +29,7 @@
           </li>
         </ul>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   </div>
 </template>
@@ -42,11 +42,11 @@ import { getBlogPage } from "@/api/blog/index";
 export default {
   components: {
     Head,
-    Footer
+    Footer,
   },
   data() {
     return {
-      blogs: {}
+      blogs: {},
     };
   },
   methods: {
@@ -64,14 +64,14 @@ export default {
         // },
 
         // 方式二
-        path: `/blogList/blogDetail/?id=${item.id}`
+        path: `/blogList/blogDetail/?id=${item.id}`,
       });
-    }
+    },
   },
 
   created() {
     this.getData();
-  }
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -92,10 +92,12 @@ body {
 
   .cover {
     margin-bottom: 50px;
+    border-radius: 10px;
 
     img {
       width: 1500px;
       height: 592px;
+      border-radius: 10px;
     }
   }
 
@@ -112,8 +114,12 @@ body {
     margin: 0 auto;
 
     li {
+      width: 900px;
       display: flex;
       margin-bottom: 50px;
+      padding: 10px;
+      background: rgb(248, 243, 168, 0.7);
+      border-radius: 10px;
 
       .left {
         margin-right: 55px;
@@ -121,6 +127,7 @@ body {
         img {
           width: 371px;
           height: 298px;
+          border-radius: 10px;
         }
       }
 
@@ -128,16 +135,24 @@ body {
         text-align: left;
 
         .title {
+          width: 400px;
           font-size: 33px;
           font-weight: 400;
           color: #000000;
           line-height: 40px;
           margin-bottom: 12px;
 
-          display: block;
-          overflow: hidden;
-          white-space: nowrap;
+          // display: block;
+          // overflow: hidden;
+          // white-space: nowrap;
+          // text-overflow: ellipsis;
+
+          display: -webkit-box;
+          word-break: break-all;
           text-overflow: ellipsis;
+          overflow: hidden;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
         }
 
         .tag {
