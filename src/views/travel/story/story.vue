@@ -1,22 +1,25 @@
 <template>
   <div>
-    <Head/>
+    <Head />
     <div class="contains_all">
       <div class="guide">
         <div class="part-one">
           <div class="title">指导：红色旅游</div>
           <div class="image">
-            <img src="@/assets/imgs/red_img.png" alt=""/>
+            <img src="@/assets/imgs/red_img.png" alt="" />
           </div>
           <div class="describe">
-            红色旅游景区是指以革命战争、革命历史为主题的旅游景区。 是以革命历史为主线，集红色文化、旅游、休闲、观光、教育、科研为一体的综合性旅游景区。 红色旅游景区的主要特点是：以红色文化为主题，突出爱国主义和革命精神；
-            以历史文化为内涵，弘扬中华优秀传统文化和革命文化； 是集多种要素于一体的综合性旅游产品。
+            红色旅游景区是指以革命战争、革命历史为主题的旅游景区。
+            是以革命历史为主线，集红色文化、旅游、休闲、观光、教育、科研为一体的综合性旅游景区。
+            红色旅游景区的主要特点是：以红色文化为主题，突出爱国主义和革命精神；
+            以历史文化为内涵，弘扬中华优秀传统文化和革命文化；
+            是集多种要素于一体的综合性旅游产品。
           </div>
         </div>
-        <hr/>
+        <hr />
         <div class="part-two">
           <div class="image">
-            <img src="@/assets/imgs/1681268396640.jpg" alt=""/>
+            <img src="@/assets/imgs/1681268396640.jpg" alt="" />
           </div>
           <div class="describe">
             R&B and hip hop, jazz and house, these fests are pulling out all the
@@ -24,42 +27,53 @@
             vacation, too.
           </div>
         </div>
-        <hr/>
+        <hr />
       </div>
       <div class="traveler_stories">
         <div class="title">旅行故事</div>
         <div class="items">
-          <div class="item" v-for="item of all.slice(0, 3)" :key="item.index">
-            <img :src="item.photo[0]" alt=""/>
+          <div
+            class="item"
+            v-for="item of all.slice(0, 3)"
+            :key="item.index"
+            @click="toDetail(item)"
+          >
+            <img :src="item.photo[0]" alt="" />
             <div class="describe">
               {{ item.title }}
             </div>
           </div>
         </div>
       </div>
-      <hr/>
+      <hr />
       <div class="red_revolution">
         <div class="title">4个必去的红色旅游景点</div>
         <div class="items">
-          <div class="item" v-for="item in reds.slice(0, 3)" :key="item.index">
-            <img :src="item.photo[0]" alt=""/>
+          <div
+            class="item"
+            v-for="item in reds.slice(0, 3)"
+            :key="item.index"
+            @click="toDetail(item)"
+          >
+            <img :src="item.photo[0]" alt="" />
             <div class="describe">
               {{ item.title }}
             </div>
           </div>
         </div>
       </div>
-      <hr/>
+      <hr />
       <div class="theme_Q">
         <div class="city_escapes">
           <div class="title">City_escapes</div>
           <div class="items">
             <div
-                class="item"
-                v-for="item in City_escapes.slice(0, 3)"
-                :key="item.index"
+              class="item"
+              v-for="item in City_escapes.slice(0, 3)"
+              :key="item.index"
+              @click="toDetail(item)"
             >
-              <img :src="item.photo[0]" alt=""/>
+              <img :src="item.photo[0]" alt="" />
               <div class="describe">
                 {{ item.title }}
               </div>
@@ -70,11 +84,12 @@
           <div class="title">Destination_experiences</div>
           <div class="items">
             <div
-                class="item"
-                v-for="item in Destination_experiences.slice(0, 3)"
-                :key="item.index"
+              class="item"
+              v-for="item in Destination_experiences.slice(0, 3)"
+              :key="item.index"
+              @click="toDetail(item)"
             >
-              <img :src="item.photo[0]" alt=""/>
+              <img :src="item.photo[0]" alt="" />
               <div class="describe">
                 {{ item.title }}
               </div>
@@ -85,11 +100,12 @@
           <div class="title">Eat_drink</div>
           <div class="items">
             <div
-                class="item"
-                v-for="item in Eat_drink.slice(0, 3)"
-                :key="item.index"
+              class="item"
+              v-for="item in Eat_drink.slice(0, 3)"
+              :key="item.index"
+              @click="toDetail(item)"
             >
-              <img :src="item.photo[0]" alt=""/>
+              <img :src="item.photo[0]" alt="" />
               <div class="describe">
                 {{ item.title }}
               </div>
@@ -100,13 +116,14 @@
           <div class="title">Stay</div>
           <div class="items">
             <div
-                class="item"
-                v-for="item in Stay.slice(0, 3)"
-                :key="item.index"
+              class="item"
+              v-for="item in Stay.slice(0, 3)"
+              :key="item.index"
+              @click="toDetail(item)"
             >
-              <img :src="item.photo[0]" alt=""/>
+              <img :src="item.photo[0]" alt="" />
               <div class="describe">
-                {{ item.introduce }}
+                {{ item.title }}
               </div>
             </div>
           </div>
@@ -115,13 +132,14 @@
           <div class="title">Culture_history</div>
           <div class="items">
             <div
-                class="item"
-                v-for="item in Culture_history.slice(0, 3)"
-                :key="item.index"
+              class="item"
+              v-for="item in Culture_history.slice(0, 3)"
+              :key="item.index"
+              @click="toDetail(item)"
             >
-              <img :src="item.photo[0]" alt=""/>
+              <img :src="item.photo[0]" alt="" />
               <div class="describe">
-                {{ item.introduce }}
+                {{ item.title }}
               </div>
             </div>
           </div>
@@ -130,13 +148,14 @@
           <div class="title">Travel_style</div>
           <div class="items">
             <div
-                class="item"
-                v-for="item in Travel_style.slice(0, 3)"
-                :key="item.index"
+              class="item"
+              v-for="item in Travel_style.slice(0, 3)"
+              :key="item.index"
+              @click="toDetail(item)"
             >
-              <img :src="item.photo[0]" alt=""/>
+              <img :src="item.photo[0]" alt="" />
               <div class="describe">
-                {{ item.introduce }}
+                {{ item.title }}
               </div>
             </div>
           </div>
@@ -145,11 +164,12 @@
           <div class="title">Related</div>
           <div class="items">
             <div
-                class="item"
-                v-for="item in Related.slice(0, 3)"
-                :key="item.index"
+              class="item"
+              v-for="item in Related.slice(0, 3)"
+              :key="item.index"
+              @click="toDetail(item)"
             >
-              <img :src="item.photo[0]" alt=""/>
+              <img :src="item.photo[0]" alt="" />
               <div class="describe">
                 {{ item.title }}
               </div>
@@ -158,7 +178,7 @@
         </div>
       </div>
     </div>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 <script>
@@ -169,7 +189,7 @@ import { getBlogPage } from "@/api/blog/index";
 export default {
   components: {
     Head,
-    Footer
+    Footer,
   },
   data() {
     return {
@@ -181,10 +201,22 @@ export default {
       Stay: [],
       Culture_history: [],
       Travel_style: [],
-      Related: []
+      Related: [],
     };
   },
   methods: {
+    toDetail(item) {
+      this.$router.push({
+        // 方式一
+        // name: "destinationDetail",
+        // params: {
+        //   id: item.id,
+        // },
+
+        // 方式二
+        path: `/blogList/blogDetail/?id=${item.id}`,
+      });
+    },
     getdata() {
       getBlogPage().then((res) => {
         for (let item of res.data) {
@@ -218,11 +250,11 @@ export default {
           }
         }
       });
-    }
+    },
   },
   created() {
     this.getdata();
-  }
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -296,7 +328,7 @@ body {
         text-align: left;
         font-size: 24px;
         font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-        "Lucida Sans", Arial, sans-serif;
+          "Lucida Sans", Arial, sans-serif;
         font-weight: 900;
       }
     }
@@ -327,7 +359,7 @@ body {
           width: 85%;
           margin: 0 auto;
           font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-          "Lucida Sans", Arial, sans-serif;
+            "Lucida Sans", Arial, sans-serif;
           font-size: 18px;
           font-weight: 900;
         }
@@ -362,7 +394,7 @@ body {
           width: 85%;
           margin: 0 auto;
           font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-          "Lucida Sans", Arial, sans-serif;
+            "Lucida Sans", Arial, sans-serif;
           font-size: 18px;
           font-weight: 900;
         }
@@ -404,7 +436,7 @@ body {
             width: 85%;
             margin: 0 auto;
             font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-            "Lucida Sans", Arial, sans-serif;
+              "Lucida Sans", Arial, sans-serif;
             font-size: 18px;
             font-weight: 900;
           }
@@ -412,5 +444,6 @@ body {
       }
     }
   }
+  
 }
 </style>
