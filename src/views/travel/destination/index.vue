@@ -1,19 +1,24 @@
 <template>
   <div>
-    <Head/>
+    <Head />
     <div class="contains">
       <div class="search">
-        <el-input></el-input>
+        <el-input
+          placeholder="去哪儿？"
+          v-model="searchKeyword"
+          prefix-icon="el-icon-search"
+          @keyup.enter.native="searchDestination(searchKeyword)"
+        ></el-input>
         <el-button>出发！</el-button>
       </div>
       <div class="list">
         <ul>
           <li
-              v-for="item in pageTicket"
-              :key="item.index"
-              @click="toDetail(item)"
+            v-for="item in pageTicket"
+            :key="item.index"
+            @click="toDetail(item)"
           >
-            <img :src="item.photo[0]"/>
+            <img :src="item.photo[0]" />
             <div class="right">
               <div class="title">{{ item.title }}</div>
               <span class="views">
@@ -30,16 +35,16 @@
 
       <div class="block">
         <el-pagination
-            :hide-on-single-page="true"
-            @current-change="handleCurrentChange"
-            :current-page="currentPage4"
-            :page-size="pageSize"
-            layout="total, prev, pager, next, jumper"
-            :total="total"
+          :hide-on-single-page="true"
+          @current-change="handleCurrentChange"
+          :current-page="currentPage4"
+          :page-size="pageSize"
+          layout="total, prev, pager, next, jumper"
+          :total="total"
         >
         </el-pagination>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   </div>
 </template>
@@ -52,7 +57,7 @@ import { getDestinationPage } from "@/api/destination/index";
 export default {
   components: {
     Head,
-    Footer
+    Footer,
   },
   data() {
     return {
@@ -61,10 +66,14 @@ export default {
       currentPage4: 1,
       pageSize: 10,
       total: 0,
-      pageTicket: [] // 分页后当前页数据
+      pageTicket: [], // 分页后当前页数据
+      searchKeyword: null,
     };
   },
   methods: {
+    searchDestination(data) {
+      this.getdata(this.searchKeyword);
+    },
     // 切换分页
     handleCurrentChange(val) {
       this.currentPage4 = val;
@@ -84,12 +93,12 @@ export default {
           this.getPageInfo();
           this.$message({
             message: "数据加载成功！",
-            type: "success"
+            type: "success",
           });
         } else {
           this.$message({
             message: res.data.msg,
-            type: "error"
+            type: "error",
           });
         }
       });
@@ -98,9 +107,9 @@ export default {
     getPageInfo() {
       this.pageTicket = [];
       for (
-          let i = (this.currentPage4 - 1) * this.pageSize;
-          i < this.total;
-          i++
+        let i = (this.currentPage4 - 1) * this.pageSize;
+        i < this.total;
+        i++
       ) {
         this.pageTicket.push(this.lists[i]);
         if (this.pageTicket.length === this.pageSize) break;
@@ -115,9 +124,9 @@ export default {
         // },
 
         // 方式二
-        path: `/destination/detail/?id=${item.id}`
+        path: `/destination/detail/?id=${item.id}`,
       });
-    }
+    },
   },
   created() {
     if (this.keyword) {
@@ -126,7 +135,7 @@ export default {
     } else {
       this.getdata();
     }
-  }
+  },
 };
 </script>
 
