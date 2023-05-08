@@ -202,10 +202,12 @@ body {
         display: flex;
         width: 918px;
         margin-bottom: 10px;
-        background-color: white;
+        background-color: rgb(237, 241, 252);
         padding: 20px 100px 20px 30px;
         box-sizing: border-box;
         text-align: left;
+
+        border-radius: 10px;
 
         img {
           width: 164px;

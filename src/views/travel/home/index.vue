@@ -51,20 +51,34 @@
           <div class="left"></div>
           <div class="right">
             <ul class="list">
-              <li v-for="item in lists" :key="item.index">
+              <li
+                v-for="item in lists"
+                :key="item.index"
+                @click="toDetail(item)"
+              >
                 <img :src="item.photo[0]" />
-                <div>
-                  <div>{{ item.place }}</div>
-                  <div>￥{{ item.price }}</div>
+                <div class="right">
+                  <div class="lowPrice_place">{{ item.place }}</div>
+                  <div class="lowPrice_arrow">
+                    <img src="@/assets/svg/arrow.svg" alt="" />
+                  </div>
+                  <div class="lowPrice_price">OT {{ item.price }}￥</div>
                 </div>
               </li>
             </ul>
             <ul class="list">
-              <li v-for="item in lists2" :key="item.index">
+              <li
+                v-for="item in lists2"
+                :key="item.index"
+                @click="toDetail(item)"
+              >
                 <img :src="item.photo[0]" />
-                <div>
-                  <div>{{ item.place }}</div>
-                  <div>￥{{ item.price }}</div>
+                <div class="right">
+                  <div class="lowPrice_place">{{ item.place }}</div>
+                  <div class="lowPrice_arrow">
+                    <img src="@/assets/svg/arrow.svg" alt="" />
+                  </div>
+                  <div class="lowPrice_price">￥{{ item.price }}</div>
                 </div>
               </li>
             </ul>
@@ -100,6 +114,18 @@ export default {
     };
   },
   methods: {
+    toDetail(item) {
+      this.$router.push({
+        // 方式一
+        // name: "destinationDetail",
+        // params: {
+        //   id: item.id,
+        // },
+
+        // 方式二
+        path: `/destination/detail/?id=${item.id}`,
+      });
+    },
     getdata() {
       getDestinationHots().then((res) => {
         this.hots = res.data.slice(0, 9);
@@ -389,6 +415,31 @@ body {
               height: 105px;
               border-radius: 30px;
               margin-right: 10px;
+            }
+            .right {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              .lowPrice_place {
+                font-size: 20px;
+                font-family: Poppins-SemiBold, Poppins;
+                font-weight: 600;
+                color: #000000;
+                line-height: 30px;
+              }
+              .lowPrice_arrow {
+                align-self: flex-end;
+                img {
+                  height: 20px;
+                }
+              }
+              .lowPrice_price {
+                font-size: 20px;
+                font-family: Poppins-SemiBold, Poppins;
+                font-weight: 600;
+                color: #004be4;
+                line-height: 30px;
+              }
             }
           }
         }
