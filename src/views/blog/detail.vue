@@ -22,7 +22,10 @@
         <div class="author">
           <div class="text">关于我</div>
           <div class="author-information">
-            <img :src="form.avatar" alt="" />
+            <div class="avatar">
+              <img :src="form.avatar" alt="" />
+            </div>
+
             <div class="right">
               <div class="name">{{ form.name }}</div>
               <div class="place">{{ form.place[1] }}</div>
@@ -168,15 +171,18 @@ export default {
 
       .author-information {
         display: flex;
-
-        img {
+        .avatar {
           width: 160px;
           height: 160px;
-          background: #c4c4c4;
-          opacity: 1;
           border-radius: 50%;
-
           margin-right: 37px;
+          img {
+            width: 160px;
+            height: 160px;
+            background: #c4c4c4;
+            opacity: 1;
+            border-radius: 50%;
+          }
         }
 
         .right {
