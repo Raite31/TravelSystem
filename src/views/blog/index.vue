@@ -118,7 +118,7 @@ body {
       display: flex;
       margin-bottom: 50px;
       padding: 20px;
-      background: rgb(248, 243, 168, 0.7);
+      background: rgba(252, 250, 229, 0.7);
       border-radius: 10px;
       transition: all 0.5s;
 
