@@ -1,9 +1,9 @@
 <template>
   <div>
-    <Head/>
+    <Head />
     <div class="contain-all">
       <div class="top-cov">
-        <img src="" alt=""/>
+        <img src="" alt="" />
       </div>
       <div class="blog-contain">
         <div class="title">{{ form.title }}</div>
@@ -22,7 +22,7 @@
         <div class="author">
           <div class="text">关于我</div>
           <div class="author-information">
-            <img :src="require('@/assets/imgs/'+form.avatar)" alt=""/>
+            <img :src="form.avatar" alt="" />
             <div class="right">
               <div class="name">{{ form.name }}</div>
               <div class="place">{{ form.place[1] }}</div>
@@ -31,7 +31,7 @@
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   </div>
 </template>
@@ -44,7 +44,7 @@ import { getBlogDetail } from "@/api/blog/index";
 export default {
   components: {
     Head,
-    Footer
+    Footer,
   },
   data() {
     return {
@@ -66,9 +66,9 @@ export default {
         contain: "",
         avatar: "",
         place: "",
-        introduce: ""
+        introduce: "",
       },
-      formRef: null
+      formRef: null,
     };
   },
   methods: {
@@ -81,17 +81,17 @@ export default {
         this.form.tags = res.data[0].tags;
         this.form.contain = res.data[0].contain;
         getAuthor({ id: this.form.uid }).then((res) => {
-          this.form.avatar = res.data[0].avatar;
-          this.form.name = res.data[0].name;
-          this.form.place = res.data[0].place;
-          this.form.introduce = res.data[0].introduce;
+          this.form.avatar = res.data[0]?.avatar;
+          this.form.name = res.data[0]?.name;
+          this.form.place = res.data[0]?.place;
+          this.form.introduce = res.data[0]?.introduce;
         });
       });
-    }
+    },
   },
   created() {
     this.getData();
-  }
+  },
 };
 </script>
 <style lang="scss" scoped>

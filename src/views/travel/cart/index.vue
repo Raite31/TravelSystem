@@ -79,7 +79,7 @@
           </div>
         </div>
 
-        <div class="nav" ref="listheight" v-if="show">
+        <div class="nav" ref="listheight" v-if="show && orders.length">
           <div class="nav-left">
             <div class="select-all">
               <input type="checkbox" name="selectAll" />

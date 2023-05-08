@@ -1,56 +1,76 @@
 <template>
   <div class="contain-all">
-    <img src="@/assets/imgs/footer.png" />
     <div class="bottom">
-      <img src="@/assets/imgs/luori.png" alt="" />
+      <div class="left">
+        <div class="text1">想要获得独特的优惠？</div>
+        <div class="text2">在 TELEGRAM 中订阅我们的频道</div>
+        <el-button type="primary">点击这里</el-button>
+      </div>
       <ul>
-        <li class="title">11111111111111111</li>
-        <li>22222222222222222</li>
-        <li>33333333333333333</li>
-        <li>44444444444444444</li>
+        <li class="title">服务</li>
+        <li>航班</li>
+        <li>保险</li>
+        <li>签证</li>
       </ul>
       <ul>
-        <li class="title">11111111111111111</li>
-        <li>22222222222222222</li>
-        <li>33333333333333333</li>
-        <li>44444444444444444</li>
+        <li class="title">信息</li>
+        <li>如何购买？</li>
+        <li>关于我们</li>
+        <li>点评</li>
       </ul>
       <ul>
-        <li class="title">11111111111111111</li>
-        <li>22222222222222222</li>
-        <li>33333333333333333</li>
-        <li>44444444444444444</li>
+        <li class="title">联系人</li>
+        <li>+38(095) 179 79 79</li>
+        <li>+38(067) 667 79 79</li>
+        <li>info@magic rest.com.UA</li>
       </ul>
     </div>
   </div>
 </template>
 <style lang="scss" scoped>
-img {
-  width: 1887px;
-  background: #0522a0;
-  border-radius: 0px 0px 0px 0px;
-  opacity: 1;
-}
-
 .bottom {
-  width: 1887px;
+  padding: 20px;
+  margin: 0 auto;
+
   display: flex;
   justify-content: space-around;
   margin: 0 auto;
-  img {
-    width: 114px;
-    height: 114px;
-    margin: 81px 0 0 81px;
+  color: #aba6a6;
+
+  background-image: url("@/assets/imgs/footer.png");
+  background-size: cover;
+  .left {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    .text1 {
+      font-size: 35px;
+      font-family: Poppins-SemiBold, Poppins;
+      font-weight: 600;
+      line-height: 53px;
+    }
+    .text2 {
+      font-size: 18px;
+      font-family: Poppins-Medium, Poppins;
+      font-weight: 500;
+      line-height: 27px;
+    }
+    .el-button {
+      width: 193px;
+      height: 36px;
+      border-radius: 30px 30px 30px 30px;
+    }
   }
+
   ul {
-    width: 300px;
     list-style: none;
-    margin-top: 90px;
     .title {
       font-size: 15px;
       font-family: Poppins-SemiBold, Poppins;
       font-weight: 600;
-      color: #000000;
+      color: #d6d6d6;
       line-height: 23px;
     }
     li {
