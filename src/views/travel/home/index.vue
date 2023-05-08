@@ -18,7 +18,12 @@
       <div class="hot">
         <div class="title">热门旅游</div>
         <div class="items">
-          <div class="item" v-for="item in hots" :key="item.index">
+          <div
+            class="item"
+            v-for="item in hots"
+            :key="item.index"
+            @click="toDetail(item)"
+          >
             <img :src="item.photo[0]" alt="" />
             <div class="bottom">
               <div class="item-title">{{ item.title }}</div>
@@ -31,7 +36,12 @@
       <div class="recommend">
         <div class="title">我们推荐</div>
         <div class="items">
-          <div class="item" v-for="item in recommends" :key="item.index">
+          <div
+            class="item"
+            v-for="item in recommends"
+            :key="item.index"
+            @click="toDetail(item)"
+          >
             <img :src="item.photo[0]" alt="" />
             <div class="bottom">
               <div class="item-title">{{ item.title }}</div>
