@@ -88,7 +88,7 @@
                   <div class="lowPrice_arrow">
                     <img src="@/assets/svg/arrow.svg" alt="" />
                   </div>
-                  <div class="lowPrice_price">￥{{ item.price }}</div>
+                  <div class="lowPrice_price">OT {{ item.price }}￥</div>
                 </div>
               </li>
             </ul>
