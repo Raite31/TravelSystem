@@ -10,7 +10,7 @@
       <div class="list">
         <ul>
           <li
-            v-for="(item, index) in blogs"
+            v-for="(item, index) in pageTicket"
             :key="index"
             @click="toDetail(item)"
           >
@@ -29,6 +29,18 @@
           </li>
         </ul>
       </div>
+
+      <div class="block">
+        <el-pagination
+          :hide-on-single-page="true"
+          @current-change="handleCurrentChange"
+          :current-page="currentPage4"
+          :page-size="pageSize"
+          layout="total, prev, pager, next, jumper"
+          :total="total"
+        >
+        </el-pagination>
+      </div>
       <Footer />
     </div>
   </div>
@@ -46,13 +58,48 @@ export default {
   },
   data() {
     return {
-      blogs: {},
+      blogs: null,
+      currentPage4: 1,
+      pageSize: 10,
+      total: 0,
+      pageTicket: [], // 分页后当前页数据
     };
   },
   methods: {
+    // 切换分页
+    handleCurrentChange(val) {
+      this.currentPage4 = val;
+      this.getPageInfo();
+      window.scroll(0, 0);
+    },
+    // 分页操作
+    getPageInfo() {
+      this.pageTicket = [];
+      for (
+        let i = (this.currentPage4 - 1) * this.pageSize;
+        i < this.total;
+        i++
+      ) {
+        this.pageTicket.push(this.blogs[i]);
+        if (this.pageTicket.length === this.pageSize) break;
+      }
+    },
     getData() {
       getBlogPage().then((res) => {
-        this.blogs = res.data;
+        if (res.data.length) {
+          this.total = res.data.length;
+          this.blogs = res.data;
+          this.getPageInfo();
+          this.$message({
+            message: "数据加载成功！",
+            type: "success",
+          });
+        } else {
+          this.$message({
+            message: res.data.msg,
+            type: "error",
+          });
+        }
       });
     },
     toDetail(item) {
@@ -188,6 +235,9 @@ body {
         transform: scale(1.2);
       }
     }
+  }
+  .block {
+    margin: 50px auto;
   }
 }
 </style>
