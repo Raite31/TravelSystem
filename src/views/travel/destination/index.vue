@@ -33,7 +33,7 @@
         </ul>
       </div>
 
-      <div class="block">
+      <div class="block" v-if="pageTicket.length >= 10">
         <el-pagination
           :hide-on-single-page="true"
           @current-change="handleCurrentChange"
