@@ -144,8 +144,10 @@ export default {
         this.recommends = res.data.slice(0, 3);
       });
       getDestinationLowPrice().then((res) => {
+        console.log("res: ", res);
         this.lists = res.data.slice(0, 3);
-        this.lists2 = res.data.slice(4, 7);
+        this.lists2 = res.data.slice(3, 7);
+        console.log("res2: ", this.lists2);
       });
     },
     searchDestination(data) {
