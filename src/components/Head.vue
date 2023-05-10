@@ -49,12 +49,7 @@
             登录
           </router-link>
           <router-link class="avatar" v-else to="/personal">
-            <img
-              :src="
-                user.avatar ? require('@/assets/avatar/' + user.avatar) : ''
-              "
-              alt=""
-            />
+            <img :src="user.avatar ? user.avatar : ''" alt="" />
           </router-link>
         </div>
       </div>

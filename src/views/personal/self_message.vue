@@ -3,17 +3,12 @@
     <div class="myself">
       <div class="avatar_img">
         <el-upload
+          action="#"
           class="avatar-uploader"
-          action="https://jsonplaceholder.typicode.com/posts/"
           :show-file-list="false"
-          :on-success="handleAvatarSuccess"
-          :before-upload="beforeAvatarUpload"
+          :http-request="upload"
         >
-          <img
-            v-if="form.avatar"
-            :src="require('@/assets/avatar/' + form.avatar)"
-            class="avatar"
-          />
+          <img v-if="form.avatar" :src="form.avatar" class="avatar" />
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </div>
@@ -87,6 +82,11 @@
 <script>
 import { Message } from "element-ui";
 import { getAuthor, updateAuthor } from "@/api/author/index";
+const COS = require("cos-js-sdk-v5");
+const cos = new COS({
+  SecretId: "AKIDiJk060hqskPhtIRuDYmxkQK9tV2Z8gKw",
+  SecretKey: "cBhmppmgZN9rV8jQ3tX1IPL5cu37zd5Z",
+});
 
 export default {
   data() {
@@ -102,23 +102,33 @@ export default {
         workTime: "",
       },
       formRef: null,
+      imageUrl: null,
     };
   },
   methods: {
-    beforeAvatarUpload(file) {
-      const isJPG = file.type === "image/jpeg";
-      const isLt2M = file.size / 1024 / 1024 < 2;
-
-      if (!isJPG) {
-        this.$message.error("上传头像图片只能是 JPG 格式!");
+    upload(res) {
+      if (res.file) {
+        cos.putObject(
+          {
+            Bucket: "travel-1310614912" /* 填入您自己的存储桶，必须字段 */,
+            Region: "ap-nanjing" /* 存储桶所在地域，例如ap-beijing，必须字段 */,
+            Key: res.file
+              .name /* 存储在桶里的对象键（例如1.jpg，a/b/test.txt），必须字段 */,
+            Body: res.file /* 必须，上传文件对象，可以是input[type="file"]标签选择本地文件后得到的file对象 */,
+            onProgress: function (progressData) {
+              console.log(JSON.stringify(progressData));
+            },
+          },
+          (err, data) => {
+            console.log(err || data);
+            if (data.statusCode == 200) {
+              this.imageUrl = `https:${data.Location}`;
+              // console.log("image: ", this.imageUrl);
+              this.form.avatar = this.imageUrl;
+            }
+          }
+        );
       }
-      if (!isLt2M) {
-        this.$message.error("上传头像图片大小不能超过 2MB!");
-      }
-      return isJPG && isLt2M;
-    },
-    handleAvatarSuccess(res, file) {
-      this.form.avatar = URL.createObjectURL(file.raw);
     },
     async onSubmit(data) {
       const res = await updateAuthor(data);
