@@ -62,7 +62,13 @@
         <el-col>
           <el-form-item>
             <el-button>保存草稿</el-button>
-            <el-button @click="submit(dataForm)" type="primary"
+            <el-button
+              @click="submit(dataForm)"
+              type="primary"
+              style="
+                background-color: rgba(241, 229, 97);
+                border: rgba(241, 229, 97, 0.6);
+              "
               >发布文章</el-button
             >
           </el-form-item>
@@ -121,7 +127,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .contain-all-create {
-  background: #ebe8e8;
+  background: rgba(252, 250, 229);
   padding: 20px;
   border-radius: 20px;
   margin-bottom: 40px;
@@ -144,7 +150,7 @@ export default {
   }
 
   :deep(.avatar-uploader .el-upload:hover) {
-    border-color: #409eff;
+    border-color: rgba(241, 229, 97, 0.6);
   }
 
   :deep(.avatar-uploader-icon) {
@@ -180,11 +186,11 @@ export default {
   :deep(.v-keywords-action) {
     width: 15%;
 
-    background: #409eff;
+    background: rgba(241, 229, 97);
     border-radius: 4px;
     opacity: 1;
-    border: 1px solid #d9ecff;
-    color: #ecf5ff;
+    border: 1px solid;
+    color: white;
   }
 }
 </style>

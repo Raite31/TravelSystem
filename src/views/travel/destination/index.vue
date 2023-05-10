@@ -181,12 +181,12 @@ body {
       width: 205px;
       height: 45px;
       border-radius: 30px;
-      background-color: #004f32;
+      background-color: #bec86c;
       color: white;
       font-weight: 600;
 
       &:hover {
-        background-color: #00aa6c;
+        background-color: #f3e58d;
       }
     }
   }
@@ -202,7 +202,7 @@ body {
         display: flex;
         width: 918px;
         margin-bottom: 10px;
-        background-color: rgb(237, 241, 252);
+        background-color: rgba(252, 250, 229, 0.7);
         padding: 20px 100px 20px 30px;
         box-sizing: border-box;
         text-align: left;

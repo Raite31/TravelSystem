@@ -4,7 +4,14 @@
       <div class="left">
         <div class="text1">想要获得独特的优惠？</div>
         <div class="text2">在 TELEGRAM 中订阅我们的频道</div>
-        <el-button type="primary">点击这里</el-button>
+        <el-button
+          type="primary"
+          style="
+            background-color: rgba(241, 229, 97);
+            border: rgba(241, 229, 97, 0.6);
+          "
+          >点击这里</el-button
+        >
       </div>
       <ul>
         <li class="title">服务</li>

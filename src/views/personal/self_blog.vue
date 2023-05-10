@@ -110,8 +110,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .contain-all-blog {
-  background: #ebe8e8;
-  padding: 20px;
+  background: rgba(252, 250, 229);
+  padding: 24px 0;
   border-radius: 20px;
   margin-bottom: 40px;
 
@@ -123,12 +123,17 @@ export default {
     ul {
       list-style: none;
       text-align: left;
+      padding-left: 0;
+      margin: 0;
 
       li {
-        padding: 24px 0;
+        padding: 24px;
         margin: 0 24px;
         border-bottom: 1px solid #f0f0f2;
         display: flex;
+        background: rgb(236,194,60,0.3);
+        border-radius: 10px;
+        margin-bottom: 10px;
 
         img {
           width: 164px;

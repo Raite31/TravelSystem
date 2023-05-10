@@ -107,7 +107,7 @@ export default {
   }
 
   .header_nav_active {
-    background-color: rgba(0, 0, 0, 0.07);
+    background-color: rgba(241, 229, 97, 0.6);
   }
 
   .logo_end {
@@ -135,7 +135,7 @@ export default {
           font-weight: 600;
 
           &:hover {
-            background-color: rgba(0, 0, 0, 0.07);
+            background-color: rgba(250, 244, 183, 0.6);
           }
         }
       }
@@ -148,7 +148,7 @@ export default {
             list-style: none;
             text-decoration: none;
             cursor: pointer;
-            background-color: #282828;
+            background-color: rgba(241, 229, 97, 0.6);
             font-size: 16px;
             padding: 10px;
             border-radius: 30px;

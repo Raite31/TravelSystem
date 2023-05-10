@@ -64,7 +64,15 @@
               </el-form-item>
             </el-col>
           </el-row>
-          <el-button @click="onSubmit(form)" type="primary">保存</el-button>
+          <el-button
+            @click="onSubmit(form)"
+            type="primary"
+            style="
+              background-color: rgba(241, 229, 97);
+              border: rgba(241, 229, 97, 0.6);
+            "
+            >保存</el-button
+          >
         </el-form>
       </div>
     </div>
@@ -137,7 +145,7 @@ export default {
 <style lang="scss" scoped>
 .contain-all-message {
   text-align: left;
-  background: #ebe8e8;
+  background: rgba(252, 250, 229);
   padding: 20px;
   border-radius: 20px;
   margin-bottom: 40px;

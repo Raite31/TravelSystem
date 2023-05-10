@@ -102,7 +102,7 @@ export default {
 }
 
 .contain-all-travel {
-  background: #ebe8e8;
+  background: rgba(252, 250, 229);
   padding: 20px;
   border-radius: 20px;
   margin-bottom: 40px;
