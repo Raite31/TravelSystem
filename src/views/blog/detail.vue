@@ -23,7 +23,7 @@
           <div class="text">关于我</div>
           <div class="author-information">
             <div class="avatar">
-              <img :src="form.avatar" alt="" />
+              <img :src="require('@/assets/avatar/' + form.avatar)" alt=""/>
             </div>
 
             <div class="right">

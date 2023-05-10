@@ -9,7 +9,11 @@
           :on-success="handleAvatarSuccess"
           :before-upload="beforeAvatarUpload"
         >
-          <img v-if="form.avatar" :src="form.avatar" class="avatar" />
+          <img
+            v-if="form.avatar"
+            :src="require('@/assets/avatar/' + form.avatar)"
+            class="avatar"
+          />
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </div>
@@ -40,7 +44,10 @@
             </el-col>
             <el-col :span="24">
               <el-form-item label="个人简介">
-                <el-input v-model="form.introduce" placeholder="请输入"></el-input>
+                <el-input
+                  v-model="form.introduce"
+                  placeholder="请输入"
+                ></el-input>
               </el-form-item>
             </el-col>
             <!-- <el-col :span="24">
@@ -50,7 +57,10 @@
             </el-col> -->
             <el-col :span="24">
               <el-form-item label="出生日期">
-                <el-date-picker v-model="form.birthday" placeholder="请输入"></el-date-picker>
+                <el-date-picker
+                  v-model="form.birthday"
+                  placeholder="请输入"
+                ></el-date-picker>
               </el-form-item>
             </el-col>
           </el-row>
