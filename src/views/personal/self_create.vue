@@ -133,7 +133,15 @@ export default {
       }
     },
     submit(data) {
-      createBlog(data);
+      createBlog(data).then((res) => {
+        console.log("res: ", res);
+        if (res.status == 200) {
+          this.$message.success("创建成功");
+          this.$router.push({
+            path: `/blogList/blogDetail/?id=${res.data}`,
+          });
+        }
+      });
       console.log(data);
     },
   },
