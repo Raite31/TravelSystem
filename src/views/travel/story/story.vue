@@ -354,6 +354,8 @@ body {
           width: 365px;
           height: 230px;
           margin-bottom: 24px;
+
+          border-radius: 10px;
         }
 
         .describe {
@@ -390,6 +392,8 @@ body {
           width: 365px;
           height: 230px;
           margin-bottom: 24px;
+
+          border-radius: 10px;
         }
 
         .describe {
@@ -433,6 +437,8 @@ body {
             width: 365px;
             height: 230px;
             margin-bottom: 24px;
+
+            border-radius: 10px;
           }
 
           .describe {

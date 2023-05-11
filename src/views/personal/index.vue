@@ -92,7 +92,7 @@ body {
   margin-bottom: 50px;
 
   .addclass {
-    background-color: rgba(0, 0, 0, 0.07);
+    background-color: rgba(252, 250, 229);
   }
 
   .personal {
@@ -123,7 +123,7 @@ body {
               margin-right: 0;
 
               &:hover {
-                background-color: rgba(0, 0, 0, 0.07);
+                background-color: rgba(252, 250, 229);
               }
             }
           }
