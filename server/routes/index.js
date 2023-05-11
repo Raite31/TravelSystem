@@ -439,7 +439,7 @@ router.post("/front/api/blog/createBlog", function (req, res) {
   const data = req.body;
   console.log(data);
   const values = [
-    1,
+    data.uid,
     data.title,
     data.cov,
     data.detail,

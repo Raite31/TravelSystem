@@ -8,7 +8,7 @@
             <el-input
               placeholder="请输入"
               maxlength="100"
-              show-word-limit="true"
+              :show-word-limit="true"
               v-model="dataForm.title"
             />
           </el-form-item>
@@ -18,12 +18,11 @@
             <div>
               <el-upload
                 class="avatar-uploader"
-                action="https://jsonplaceholder.typicode.com/posts/"
+                action="#"
                 :show-file-list="false"
-                :on-success="handleAvatarSuccess"
-                :before-upload="beforeAvatarUpload"
+                :http-request="upload"
               >
-                <img v-if="imageUrl" :src="imageUrl" class="avatar" />
+                <img v-if="dataForm.cov" :src="dataForm.cov" class="avatar" />
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
               </el-upload>
             </div>
@@ -81,6 +80,11 @@
 import { VueEditor } from "vue2-editor";
 import VKeywords from "@/components/VKeywords.vue";
 import { createBlog } from "@/api/blog/index";
+const COS = require("cos-js-sdk-v5");
+const cos = new COS({
+  SecretId: "AKIDmPqDZeWAapshGuOyL2lYCdAbqrfTaVBb",
+  SecretKey: "LUbXFwRjmbfXDnPwNbgWM4YyGLDrLk2J",
+});
 
 export default {
   components: {
@@ -89,10 +93,11 @@ export default {
   },
   data() {
     return {
-      imageUrl: "",
       content: null,
       editorOption: {},
+      imageUrl: null,
       dataForm: {
+        uid: "",
         title: "",
         cov: "",
         introduce: "",
@@ -103,25 +108,37 @@ export default {
     };
   },
   methods: {
-    handleAvatarSuccess(res, file) {
-      this.imageUrl = URL.createObjectURL(file.raw);
-    },
-    beforeAvatarUpload(file) {
-      const isJPG = file.type === "image/jpeg";
-      const isLt2M = file.size / 1024 / 1024 < 2;
-
-      if (!isJPG) {
-        this.$message.error("上传头像图片只能是 JPG 格式!");
+    upload(res) {
+      if (res.file) {
+        cos.putObject(
+          {
+            Bucket: "travel-1310614912" /* 填入您自己的存储桶，必须字段 */,
+            Region: "ap-nanjing" /* 存储桶所在地域，例如ap-beijing，必须字段 */,
+            Key: res.file
+              .name /* 存储在桶里的对象键（例如1.jpg，a/b/test.txt），必须字段 */,
+            Body: res.file /* 必须，上传文件对象，可以是input[type="file"]标签选择本地文件后得到的file对象 */,
+            onProgress: function (progressData) {
+              console.log(JSON.stringify(progressData));
+            },
+          },
+          (err, data) => {
+            console.log(err || data);
+            if (data.statusCode == 200) {
+              this.imageUrl = `https:${data.Location}`;
+              // console.log("image: ", this.imageUrl);
+              this.dataForm.cov = this.imageUrl;
+            }
+          }
+        );
       }
-      if (!isLt2M) {
-        this.$message.error("上传头像图片大小不能超过 2MB!");
-      }
-      return isJPG && isLt2M;
     },
     submit(data) {
       createBlog(data);
       console.log(data);
     },
+  },
+  mounted() {
+    this.dataForm.uid = JSON.parse(sessionStorage.getItem("user")).id;
   },
 };
 </script>
