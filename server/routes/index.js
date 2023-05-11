@@ -125,9 +125,10 @@ router.post("/front/api/cart/getCartList", function (req, res) {
 // 加入购物车
 router.post("/front/api/cart/addCart", function (req, res) {
   const data = req.body;
+  console.log("uid: ", data.uid);
   const values = [
     data.id,
-    1,
+    data.uid,
     data.photo,
     data.title,
     data.price,

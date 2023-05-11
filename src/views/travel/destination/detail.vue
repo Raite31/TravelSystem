@@ -1,11 +1,11 @@
 <template>
   <div>
-    <Head/>
+    <Head />
     <div class="contain-all">
       <div class="grid">
         <div class="left">
           <div class="photo">
-            <img :src="list.photo[0]" alt=""/>
+            <img :src="list.photo[0]" alt="" />
           </div>
           <div class="information">
             <div class="title">{{ list.title }}</div>
@@ -15,7 +15,7 @@
             </div>
             <div class="introduce">{{ list.introduce }}</div>
           </div>
-          <hr/>
+          <hr />
           <div class="precautions">
             <ul>
               <li v-for="item in list.precautions" :key="item.index">
@@ -23,7 +23,7 @@
               </li>
             </ul>
           </div>
-          <hr/>
+          <hr />
           <div class="illustrate">
             <div class="include">
               <div class="title">包括什么</div>
@@ -33,12 +33,12 @@
                 </li>
               </ul>
             </div>
-            <hr/>
+            <hr />
             <div class="expect">
               <div class="title">期待什么</div>
               <div></div>
             </div>
-            <hr/>
+            <hr />
             <div class="go">
               <div class="title">出发和返回</div>
               <ul>
@@ -47,7 +47,7 @@
                 </li>
               </ul>
             </div>
-            <hr/>
+            <hr />
             <div class="accessibility">
               <div class="title">辅助功能</div>
               <ul>
@@ -56,7 +56,7 @@
                 </li>
               </ul>
             </div>
-            <hr/>
+            <hr />
             <div class="additional_information">
               <div class="title">附加信息</div>
               <ul>
@@ -65,46 +65,46 @@
                 </li>
               </ul>
             </div>
-            <hr/>
+            <hr />
             <div class="cancel">
               <div class="title">取消政策</div>
               <div>
                 {{ list.cancellation_policy }}
               </div>
             </div>
-            <hr/>
+            <hr />
             <div class="question">
               <div class="title">常见问题</div>
               <div></div>
             </div>
-            <hr/>
+            <hr />
             <div class="help">
               <div class="title">帮助</div>
               <div>{{ list.help }}</div>
             </div>
-            <hr/>
+            <hr />
           </div>
         </div>
         <div class="right">
           <div class="photo">
-            <img :src="list.photo[1]" alt=""/>
+            <img :src="list.photo[1]" alt="" />
           </div>
           <div class="photo" style="margin-bottom: 20px">
-            <img :src="list.photo[2]" alt=""/>
+            <img :src="list.photo[2]" alt="" />
           </div>
           <div class="sell">
             <div class="title">预留你的位置</div>
             <div class="date_num">
               <div class="date_num_show">
                 <el-date-picker
-                    placeholder="请选择日期"
-                    v-model="list.date_time"
+                  placeholder="请选择日期"
+                  v-model="list.date_time"
                 ></el-date-picker>
                 <div class="num">
                   <img
-                      src="@/assets/default/people.svg"
-                      alt=""
-                      @click="dialogVisible = true"
+                    src="@/assets/default/people.svg"
+                    alt=""
+                    @click="dialogVisible = true"
                   />
                   <span class="people">
                     {{
@@ -116,14 +116,14 @@
                 </div>
               </div>
               <el-dialog
-                  title="选择人数"
-                  :visible.sync="dialogVisible"
-                  width="30%"
-                  :append-to-body="true"
+                title="选择人数"
+                :visible.sync="dialogVisible"
+                width="30%"
+                :append-to-body="true"
               >
                 <div
-                    class="item"
-                    style="
+                  class="item"
+                  style="
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
@@ -136,14 +136,14 @@
                   </div>
                   <div class="right">
                     <el-input
-                        type="number"
-                        v-model="list.adults_num"
+                      type="number"
+                      v-model="list.adults_num"
                     ></el-input>
                   </div>
                 </div>
                 <div
-                    class="item"
-                    style="
+                  class="item"
+                  style="
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
@@ -156,14 +156,14 @@
                   </div>
                   <div class="right">
                     <el-input
-                        type="number"
-                        v-model="list.children_num"
+                      type="number"
+                      v-model="list.children_num"
                     ></el-input>
                   </div>
                 </div>
                 <div
-                    class="item"
-                    style="
+                  class="item"
+                  style="
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
@@ -176,8 +176,8 @@
                   </div>
                   <div class="right">
                     <el-input
-                        type="number"
-                        v-model="list.infants_num"
+                      type="number"
+                      v-model="list.infants_num"
                     ></el-input>
                   </div>
                 </div>
@@ -199,8 +199,8 @@
               <div class="total">
                 Total ￥{{
                   (Number(list.adults_num) +
-                      Number(list.children_num) +
-                      Number(list.infants_num)) *
+                    Number(list.children_num) +
+                    Number(list.infants_num)) *
                   list.price
                 }}
               </div>
@@ -226,7 +226,7 @@
       <div class="bottom">
         <div class="operator">
           <div class="title">关于运营商</div>
-          <hr/>
+          <hr />
           <div class="list">
             <ul>
               <li></li>
@@ -256,9 +256,8 @@
           </div>
         </div> -->
       </div>
-      <Footer/>
+      <Footer />
     </div>
-
   </div>
 </template>
 
@@ -271,7 +270,7 @@ import { addCart } from "@/api/cart/index";
 export default {
   components: {
     Head,
-    Footer
+    Footer,
   },
   data() {
     return {
@@ -283,12 +282,13 @@ export default {
       id: this.$route.query.id,
 
       list: {
+        uid: null,
         adults_num: 0,
         children_num: 0,
         infants_num: 0,
         date_time: null,
-        photo: []
-      }
+        photo: [],
+      },
     };
   },
   methods: {
@@ -298,19 +298,23 @@ export default {
       });
     },
     createOrder(data) {
-      if (data.adults_num == 0 && data.children_num == 0 && data.infants_num == 0) {
+      if (
+        data.adults_num == 0 &&
+        data.children_num == 0 &&
+        data.infants_num == 0
+      ) {
         this.$message.error("请先选择游客");
       } else {
         addCart(data).then((res) => {
           this.$message.success("添加购物车成功");
         });
       }
-
-    }
+    },
   },
-  created() {
+  mounted() {
     this.getData();
-  }
+    this.list.uid = JSON.parse(sessionStorage.getItem("user")).id;
+  },
 };
 </script>
 
@@ -425,7 +429,7 @@ body {
           font-size: 24px;
           font-weight: bold;
           font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-          "Lucida Sans", Arial, sans-serif;
+            "Lucida Sans", Arial, sans-serif;
           margin-bottom: 24px;
         }
 
@@ -470,7 +474,7 @@ body {
             font-size: 18px;
             font-weight: bold;
             font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-            "Lucida Sans", Arial, sans-serif;
+              "Lucida Sans", Arial, sans-serif;
             margin-bottom: 8px;
           }
 
@@ -487,14 +491,14 @@ body {
           .computed {
             font-size: 14px;
             font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-            "Lucida Sans", Arial, sans-serif;
+              "Lucida Sans", Arial, sans-serif;
           }
 
           .total {
             font-size: 16px;
             font-weight: bold;
             font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-            "Lucida Sans", Arial, sans-serif;
+              "Lucida Sans", Arial, sans-serif;
             margin: 4px 0;
           }
 

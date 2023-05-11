@@ -54,7 +54,6 @@
                   v-model="item.status"
                   @input="change(item)"
                 />
-                {{ item.status }}
               </div>
             </li>
 
@@ -79,7 +78,7 @@
           </div>
         </div>
 
-        <div class="nav" ref="listheight" v-if="show && orders.length">
+        <div class="nav" ref="listheight" v-if="show && orders.length > 3">
           <div class="nav-left">
             <div class="select-all">
               <input type="checkbox" name="selectAll" />
@@ -115,6 +114,7 @@ export default {
       show: true,
       orders: {},
       settlementList: [],
+      selectList: [],
     };
   },
   methods: {
