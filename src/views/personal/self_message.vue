@@ -84,8 +84,8 @@ import { Message } from "element-ui";
 import { getAuthor, updateAuthor } from "@/api/author/index";
 const COS = require("cos-js-sdk-v5");
 const cos = new COS({
-  SecretId: "AKIDiJk060hqskPhtIRuDYmxkQK9tV2Z8gKw",
-  SecretKey: "cBhmppmgZN9rV8jQ3tX1IPL5cu37zd5Z",
+  SecretId: "AKIDmPqDZeWAapshGuOyL2lYCdAbqrfTaVBb",
+  SecretKey: "LUbXFwRjmbfXDnPwNbgWM4YyGLDrLk2J",
 });
 
 export default {
