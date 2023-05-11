@@ -53,6 +53,7 @@
                   type="checkbox"
                   v-model="item.status"
                   @input="change(item)"
+                  @change="selectItem(item)"
                 />
               </div>
             </li>
@@ -72,8 +73,8 @@
             <button class="del">删除</button>
           </div>
           <div class="nav-right">
-            <div class="num">已选 个去向</div>
-            <div class="total">总价</div>
+            <div class="num">已选 {{ num }} 个去向</div>
+            <div class="total">总价：{{ sumPrice }}</div>
             <button class="settlement" @click="settlement()">结算</button>
           </div>
         </div>
@@ -87,8 +88,8 @@
             <button class="del">删除</button>
           </div>
           <div class="nav-right">
-            <div class="num">已选 个去向</div>
-            <div class="total">总价</div>
+            <div class="num">已选 {{ num }} 个去向</div>
+            <div class="total">总价：{{ sumPrice }}</div>
             <button class="settlement" @click="settlement()">结算</button>
           </div>
         </div>
@@ -115,9 +116,24 @@ export default {
       orders: {},
       settlementList: [],
       selectList: [],
+      num: 0,
+      sumPrice: 0,
     };
   },
   methods: {
+    // 勾选时候触发
+    selectItem(data) {
+      console.log("Data:", data);
+      if (data.status == true) {
+        this.selectList.push(data);
+        this.num += 1;
+        this.sumPrice += data.price;
+      } else {
+        this.selectList.pop(data);
+        this.num -= 1;
+        this.sumPrice -= data.price;
+      }
+    },
     change(data) {
       if (data.status == null) {
         this.settlementList.push(data.id);
@@ -282,6 +298,9 @@ export default {
         .num,
         .total {
           margin-right: 20px;
+        }
+        .total {
+          font-weight: 600;
         }
       }
     }
