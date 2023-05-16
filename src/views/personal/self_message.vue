@@ -12,7 +12,12 @@
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </div>
-      <div class="name">{{ form.account }}</div>
+      <div class="right">
+        <div class="name">{{ form.account }}</div>
+        <div class="hobby">
+          <VKeywords v-model="form.tags" text="个人标签"></VKeywords>
+        </div>
+      </div>
     </div>
     <div class="base_message">
       <div class="title">基本信息</div>
@@ -66,21 +71,17 @@
               background-color: rgba(241, 229, 97);
               border: rgba(241, 229, 97, 0.6);
             "
-            >保存</el-button
           >
+            保存
+          </el-button>
         </el-form>
-      </div>
-    </div>
-    <div class="hobby">
-      <div class="title">兴趣标签</div>
-      <div class="form">
-        <el-form></el-form>
       </div>
     </div>
   </div>
 </template>
 <script>
 import { Message } from "element-ui";
+import VKeywords from "@/components/VKeywords.vue";
 import { getAuthor, updateAuthor } from "@/api/author/index";
 const COS = require("cos-js-sdk-v5");
 const cos = new COS({
@@ -89,11 +90,15 @@ const cos = new COS({
 });
 
 export default {
+  components: {
+    VKeywords,
+  },
   data() {
     return {
       user: null,
       avatar: "",
       form: {
+        tags: [],
         name: "",
         id: "",
         sex: "",
@@ -144,6 +149,7 @@ export default {
       this.user = JSON.parse(sessionStorage.getItem("user"));
       getAuthor({ id: this.user.id }).then((res) => {
         this.form = res.data[0];
+        this.form.tags = [];
       });
     },
   },
@@ -193,10 +199,28 @@ export default {
       }
     }
 
-    .name {
+    .right {
       flex: 1;
-      font-size: 20px;
-      font-weight: bold;
+      .name {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .hobby {
+        background-color: white;
+        border-radius: 10px;
+        padding: 10px;
+        :deep(.v-keywords) {
+          background-color: white;
+        }
+        :deep(.v-keywords-action) {
+          background: rgba(241, 229, 97);
+          border-radius: 4px;
+          opacity: 1;
+          border: 1px solid;
+          color: white;
+        }
+      }
     }
   }
 
@@ -217,24 +241,6 @@ export default {
 
     .form {
       padding: 32px 0 32px 16px;
-    }
-  }
-
-  .hobby {
-    background-color: white;
-    border-radius: 10px;
-    padding: 10px;
-    .title {
-      line-height: 48px;
-      font-size: 18px;
-      font-weight: 600;
-      color: #2e2e2e;
-      padding-left: 16px;
-      border-bottom: 1px solid #f0f0f2;
-    }
-
-    .form {
-      padding: 32px 74px 32px 16px;
     }
   }
 }
