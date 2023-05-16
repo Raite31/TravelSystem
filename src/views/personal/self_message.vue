@@ -77,10 +77,11 @@
         </el-form>
       </div>
     </div>
+    <el-button class="logout" type="danger" @click="Logout">退出登录</el-button>
   </div>
 </template>
 <script>
-import { Message } from "element-ui";
+import { Loading, Message } from "element-ui";
 import VKeywords from "@/components/VKeywords.vue";
 import { getAuthor, updateAuthor } from "@/api/author/index";
 const COS = require("cos-js-sdk-v5");
@@ -111,6 +112,10 @@ export default {
     };
   },
   methods: {
+    Logout() {
+      sessionStorage.removeItem("user");
+      location.reload();
+    },
     upload(res) {
       if (res.file) {
         cos.putObject(
@@ -163,6 +168,7 @@ export default {
   text-align: left;
   background: rgba(252, 250, 229);
   padding: 20px;
+  padding-bottom: 50px;
   border-radius: 20px;
   margin-bottom: 40px;
   // width: 900px !important;
@@ -212,8 +218,15 @@ export default {
         padding: 10px;
         :deep(.v-keywords) {
           background-color: white;
+          .el-tag {
+            background: #fff4b3;
+            color: #a6a6a4;
+            border: #f2f1ba;
+          }
         }
         :deep(.v-keywords-action) {
+          padding-left: 10px;
+          width: 13%;
           background: rgba(241, 229, 97);
           border-radius: 4px;
           opacity: 1;
@@ -242,6 +255,9 @@ export default {
     .form {
       padding: 32px 0 32px 16px;
     }
+  }
+  .logout {
+    float: right;
   }
 }
 </style>
