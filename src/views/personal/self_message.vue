@@ -114,7 +114,7 @@ export default {
   methods: {
     Logout() {
       sessionStorage.removeItem("user");
-      location.reload();
+      this.$router.push("/");
     },
     upload(res) {
       if (res.file) {
