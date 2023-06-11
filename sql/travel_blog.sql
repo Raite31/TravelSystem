@@ -11,7 +11,7 @@
  Target Server Version : 50636
  File Encoding         : 65001
 
- Date: 17/05/2023 11:39:16
+ Date: 11/06/2023 10:44:14
 */
 
 SET NAMES utf8mb4;
@@ -32,7 +32,7 @@ CREATE TABLE `blog`  (
   `classify` varchar(1024) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `create_time` varchar(1024) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 68 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 68 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of blog
@@ -90,20 +90,11 @@ CREATE TABLE `cart`  (
   `cov` varchar(1024) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `status` int(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of cart
 -- ----------------------------
-INSERT INTO `cart` VALUES (1, '1', 1, '如果来林芝只为赏桃花那就太辜负雪域春天的美誉了冰川、雪山、碧水、繁星、野花作伴才构成了这幅独一无二的春日美卷', '2021.05.25', 0, 0, 0, '2022-01-03 00:00:00', '【桃花节预订】西藏林芝5日游 观景酒店·无人机航拍·布宫旅拍 西藏林芝+来古冰川+巴松措+雅鲁藏布大峡谷+然乌湖+林芝波密+西藏拉萨出发', 2780.00, '\'拉萨市区接送\', \'0距离触摸冰川\', \'深度环然乌湖\', \'赠特色石锅鸡\'', 2, '[\'https://sales.mafengwo.net/img/07/e2/4ddd72a7a4378af1e151545aabc74de5.jpeg\', \'https://sales.mafengwo.net/img/be/54/7ac5e80a1f55f64e3c8c0084a3ad569d.png\', \'https://sales.mafengwo.net/mfs/s17/M00/76/38/CoUBXl-OdxOAcsKgAAJpqVJ59SI83.jpeg\', \'https://sales.mafengwo.net/img/57/2e/bf37b475f50dfcb327f81561da40aa88.jpeg\', \'https://sales.mafengwo.net/img/2a/1f/90707229f7841d08b78b060f8190fa19.jpeg\']', NULL);
-INSERT INTO `cart` VALUES (2, '3', 1, '三亚亚龙湾爱立方户外潜水一日游\n亚龙湾爱立方\n海水之上是蓝天碧海银滩的美妙\n马蜂窝自营\n国 马蜂窝管家\n4006345678周一至周日 09:(\n海水之下是珊瑚鱼群的缤纷风情\n-头扎进去海底\n去逗一逗礁石里藏着的小鱼', '2021.05.25', 3, 0, 0, '2022-01-03 00:00:00', '三亚亚龙湾热带天堂森林公园门票 可选网红玻璃海景栈道·索桥·丛林飞跃·雨林飞漂项目 亲子玩乐', 120.00, '\'玩转水上项目\', \'潜水好去处\', \'踏水戏沙\', \'纯玩0购\'', 2, '[\'https://sales.mafengwo.net/mfs/s16/M00/23/CD/CoUBUl8X93qAUKXnAEFECqWo7Is96.jpeg\', \'https://sales.mafengwo.net/mfs/s12/M00/F0/61/wKgED1wKJuWALyCRAASVLvf4Yjg72.jpeg\', \'https://sales.mafengwo.net/mfs/s10/M00/29/CF/wKgBZ1nMoweAIgQlAAiZMq6KbTQ95.jpeg\', \'https://sales.mafengwo.net/mfs/s7/M00/70/89/wKgB6lRa5lmANJHhAADjb0lNUck46.jpeg\']', NULL);
-INSERT INTO `cart` VALUES (3, '4', 1, '如果你还没去过九寨沟，那就趁现在吧!“睛看水，阴看山，半睛半阴看云烟”。不管什么天气，你在九寨都不会失望。这也许是你可以看到较低海拔的人间仙境了。', '2021.05.25', 5, 1, 0, '2022-01-03 00:00:00', '2-5人团川西纯玩可选空座率·九寨沟+毕棚沟+达古冰川+黄龙4日游 赠成都住宿接机+一价全含+体验旅拍+特色餐食+九寨连住2晚+口碑精品团', 1069.00, '\'10h玩九寨\', \'宿2晚九寨沟口\', \'可选空座率套餐\', \'赠成都精品酒店\'', 2, '[\'https://sales.mafengwo.net/img/7e/16/7e20288df015274b7b9cd41e3aed5789.jpeg\', \'https://sales.mafengwo.net/img/fb/f0/b7820a973f817fd7fcba4bd7da019bf0.jpeg\', \'https://sales.mafengwo.net/img/29/68/969b08668aaa54131b6a9590e7f5aa69.jpeg\', \'https://sales.mafengwo.net/img/8f/42/48b7c2468f9320963264f6335cd9a6e2.jpeg\']', NULL);
-INSERT INTO `cart` VALUES (4, '9', 1, '创办于2014年，是一家专业操作户外地接的全国性俱乐部，在云南四川西藏新疆西北等多个地区设有专业户外团队以及一支中登协持证救援团队，旗下旅游产品分为”驴·徒步，行·登山，摄·旅拍”三大体系。', '2021.05.25', 2, 0, 0, '2022-01-03 00:00:00', '【双号发团】云南丽江香格里拉梅里雪山雨崩徒步6日游·专业向导带队徒步雨崩村冰湖神瀑·登山杖奖牌证书（驻点摄影师跟拍一天+赠丽江集合日住宿）', 1798.00, '\'赠送丽江住宿\', \'无单房差\', \'赠证书奖牌\', \'雨崩村摄影跟拍\'', 2, '[\'https://sales.mafengwo.net/img/9f/67/b728ac0235164ab2815a5798d28688b6.jpeg\', \'https://sales.mafengwo.net/mfs/s16/M00/92/01/CoUBUl_qg72AdKW3AAUYBKNIUYs78.jpeg\', \'https://sales.mafengwo.net/img/3a/5a/1e3b53898373132eb7fe91f173c29f77.jpeg\', \'https://sales.mafengwo.net/mfs/s17/M00/6E/A2/CoUBXl_qjDmAY24KAAmsPZ3AC9A823.png\', \'https://sales.mafengwo.net/img/a7/26/d36786addc9d5732087a6a2c5b3acb54.jpeg\', \'https://sales.mafengwo.net/img/dc/d1/cb34391c38c0cbb86e948d69dea5cb76.jpeg\']', NULL);
-INSERT INTO `cart` VALUES (5, '4', 1, '如果你还没去过九寨沟，那就趁现在吧!“睛看水，阴看山，半睛半阴看云烟”。不管什么天气，你在九寨都不会失望。这也许是你可以看到较低海拔的人间仙境了。', '2021-05-20T16:00:00.000Z', 4, 5, 0, '2022-01-03 00:00:00', '2-5人团川西纯玩可选空座率·九寨沟+毕棚沟+达古冰川+黄龙4日游 赠成都住宿接机+一价全含+体验旅拍+特色餐食+九寨连住2晚+口碑精品团', 1069.00, '\'10h玩九寨\', \'宿2晚九寨沟口\', \'可选空座率套餐\', \'赠成都精品酒店\'', 2, '[\'https://sales.mafengwo.net/img/7e/16/7e20288df015274b7b9cd41e3aed5789.jpeg\', \'https://sales.mafengwo.net/img/fb/f0/b7820a973f817fd7fcba4bd7da019bf0.jpeg\', \'https://sales.mafengwo.net/img/29/68/969b08668aaa54131b6a9590e7f5aa69.jpeg\', \'https://sales.mafengwo.net/img/8f/42/48b7c2468f9320963264f6335cd9a6e2.jpeg\']', NULL);
-INSERT INTO `cart` VALUES (6, '4', 1, '如果你还没去过九寨沟，那就趁现在吧!“睛看水，阴看山，半睛半阴看云烟”。不管什么天气，你在九寨都不会失望。这也许是你可以看到较低海拔的人间仙境了。', '2021.05.25', 0, 0, 0, '2022-01-03 00:00:00', '2-5人团川西纯玩可选空座率·九寨沟+毕棚沟+达古冰川+黄龙4日游 赠成都住宿接机+一价全含+体验旅拍+特色餐食+九寨连住2晚+口碑精品团', 1069.00, '\'10h玩九寨\', \'宿2晚九寨沟口\', \'可选空座率套餐\', \'赠成都精品酒店\'', 2, '[\'https://sales.mafengwo.net/img/7e/16/7e20288df015274b7b9cd41e3aed5789.jpeg\', \'https://sales.mafengwo.net/img/fb/f0/b7820a973f817fd7fcba4bd7da019bf0.jpeg\', \'https://sales.mafengwo.net/img/29/68/969b08668aaa54131b6a9590e7f5aa69.jpeg\', \'https://sales.mafengwo.net/img/8f/42/48b7c2468f9320963264f6335cd9a6e2.jpeg\']', NULL);
-INSERT INTO `cart` VALUES (7, '4', 1, '如果你还没去过九寨沟，那就趁现在吧!“睛看水，阴看山，半睛半阴看云烟”。不管什么天气，你在九寨都不会失望。这也许是你可以看到较低海拔的人间仙境了。', '2021.05.25', 0, 0, 0, '2022-01-03 00:00:00', '2-5人团川西纯玩可选空座率·九寨沟+毕棚沟+达古冰川+黄龙4日游 赠成都住宿接机+一价全含+体验旅拍+特色餐食+九寨连住2晚+口碑精品团', 1069.00, '\'10h玩九寨\', \'宿2晚九寨沟口\', \'可选空座率套餐\', \'赠成都精品酒店\'', 2, '[\'https://sales.mafengwo.net/img/7e/16/7e20288df015274b7b9cd41e3aed5789.jpeg\', \'https://sales.mafengwo.net/img/fb/f0/b7820a973f817fd7fcba4bd7da019bf0.jpeg\', \'https://sales.mafengwo.net/img/29/68/969b08668aaa54131b6a9590e7f5aa69.jpeg\', \'https://sales.mafengwo.net/img/8f/42/48b7c2468f9320963264f6335cd9a6e2.jpeg\']', NULL);
-INSERT INTO `cart` VALUES (8, '4', 1, '如果你还没去过九寨沟，那就趁现在吧!“睛看水，阴看山，半睛半阴看云烟”。不管什么天气，你在九寨都不会失望。这也许是你可以看到较低海拔的人间仙境了。', '2021.05.25', 0, 0, 0, '2022-01-03 00:00:00', '2-5人团川西纯玩可选空座率·九寨沟+毕棚沟+达古冰川+黄龙4日游 赠成都住宿接机+一价全含+体验旅拍+特色餐食+九寨连住2晚+口碑精品团', 1069.00, '\'10h玩九寨\', \'宿2晚九寨沟口\', \'可选空座率套餐\', \'赠成都精品酒店\'', 2, '[\'https://sales.mafengwo.net/img/7e/16/7e20288df015274b7b9cd41e3aed5789.jpeg\', \'https://sales.mafengwo.net/img/fb/f0/b7820a973f817fd7fcba4bd7da019bf0.jpeg\', \'https://sales.mafengwo.net/img/29/68/969b08668aaa54131b6a9590e7f5aa69.jpeg\', \'https://sales.mafengwo.net/img/8f/42/48b7c2468f9320963264f6335cd9a6e2.jpeg\']', NULL);
-INSERT INTO `cart` VALUES (9, '1', 1, '如果来林芝只为赏桃花那就太辜负雪域春天的美誉了冰川、雪山、碧水、繁星、野花作伴才构成了这幅独一无二的春日美卷', '2021.05.25', 2, 0, 0, '2022-01-03 00:00:00', '【桃花节预订】西藏林芝5日游 观景酒店·无人机航拍·布宫旅拍 西藏林芝+来古冰川+巴松措+雅鲁藏布大峡谷+然乌湖+林芝波密+西藏拉萨出发', 2780.00, '\'拉萨市区接送\', \'0距离触摸冰川\', \'深度环然乌湖\', \'赠特色石锅鸡\'', 2, '[\'https://sales.mafengwo.net/img/07/e2/4ddd72a7a4378af1e151545aabc74de5.jpeg\', \'https://sales.mafengwo.net/img/be/54/7ac5e80a1f55f64e3c8c0084a3ad569d.png\', \'https://sales.mafengwo.net/mfs/s17/M00/76/38/CoUBXl-OdxOAcsKgAAJpqVJ59SI83.jpeg\', \'https://sales.mafengwo.net/img/57/2e/bf37b475f50dfcb327f81561da40aa88.jpeg\', \'https://sales.mafengwo.net/img/2a/1f/90707229f7841d08b78b060f8190fa19.jpeg\']', NULL);
 INSERT INTO `cart` VALUES (10, '1', 3, '如果来林芝只为赏桃花那就太辜负雪域春天的美誉了冰川、雪山、碧水、繁星、野花作伴才构成了这幅独一无二的春日美卷', '2021-05-04T16:00:00.000Z', 23, 0, 0, '2022-01-03 00:00:00', '【桃花节预订】西藏林芝5日游 观景酒店·无人机航拍·布宫旅拍 西藏林芝+来古冰川+巴松措+雅鲁藏布大峡谷+然乌湖+林芝波密+西藏拉萨出发', 2780.00, '\'拉萨市区接送\', \'0距离触摸冰川\', \'深度环然乌湖\', \'赠特色石锅鸡\'', 2, '[\'https://sales.mafengwo.net/img/07/e2/4ddd72a7a4378af1e151545aabc74de5.jpeg\', \'https://sales.mafengwo.net/img/be/54/7ac5e80a1f55f64e3c8c0084a3ad569d.png\', \'https://sales.mafengwo.net/mfs/s17/M00/76/38/CoUBXl-OdxOAcsKgAAJpqVJ59SI83.jpeg\', \'https://sales.mafengwo.net/img/57/2e/bf37b475f50dfcb327f81561da40aa88.jpeg\', \'https://sales.mafengwo.net/img/2a/1f/90707229f7841d08b78b060f8190fa19.jpeg\']', NULL);
 INSERT INTO `cart` VALUES (11, '2', 3, '三亚亚龙湾爱立方户外潜水一日游\n亚龙湾爱立方\n海水之上是蓝天碧海银滩的美妙\n马蜂窝自营\n国 马蜂窝管家\n4006345678周一至周日 09:(\n海水之下是珊瑚鱼群的缤纷风情\n-头扎进去海底\n去逗一逗礁石里藏着的小鱼', '2021.05.25', 0, 2, 0, '2022-01-03 00:00:00', '三亚亚龙湾热带天堂森林公园门票 可选网红玻璃海景栈道·索桥·丛林飞跃·雨林飞漂项目 亲子玩乐', 1207.00, '\'玩转水上项目\', \'潜水好去处\', \'踏水戏沙\', \'纯玩0购\'', 2, '[\'https://sales.mafengwo.net/mfs/s16/M00/23/CD/CoUBUl8X93qAUKXnAEFECqWo7Is96.jpeg\', \'https://sales.mafengwo.net/mfs/s12/M00/F0/61/wKgED1wKJuWALyCRAASVLvf4Yjg72.jpeg\', \'https://sales.mafengwo.net/mfs/s10/M00/29/CF/wKgBZ1nMoweAIgQlAAiZMq6KbTQ95.jpeg\', \'https://sales.mafengwo.net/mfs/s7/M00/70/89/wKgB6lRa5lmANJHhAADjb0lNUck46.jpeg\']', NULL);
 INSERT INTO `cart` VALUES (12, '6', 3, '童话世界，遇见惊喜与浪漫\n御荣耀(中国温泉旅游产业的开创者)首届中国品牌大会在人民大会堂举行，御温泉荣获最高诚信品牌殊荣(《中国温泉行业标准制定者》牵头制定了我国第一个温泉产业联盟标准一《温泉服务质量监测规范》(珠海市旅游培训中心首部教材编损者》《温泉业黄埔军校一春晖学堂创办者》(温泉资源高效利用理论提出者)', '2021.05.25', 0, 3, 0, '2022-01-03 00:00:00', '【周六有房】珠海御温泉度假村云来客栈/长盛荘 2天1晚庙会住宿套餐（含早餐+无限次温泉+特色庙会自助晚餐+赠送单车券+卡拉OK券）', 1170.00, '\'沐日式温泉\', \'品盛唐风韵\', \'大餐庙会吃货天堂\', \'赠送小汤镇游戏券\'', 2, '[\'https://sales.mafengwo.net/mfs/s17/M00/EA/58/CoUBXl-_fMWAFm_OAAyDnJtY2KQ07.jpeg\', \'https://sales.mafengwo.net/mfs/s17/M00/EA/66/CoUBXl-_fMiAeQ85AAp8IV2kOpI12.jpeg\', \'https://sales.mafengwo.net/mfs/s17/M00/EA/70/CoUBXl-_fMqAFt19AAd9TkPiZZ400.jpeg\', \'https://sales.mafengwo.net/mfs/s17/M00/EA/7E/CoUBXl-_fM6Abtu7AAY8qsSlDh490.jpeg\', \'https://sales.mafengwo.net/mfs/s17/M00/EA/8B/CoUBXl-_fNGAfK-YAAbhjjTNXMM57.jpeg\']', NULL);
@@ -138,7 +129,7 @@ CREATE TABLE `destination`  (
   `cancellation_policy` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `addn_info` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of destination
@@ -177,15 +168,11 @@ CREATE TABLE `orders`  (
   `status` varchar(1024) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `create_time` varchar(1024) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of orders
 -- ----------------------------
-INSERT INTO `orders` VALUES (1, 1, 1, '【桃花节预订】西藏林芝5日游 观景酒店·无人机航拍·布宫旅拍 西藏林芝+来古冰川+巴松措+雅鲁藏布大峡谷+然乌湖+林芝波密+西藏拉萨出发', '如果来林芝只为赏桃花那就太辜负雪域春天的美誉了冰川、雪山、碧水、繁星、野花作伴才构成了这幅独一无二的春日美卷', '2021.05.25', '4', '2780', '[\'Duration: 2h\',\'Instant Confirmation\',\'Mobile Ticket Accepted\',\'Free cancellation before March 8\']', '待出发', '2021.05.25');
-INSERT INTO `orders` VALUES (2, 1, 3, '三亚亚龙湾热带天堂森林公园门票 可选网红玻璃海景栈道·索桥·丛林飞跃·雨林飞漂项目 亲子玩乐', '三亚亚龙湾爱立方户外潜水一日游\n亚龙湾爱立方\n海水之上是蓝天碧海银滩的美妙\n马蜂窝自营\n国 马蜂窝管家\n4006345678周一至周日 09:(\n海水之下是珊瑚鱼群的缤纷风情\n-头扎进去海底\n去逗一逗礁石里藏着的小鱼', '2021.05.25', '4', '1207', '[\'玩转水上项目\',\'潜水好去处\',\'踏水戏沙\',\'纯玩0购\']', '待出发', '2021.05.25');
-INSERT INTO `orders` VALUES (3, 1, 4, '2-5人团川西纯玩可选空座率·九寨沟+毕棚沟+达古冰川+黄龙4日游 赠成都住宿接机+一价全含+体验旅拍+特色餐食+九寨连住2晚+口碑精品团', '如果你还没去过九寨沟，那就趁现在吧!“睛看水，阴看山，半睛半阴看云烟”。不管什么天气，你在九寨都不会失望。这也许是你可以看到较低海拔的人间仙境了。', '2021.05.25', '5', '1069', '[\'10h玩九寨\',\'宿2晚九寨沟口\',\'可选空座率套餐\',\'赠成都精品酒店\']', '已完成', '2021.05.25');
-INSERT INTO `orders` VALUES (4, 1, 5, '网红打卡·三亚亚特兰蒂斯酒店1-4晚多套餐可选 游艇出海3小时 水世界水族馆无限次畅玩 自助早餐 旅拍写真 迷你吧 拼车接送机 亲子 酒店', '走进三亚·亚特兰蒂斯\n站式旅游综合度假目的地', '2021.05.25', '4', '2388', '[\'水上乐园世界\',\'探索海底世界\',\'网红打卡圣地\']', '已完成', '2021.05.25');
 
 -- ----------------------------
 -- Table structure for user
@@ -203,14 +190,11 @@ CREATE TABLE `user`  (
   `account` varchar(1024) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `password` varchar(1024) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'https://travel-1310614912.cos.ap-nanjing.myqcloud.com/5.jpg', 'Lee121444', '男', '我叫Lee，是一名学生。我热爱旅游和各种运动，尤其喜欢游泳。在我的眼中，旅游是一种拓展眼界、丰富人生阅历的方式，而游泳则是一种锻炼身体、释放压力的好方法。我相信，只有拥有健康的身体和丰富的人生经历，才能够更好地面对未来的挑战和机遇。我喜欢结交新朋友，认识不同的人和文化，期待能够在这里结识更多志同道合的朋友，共同探索更广阔的世界。', '广东省,广州市,天河区', '广东省,广州市,天河区', '1999.09.08', '13433094759', '123');
-INSERT INTO `user` VALUES (2, 'https://travel-1310614912.cos.ap-nanjing.myqcloud.com/17.jpg', NULL, NULL, NULL, NULL, NULL, NULL, '13433094759333', '123');
-INSERT INTO `user` VALUES (3, 'https:travel-1310614912.cos.ap-nanjing.myqcloud.com/12.jpg', 'lilili', '男', '你好 欢迎来到我的主页', '', '', '2023-05-22T16:00:00.000Z', '13433094759dwada', '123');
-INSERT INTO `user` VALUES (4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '13433094', '123456');
+INSERT INTO `user` VALUES (1, 'https://travel-1310614912.cos.ap-nanjing.myqcloud.com/5.jpg', 'Lee121444', '男', '我叫Lee，是一名学生。我热爱旅游和各种运动，尤其喜欢游泳。在我的眼中，旅游是一种拓展眼界、丰富人生阅历的方式，而游泳则是一种锻炼身体、释放压力的好方法。我相信，只有拥有健康的身体和丰富的人生经历，才能够更好地面对未来的挑战和机遇。我喜欢结交新朋友，认识不同的人和文化，期待能够在这里结识更多志同道合的朋友，共同探索更广阔的世界。', '广东省,广州市,天河区', '广东省,广州市,天河区', '1999.09.08', '13234064758', '123');
 
 SET FOREIGN_KEY_CHECKS = 1;
